@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
     greeting = "Welcome";
   }
   
-  // Find the main content area and insert greeting at the top
-  const mainContent = document.getElementById('main-wrapper');
+  // Find the main content area in Chirpy theme
+  const mainContent = document.querySelector('main');
   if (mainContent) {
     const greetingDiv = document.createElement('div');
     greetingDiv.id = 'greeting-message';
-    greetingDiv.style.cssText = 'text-align: center; padding: 15px; margin-bottom: 20px; font-size: 1.2rem; color: #a8a8a8;';
+    greetingDiv.style.cssText = 'text-align: center; padding: 20px 15px; margin-bottom: 20px; font-size: 1.3rem; color: #a8a8a8; border-bottom: 1px solid #333;';
     greetingDiv.textContent = greeting + "! Thanks for visiting my project blog.";
     mainContent.insertBefore(greetingDiv, mainContent.firstChild);
   }
