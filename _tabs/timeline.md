@@ -9,7 +9,7 @@ order: 4
 
 This Gantt chart outlines the 12-week project timeline from Week 13 (19th January 2026) to Week 24 (12th April 2026). The project is divided into six main phases: Research & Planning, Digital Twin Development, Control System Integration, Data Generation & AI Development, Testing & Validation, and Documentation & Submission.
 
-![Project Gantt Chart](/Aerospace_Digital_Twin/assets/img/gantt_chart.png){: .shadow style="max-width: 100%" }
+![Project Gantt Chart](/assets/img/Gantt%20Chart.png){: .shadow style="max-width: 100%" }
 
 *Click the image to view full size.*
 
