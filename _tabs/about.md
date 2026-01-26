@@ -7,7 +7,7 @@ order: 2
 
 ## About This Project
 
-On 26th May 1991, Lauda Air Flight 004 disintegrated mid-air over Thailand after a thrust reverser deployed unexpectedly during cruise flight. All 223 people on board perished. Sixteen years later, TAM Airlines Flight 3054 overran the runway in São Paulo when asymmetric thrust reverser deployment caused the aircraft to veer uncontrollably—199 lives were lost.
+On 26th May 1991, Lauda Air Flight 004 disintegrated mid-air over Thailand after a thrust reverser deployed unexpectedly during cruise flight. All 223 people on board perished. Sixteen years later, TAM Airlines Flight 3054 overran the runway in São Paulo when asymmetric thrust reverser deployment caused the aircraft to veer uncontrollably which resulted in the lost of 199 lives.
 
 These tragedies share a common thread: the failure to detect and respond to thrust reverser deployment anomalies in real-time.
 
@@ -18,7 +18,7 @@ This project aims to address that gap.
 
 ### The Challenge
 
-Thrust reversers redirect engine exhaust forward during landing, reducing stopping distance by 30-40%. When both engines deploy symmetrically, the system works as designed. But when one deploys and the other doesn't or when deployment timing differs by mere milliseconds—the resulting asymmetric forces can be catastrophic.
+Thrust reversers redirect engine exhaust forward during landing, reducing stopping distance by 30-40%. When both engines deploy symmetrically, the system works as designed. But when one deploys and the other doesn't or when deployment timing differs by mere milliseconds, the resulting asymmetric forces can be catastrophic.
 
 Current monitoring systems focus on individual actuator positions. What's missing is sophisticated synchronisation analysis between engines, the critical measurement that could prevent asymmetric deployment disasters.
 
