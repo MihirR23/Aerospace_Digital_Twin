@@ -7,7 +7,7 @@ order: 8
 
 ## Get in Touch
 
-I'm a Mechatronics and Robotics Engineering student at Middlesex University, currently working on my final year project. If you have any questions about my project or would like to discuss my work, feel free to reach out.
+If you have any questions about my project or would like to discuss my work, feel free to reach out. I'll respond as soon as possible.
 
 <form action="https://formspree.io/f/xreqlqve" method="POST" class="contact-form">
   <div class="form-row">
