@@ -13,7 +13,7 @@ These tragedies share a common thread: the failure to detect and respond to thru
 
 This project aims to address that gap.
 
-![Boeing 787 with thrust reversers deployed](/assets/img/Boeing%20787%20Thrust%20Reverser.png){: .shadow style="max-width: 100%" }
+![Boeing 787 with thrust reversers deployed](/assets/img/Boeing%20787%20Thrust%20Reverser.jpg){: .shadow style="max-width: 100%" }
 *Boeing 787 with thrust reversers deployed during landing. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Boeing_787_landing_with_thrust_reversers_activated_crop.jpg)*
 
 ### The Challenge
