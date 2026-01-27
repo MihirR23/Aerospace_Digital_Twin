@@ -5,9 +5,6 @@ date: 2026-01-26
 categories: [Project]
 tags: [introduction, objectives, planning]
 pin: true
-image:
-  path: /Aerospace_Digital_Twin/assets/img/Aircraft_Instruments.jpg
-  alt: Aircraft cockpit instruments and monitoring displays
 ---
 
 ## The Problem
