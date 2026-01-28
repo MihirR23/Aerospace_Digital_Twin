@@ -88,7 +88,7 @@ This pivot from building from scratch to leveraging existing professional models
 
 When opening the converted STEP files in Siemens NX, several failed to load correctly. The manual STL to STEP conversion process proved unreliable for complex geometry.
 
-I purchased an additional model from RTWILEYRC—the [High Bypass Engine Nacelle](https://cults3d.com/en/3d-model/gadget/high-bypass-engine-nacelle) (£9.05), which includes the jet engine within the assembly. However, this model contains 87 STL files requiring conversion.
+I purchased an additional model from RTWILEYRC, the [High Bypass Engine Nacelle](https://cults3d.com/en/3d-model/gadget/high-bypass-engine-nacelle) (£9.05), which includes the jet engine within the assembly. However, this model contains 87 STL files requiring conversion.
 
 With a recommendation from Jason Scott, I attempted to use Autodesk Fusion360 for batch conversion. I explored Fusion 360 but it required a paid licence.
 
