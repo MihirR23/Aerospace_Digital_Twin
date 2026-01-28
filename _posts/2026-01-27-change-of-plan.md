@@ -84,6 +84,18 @@ This pivot from building from scratch to leveraging existing professional models
 
 ---
 
+## Update: Conversion Complications
+
+When opening the converted STEP files in Siemens NX, several failed to load correctly. The manual STL to STEP conversion process proved unreliable for complex geometry.
+
+I purchased an additional model from RTWILEYRC—the [High Bypass Engine Nacelle](https://cults3d.com/en/3d-model/gadget/high-bypass-engine-nacelle) (£9.05), which includes the jet engine within the assembly. However, this model contains 87 STL files requiring conversion.
+
+With a recommendation from Jason Scott, I attempted to use Autodesk Fusion360 for batch conversion. I explored Fusion 360 but it required a paid licence.
+
+Rather than manually converting 87 files with uncertain results, I've contacted RTWILEYRC directly to enquire about obtaining STEP files and potentially a pre-assembled model (the DWG files suggest an assembly may exist). Awaiting their response.
+
+---
+
 ## Acknowledgements
 
 Credit to **RTWILEYRC** on Cults3D for creating the high-quality thrust reverser and engine models that made this pivot possible.
