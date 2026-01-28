@@ -40,4 +40,28 @@ A record of key engineering decisions made throughout this project, including th
 
 ---
 
-*More decisions will be documented as the project progresses.*
+## TD-002: Request STEP Files from Creator Rather Than Manual Conversion
+
+**Date:** 28 January 2026
+
+**Decision:** Contact RTWILEYRC directly to request STEP files instead of manually converting 87 STL files.
+
+**Context:** After purchasing the High Bypass Engine Nacelle model (87 STL files), manual conversion to STEP format was required for Siemens NX compatibility. Initial attempts using SolidWorks produced files that failed to open correctly in Siemens NX.
+
+**Problem:**
+- Manual STL to STEP conversion proved unreliable for complex geometry
+- 87 files would require significant time to convert individually
+- Converted files were failing to load in Siemens NX
+- Fusion 360 required a paid licence
+- Fusion360 was attempted on Jason Scott's recommendation but batch conversion remained time-consuming
+
+**Options Considered:**
+1. Manually convert all 87 STL files (time-intensive, unreliable results)
+2. Use different conversion software (Inventor, FreeCAD, Online Converters)
+3. Contact the creator to request native STEP files
+
+**Decision Rationale:** Option 3 selected. The presence of DWG files in the download suggests RTWILEYRC may have native CAD files or assemblies available. Direct communication could save significant time and yield better quality files.
+
+**Status:** Awaiting response from RTWILEYRC.
+
+---
