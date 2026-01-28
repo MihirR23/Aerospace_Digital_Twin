@@ -6,7 +6,7 @@ categories: [Project]
 tags: [introduction, objectives, planning]
 pin: true
 image:
-  path: assets/img/Cockpit Instruments.jpg
+  path: assets/img/Cockpit_Instruments.jpg
   alt: Aircraft cockpit instruments and monitoring displays
 ---
 
