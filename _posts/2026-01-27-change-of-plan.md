@@ -38,7 +38,7 @@ I began searching for professionally-made CAD models that could serve as the fou
 - Must be available in STEP format for Siemens NX compatibility
 - Must have sufficient detail for physics simulation
 
-I evaluated several platforms including GrabCAD, TurboSquid, and Cults3D. Many models were either too expensive, only available in mesh formats (STL), or lacked the thrust reverser components I needed.
+I evaluated several platforms including GrabCAD, TurboSquid and Cults3D. Many models were either too expensive, only available in mesh formats (STL) or lacked the thrust reverser components I needed.
 
 ---
 
@@ -80,7 +80,7 @@ Tomorrow's focus is assembly and physics setup in Siemens NX:
 - Create joints to simulate blocker door deployment
 - Begin testing the deployment kinematics
 
-This pivot from building from scratch to leveraging existing professional models means I can now focus my energy where it matters most: the PLC control logic, OPC UA integration, and Random Forest fault detection that form the core contribution of this project.
+This pivot from building from scratch to leveraging existing professional models means I can now focus my energy where it matters most: the PLC control logic, OPC UA integration and Random Forest fault detection that form the core contribution of this project.
 
 ---
 
