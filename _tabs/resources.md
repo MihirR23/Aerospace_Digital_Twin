@@ -14,6 +14,7 @@ A collection of resources used throughout this project.
 |----------|---------|-------------|
 | [Functional Thrust Reverser - Trent 900](https://cults3d.com/en/3d-model/gadget/functional-thrust-reverser-trent-900) | RTWILEYRC | Nacelle with blocker doors, cascade vanes and translating cowl mechanism |
 | [3D Printable Jet Engine](https://cults3d.com/en/3d-model/various/3d-printable-jet-engine-minimal-printing-supports) | RTWILEYRC | Jet engine core housed within the nacelle |
+| [High Bypass Engine Nacelle](https://cults3d.com/en/3d-model/gadget/high-bypass-engine-nacelle) | RTWILEYRC | Complete nacelle with jet engine included (87 parts) |
 
 ---
 
