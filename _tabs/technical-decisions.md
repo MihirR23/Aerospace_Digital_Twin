@@ -10,7 +10,7 @@ A record of key engineering decisions made throughout this project, including th
 
 ## TD-001: Use Existing CAD Models Instead of Building from Scratch
 
-**Date:** January 2026
+**Date:** 27 January 2026
 
 **Decision:** Purchase professionally designed thrust reverser and jet engine CAD models from Cults3D rather than modelling from scratch.
 
