@@ -4,7 +4,7 @@ description: "How failed attempts at modelling a jet engine from scratch led me 
 date: 2026-01-27
 categories: [Development]
 tags: [siemens-nx, cad, solidworks, decision-making]
-pin: false
+pin: true
 image:
   path: assets/img/Cults3D Trent 900 Engine.png
   alt: Functional Thrust Reverser Trent 900 model from Cults3D
@@ -14,7 +14,7 @@ image:
 
 When I first scoped this project, my plan was ambitious: build a complete jet engine with thrust reverser deployment from scratch in Siemens NX. I wanted full control over every component, every dimension, every mechanism.
 
-During the Christmas holidays, I set to work. I followed a [YouTube tutorial](https://www.youtube.com/watch?v=6TIex4nyz7c) that walked through creating a [3D printable jet engine](https://cults3d.com/en/3d-model/various/3d-printable-jet-engine-minimal-printing-supports) and attempted to adapt it for my purposes.
+During the Christmas holidays, I set to work. I followed a [YouTube tutorial](https://www.youtube.com/watch?v=6TIex4nyz7c) that walked through creating a jet engine and attempted to adapt it for my purposes.
 
 ---
 
@@ -22,7 +22,7 @@ During the Christmas holidays, I set to work. I followed a [YouTube tutorial](ht
 
 The execution didn't match the vision. Several problems emerged:
 
-The complexity of jet engine geometry proved far more demanding than anticipated. Each component required precise dimensions and tolerances that weren't readily available from public sources. The tutorial I followed was designed for 3D printing aesthetics, not engineering simulation.
+The complexity of jet engine geometry proved far more demanding than anticipated. Each component required precise dimensions and tolerances that weren't readily available from public sources. The tutorial I followed was designed for visual representation, not engineering simulation with functional thrust reversers.
 
 More critically, I was spending weeks on CAD modelling when my project's core contribution is the AI fault detection system, not the engine geometry itself. The time investment wasn't aligning with my project objectives.
 
@@ -54,7 +54,7 @@ After careful inspection, I found exactly what I needed on Cults3D, created by *
 
 The model cost £9.17, a worthwhile investment that saved weeks of modelling time.
 
-I also discovered that RTWILEYRC had created a compatible jet engine core that fits within the nacelle, which I downloaded separately.
+I also discovered that RTWILEYRC had created a compatible [jet engine core](https://cults3d.com/en/3d-model/various/3d-printable-jet-engine-minimal-printing-supports) that is housed within the nacelle, which I downloaded separately.
 
 ---
 
