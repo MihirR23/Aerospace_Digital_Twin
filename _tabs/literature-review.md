@@ -116,9 +116,15 @@ This section presents the research findings and academic sources relevant to the
 
 <h3>Why Does This Matter?</h3>
 
-<p>A digital twin is a virtual replica of a physical asset that updates continuously using real-time sensor data, unlike traditional simulation which relies on fixed parameters set by a designer [1]. A simulation can only show what could happen, while a digital twin reflects what is actually happening to a specific system in the real world [2].</p>
+<p>Testing thrust reverser failures on a real aircraft engine is not an option. Deliberately triggering asymmetric deployment, delayed actuation, or uncommanded reversal on physical hardware would risk destroying equipment and endangering personnel. There needs to be a way to replicate these dangerous scenarios safely.</p>
 
-<p>In aerospace, this technology is already in use. Rolls-Royce creates digital twins of their aircraft engines, installing sensors that continuously relay data back to the virtual model to predict maintenance needs and model operational scenarios digitally [3]. Airbus has adopted digital twins across all aircraft programmes, using them to validate designs and optimise production before committing to physical builds [4].</p>
+<p>A digital twin solves this by creating a virtual replica of a physical asset that updates continuously using real-time sensor data, unlike traditional simulation which relies on fixed parameters set by a designer [1]. A simulation can only show what could happen, while a digital twin reflects what is actually happening to a specific system in the real world [2].</p>
+
+<p><strong>Rolls-Royce:</strong> Creates digital twins of their aircraft engines, installing sensors that continuously relay data back to the virtual model to predict maintenance needs and model operational scenarios digitally [3].</p>
+
+<p><strong>Airbus:</strong> Has adopted digital twins across all aircraft programmes, using them to validate designs and optimise production before committing to physical builds [4].</p>
+
+<p>Both companies demonstrate that digital twin technology is already trusted in aerospace for safety-critical testing and validation.</p>
 
 <h3>Relevance to This Project</h3>
 
@@ -160,11 +166,11 @@ This section presents the research findings and academic sources relevant to the
 
 <h3>References</h3>
 
-<p>[1] L. Breiman, "Random Forests," <em>Machine Learning</em>, vol. 45, no. 1, pp. 5–32, 2001. [Online]. Available: <a href="https://link.springer.com/article/10.1023/a:1010933404324">https://link.springer.com/article/10.1023/a:1010933404324</a></p>
+<p>[1] L. Breiman, "Random Forests," <em>Machine Learning</em>, vol. 45, no. 1, pp. 5-32, 2001. [Online]. Available: <a href="https://link.springer.com/article/10.1023/a:1010933404324">https://link.springer.com/article/10.1023/a:1010933404324</a></p>
 
 <p>[2] S. Lee, W. Park, and S. Jung, "Fault Detection of Aircraft System with Random Forest Algorithm and Similarity Measure," <em>The Scientific World Journal</em>, vol. 2014, Art. no. 727359, Jun. 2014. [Online]. Available: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4098612/">https://pmc.ncbi.nlm.nih.gov/articles/PMC4098612/</a></p>
 
-<p>[3] W. Yan, "Application of Random Forest to Aircraft Engine Fault Diagnosis," in <em>Proc. IMACS Multiconference on Computational Engineering in Systems Applications (CESA)</em>, Beijing, China, Oct. 2006, pp. 468–475.</p>
+<p>[3] W. Yan, "Application of Random Forest to Aircraft Engine Fault Diagnosis," in <em>Proc. IMACS Multiconference on Computational Engineering in Systems Applications (CESA)</em>, Beijing, China, Oct. 2006, pp. 468-475. [Online]. Available: <a href="https://ieeexplore.ieee.org/abstract/document/4281698">https://ieeexplore.ieee.org/abstract/document/4281698</a></p>
 
 <p>[4] scikit-learn, "RandomForestClassifier," scikit-learn 1.8.0 Documentation, 2025. [Online]. Available: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html</a></p>
 
@@ -178,7 +184,27 @@ This section presents the research findings and academic sources relevant to the
 </summary>
 <div class="content">
 
-<p>Content coming soon.</p>
+<h3>Why Does This Matter?</h3>
+
+<p>In both the Lauda Air and TAM Airlines accidents, the thrust reverser control logic failed to prevent dangerous deployment states. The systems that govern thrust reverser operation, when to deploy, when to lock out, when to alert, are managed by Programmable Logic Controllers executing safety-critical logic in real-time millisecond cycles.</p>
+
+<p><strong>PLCSIM Advanced (Siemens):</strong> Testing PLC control logic traditionally requires physical hardware, making it expensive and impractical to simulate dangerous failure scenarios. Siemens' PLCSIM Advanced solves this by virtually simulating S7-1500 series controllers, allowing programs to be downloaded, tested, and debugged entirely in software [1].</p>
+
+<p><strong>OPC UA (IEC 62541):</strong> For a monitoring system to detect faults, the PLC controlling the thrust reverser must be able to share its sensor data with external software in real time. OPC UA is a platform-independent, open communication standard developed by the OPC Foundation that enables secure data exchange between industrial systems regardless of manufacturer or operating system [2]. Siemens integrates OPC UA directly into its automation products, enabling PLCs to communicate with higher-level applications like monitoring dashboards and analytics tools [3].</p>
+
+<p>Without these two technologies, there would be no way to safely test control logic against failure scenarios or to bridge the gap between the PLC and the AI fault detection model.</p>
+
+<h3>Relevance to This Project</h3>
+
+<p>This project uses TIA Portal V19 to program the thrust reverser control logic and PLCSIM Advanced 6.0 to simulate the PLC virtually. OPC UA provides the communication bridge between the simulated PLC and the Python-based Random Forest classifier, allowing sensor data to flow from the digital twin through the controller to the AI model in real time.</p>
+
+<h3>References</h3>
+
+<p>[1] Siemens, "S7-PLCSIM Advanced," Siemens Global, 2025. [Online]. Available: <a href="https://www.siemens.com/global/en/products/automation/systems/industrial/plc/s7-plcsim-advanced.html">https://www.siemens.com/global/en/products/automation/systems/industrial/plc/s7-plcsim-advanced.html</a></p>
+
+<p>[2] OPC Foundation, "OPC Unified Architecture," OPC Foundation, 2025. [Online]. Available: <a href="https://opcfoundation.org/about/opc-technologies/opc-ua/">https://opcfoundation.org/about/opc-technologies/opc-ua/</a></p>
+
+<p>[3] Siemens, "OPC UA: Structured Data up to the Cloud," Siemens Global, 2025. [Online]. Available: <a href="https://www.siemens.com/global/en/products/automation/industrial-communication/opc-ua.html">https://www.siemens.com/global/en/products/automation/industrial-communication/opc-ua.html</a></p>
 
 </div>
 </details>
