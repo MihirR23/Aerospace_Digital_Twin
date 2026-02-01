@@ -39,12 +39,6 @@ order: 3
   display: none;
 }
 
-.lit-section summary .icon {
-  font-size: 1.3rem;
-  min-width: 1.5rem;
-  text-align: center;
-}
-
 .lit-section summary .arrow {
   margin-left: auto;
   font-size: 0.7rem;
@@ -83,7 +77,6 @@ This section presents the research findings and academic sources relevant to the
 
 <details class="lit-section lit-thrust">
 <summary>
-  <span class="icon">✈️</span>
   <span>Thrust Reverser Systems & Aviation Safety</span>
   <span class="arrow">▶</span>
 </summary>
@@ -116,7 +109,6 @@ This section presents the research findings and academic sources relevant to the
 
 <details class="lit-section lit-digital">
 <summary>
-  <span class="icon">🖥️</span>
   <span>Digital Twin Technology</span>
   <span class="arrow">▶</span>
 </summary>
@@ -147,20 +139,40 @@ This section presents the research findings and academic sources relevant to the
 
 <details class="lit-section lit-ai">
 <summary>
-  <span class="icon">🤖</span>
   <span>AI and Machine Learning for Fault Detection</span>
   <span class="arrow">▶</span>
 </summary>
 <div class="content">
 
-<p>Content coming soon.</p>
+<h3>Why Does This Matter?</h3>
+
+<p>Machine learning enables automated fault detection by learning patterns from sensor data rather than relying on manually programmed thresholds. Random Forest, an ensemble algorithm introduced by Breiman in 2001, builds hundreds of independent decision trees and combines their votes to classify system states with high accuracy [1].</p>
+
+<p><strong>UAV Fault Detection (Lee et al., 2014):</strong> Random Forest was applied to classify healthy versus faulty flight conditions on an unmanned aerial vehicle using 12 sensor features. The algorithm achieved high detection rates and identified which sensor inputs contributed most to each fault decision [2].</p>
+
+<p><strong>Aircraft Engine Diagnosis (Yan, 2006):</strong> Random Forest was used to diagnose multiple fault types from engine sensor readings, outperforming other classifiers in both accuracy and reliability for safety-critical classification tasks [3].</p>
+
+<p>Both applications demonstrate that Random Forest handles noisy sensor data effectively and provides interpretable results, two essential requirements for any safety-critical monitoring system.</p>
+
+<h3>Relevance to This Project</h3>
+
+<p>This project uses Python's scikit-learn library to implement a Random Forest classifier that categorises thrust reverser deployments as normal, delayed, or asymmetric [4]. It was chosen over alternatives like neural networks because it handles tabular sensor data effectively, provides feature importance scores for engineering interpretation, and meets the &lt;500ms detection latency target without GPU hardware.</p>
+
+<h3>References</h3>
+
+<p>[1] L. Breiman, "Random Forests," <em>Machine Learning</em>, vol. 45, no. 1, pp. 5–32, 2001. [Online]. Available: <a href="https://link.springer.com/article/10.1023/a:1010933404324">https://link.springer.com/article/10.1023/a:1010933404324</a></p>
+
+<p>[2] S. Lee, W. Park, and S. Jung, "Fault Detection of Aircraft System with Random Forest Algorithm and Similarity Measure," <em>The Scientific World Journal</em>, vol. 2014, Art. no. 727359, Jun. 2014. [Online]. Available: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4098612/">https://pmc.ncbi.nlm.nih.gov/articles/PMC4098612/</a></p>
+
+<p>[3] W. Yan, "Application of Random Forest to Aircraft Engine Fault Diagnosis," in <em>Proc. IMACS Multiconference on Computational Engineering in Systems Applications (CESA)</em>, Beijing, China, Oct. 2006, pp. 468–475.</p>
+
+<p>[4] scikit-learn, "RandomForestClassifier," scikit-learn 1.8.0 Documentation, 2025. [Online]. Available: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html</a></p>
 
 </div>
 </details>
 
 <details class="lit-section lit-plc">
 <summary>
-  <span class="icon">⚙️</span>
   <span>PLC Control Systems & OPC UA</span>
   <span class="arrow">▶</span>
 </summary>
@@ -173,7 +185,6 @@ This section presents the research findings and academic sources relevant to the
 
 <details class="lit-section lit-gap">
 <summary>
-  <span class="icon">🔍</span>
   <span>Existing Research & Gap Analysis</span>
   <span class="arrow">▶</span>
 </summary>
