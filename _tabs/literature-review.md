@@ -27,7 +27,6 @@ order: 3
   gap: 0.75rem;
   font-size: 1.05rem;
   font-weight: 600;
-  border-left: 5px solid var(--accent-color);
   transition: background 0.2s ease;
 }
 
@@ -63,19 +62,14 @@ order: 3
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Section colours */
-.lit-thrust { --accent-color: #4472C4; }
-.lit-digital { --accent-color: #70AD47; }
-.lit-ai { --accent-color: #ED7D31; }
-.lit-plc { --accent-color: #7030A0; }
-.lit-gap { --accent-color: #E74C3C; }
+
 </style>
 
 This section presents the research findings and academic sources relevant to the project, covering thrust reverser systems, digital twin technology, AI fault detection and PLC control systems.
 
 ---
 
-<details class="lit-section lit-thrust">
+<details class="lit-section">
 <summary>
   <span>Thrust Reverser Systems & Aviation Safety</span>
   <span class="arrow">▶</span>
@@ -107,7 +101,7 @@ This section presents the research findings and academic sources relevant to the
 </div>
 </details>
 
-<details class="lit-section lit-digital">
+<details class="lit-section">
 <summary>
   <span>Digital Twin Technology</span>
   <span class="arrow">▶</span>
@@ -143,7 +137,7 @@ This section presents the research findings and academic sources relevant to the
 </div>
 </details>
 
-<details class="lit-section lit-ai">
+<details class="lit-section">
 <summary>
   <span>AI and Machine Learning for Fault Detection</span>
   <span class="arrow">▶</span>
@@ -162,7 +156,7 @@ This section presents the research findings and academic sources relevant to the
 
 <h3>Relevance to This Project</h3>
 
-<p>This project uses Python's scikit-learn library to implement a Random Forest classifier that categorises thrust reverser deployments as normal, delayed or asymmetric [4]. It was chosen over alternatives like neural networks because it handles tabular sensor data effectively, provides feature importance scores for engineering interpretation and meets the &lt;500ms detection latency target without GPU hardware.</p>
+<p>This project uses Python's scikit-learn library to implement a Random Forest classifier that categorises thrust reverser deployments as normal, delayed or asymmetric [4]. It was chosen over alternatives like neural networks because it handles tabular sensor data effectively, provides feature importance scores for engineering interpretation, and meets the &lt;500ms detection latency target without GPU hardware.</p>
 
 <h3>References</h3>
 
@@ -177,7 +171,7 @@ This section presents the research findings and academic sources relevant to the
 </div>
 </details>
 
-<details class="lit-section lit-plc">
+<details class="lit-section">
 <summary>
   <span>PLC Control Systems & OPC UA</span>
   <span class="arrow">▶</span>
@@ -209,7 +203,7 @@ This section presents the research findings and academic sources relevant to the
 </div>
 </details>
 
-<details class="lit-section lit-gap">
+<details class="lit-section">
 <summary>
   <span>Existing Research & Gap Analysis</span>
   <span class="arrow">▶</span>
@@ -220,17 +214,17 @@ This section presents the research findings and academic sources relevant to the
 
 <p>Each technology in this project has been researched individually, but not combined in the way this project proposes.</p>
 
-<p><strong>NASA Asymmetric Thrust Detection (Chicatelli et al., 2015):</strong> NASA tested three methods for detecting unequal thrust output between engines during flight, including Kalman filters and engine pressure ratio comparison. All three detected thrust imbalances successfully in pilot-in-the-loop simulation [1]. However, asymmetric thrust during flight is a different problem to thrust reverser deployment during landing. The two involve different flight phases, different mechanical systems and different sensor data.</p>
+<p><strong>NASA Asymmetric Thrust Detection (Chicatelli et al., 2015):</strong> NASA tested three methods for detecting unequal thrust output between engines during flight, including Kalman filters and engine pressure ratio comparison. All three detected thrust imbalances successfully in pilot-in-the-loop simulation [1]. However, asymmetric thrust during flight is a different problem to thrust reverser deployment during landing. The two involve different flight phases, different mechanical systems, and different sensor data.</p>
 
 <p><strong>Digital Twin for Engine Fault Diagnosis (Huang et al., 2023):</strong> A digital twin combined with deep learning was used for aero-engine component-level fault diagnosis, fusing physics-based models with sensor data [2]. The focus was on general engine health parameters (exhaust gas temperature, shaft speeds, pressure ratios), not thrust reverser deployment behaviour.</p>
 
 <p><strong>Digital Twin for ECAM Monitoring (Kilic et al., 2023):</strong> A digital twin was designed for Electronic Centralised Aircraft Monitoring, using four machine learning models (including decision trees and neural networks) to estimate primary engine parameters from real flight data recorded on a wide-body commercial aircraft. The system estimated Engine Pressure Ratio, Exhaust Gas Temperature, Fuel Flow and Shaft Speeds across all flight phases [3]. While this demonstrates ML-based engine monitoring in a real aviation context, the focus remains on overall engine performance parameters, not on the mechanical deployment states of thrust reversers.</p>
 
-<p><strong>The Gap:</strong> No published research combines a digital twin, machine learning classification, PLC control logic, and OPC UA communication into a single system targeting thrust reverser deployment monitoring. Existing aerospace ML research monitors engine health parameters. The specific problem of classifying reverser deployment states (position, velocity, timing) has not been addressed with these methods.</p>
+<p><strong>The Gap:</strong> No published research combines a digital twin, machine learning classification, PLC control logic and OPC UA communication into a single system targeting thrust reverser deployment monitoring. Existing aerospace ML research monitors engine health parameters. The specific problem of classifying reverser deployment states (position, velocity, timing) has not been addressed with these methods.</p>
 
 <h3>Relevance to This Project</h3>
 
-<p>This project fills that gap by integrating Siemens NX, TIA Portal, OPC UA and a Python Random Forest classifier into one pipeline that classifies deployment states (normal, delayed, asymmetric) directly from reverser sensor data.</p>
+<p>This project fills that gap by integrating Siemens NX, TIA Portal, OPC UA, and a Python Random Forest classifier into one pipeline that classifies deployment states (normal, delayed, asymmetric) directly from reverser sensor data.</p>
 
 <h3>References</h3>
 
