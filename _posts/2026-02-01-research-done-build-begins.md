@@ -1,6 +1,6 @@
 ---
-title: "Literature Review Complete & CAD Model Received"
-description: "The literature review is finished, covering five key research areas that underpin the project. Additionally, Bob Wiley has sent the Trent 900 STEP assembly for the digital twin."
+title: "Research Done, Build Begins: Completing the Literature Review"
+description: "Five research areas explored, every technical decision justified and a STEP assembly from Bob Wiley to kick off the build phase."
 date: 2026-02-01
 categories: [Research]
 tags: [literature-review, digital-twin, cad-model, progress]
