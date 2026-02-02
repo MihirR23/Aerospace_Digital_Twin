@@ -4,6 +4,7 @@ description: "The literature review is finished, covering five key research area
 date: 2026-02-01
 categories: [Research]
 tags: [literature-review, digital-twin, cad-model, progress]
+pin: true
 image:
   path: assets/img/TN1-001 NACELLE MAIN ASSY V2 (sht 2).jpg
   alt: Trent 900 nacelle main assembly STEP file
