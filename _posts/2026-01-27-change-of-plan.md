@@ -4,7 +4,7 @@ description: "How failed attempts at modelling a jet engine from scratch led me 
 date: 2026-01-27
 categories: [Development]
 tags: [siemens-nx, cad, solidworks, decision-making]
-pin: true
+pin: false
 image:
   path: assets/img/Cults3D Trent 900 Engine.png
   alt: Functional Thrust Reverser Trent 900 model from Cults3D
