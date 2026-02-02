@@ -4,7 +4,7 @@ description: "Introducing my final year project, developing an AI-powered monito
 date: 2026-01-26
 categories: [Project]
 tags: [introduction, objectives, planning]
-pin: true
+pin: false
 image:
   path: assets/img/Cockpit Instruments.jpg
   alt: Aircraft cockpit instruments and monitoring displays
