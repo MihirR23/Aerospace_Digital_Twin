@@ -71,7 +71,7 @@ order: 3
 .lit-gap { --accent-color: #E74C3C; }
 </style>
 
-This section presents the research findings and academic sources relevant to the project, covering thrust reverser systems, digital twin technology, AI fault detection, and PLC control systems.
+This section presents the research findings and academic sources relevant to the project, covering thrust reverser systems, digital twin technology, AI fault detection and PLC control systems.
 
 ---
 
@@ -116,7 +116,7 @@ This section presents the research findings and academic sources relevant to the
 
 <h3>Why Does This Matter?</h3>
 
-<p>Testing thrust reverser failures on a real aircraft engine is not an option. Deliberately triggering asymmetric deployment, delayed actuation, or uncommanded reversal on physical hardware would risk destroying equipment and endangering personnel. There needs to be a way to replicate these dangerous scenarios safely.</p>
+<p>Testing thrust reverser failures on a real aircraft engine is not an option. Deliberately triggering asymmetric deployment, delayed actuation or uncommanded reversal on physical hardware would risk destroying equipment and endangering personnel. There needs to be a way to replicate these dangerous scenarios safely.</p>
 
 <p>A digital twin solves this by creating a virtual replica of a physical asset that updates continuously using real-time sensor data, unlike traditional simulation which relies on fixed parameters set by a designer [1]. A simulation can only show what could happen, while a digital twin reflects what is actually happening to a specific system in the real world [2].</p>
 
@@ -162,7 +162,7 @@ This section presents the research findings and academic sources relevant to the
 
 <h3>Relevance to This Project</h3>
 
-<p>This project uses Python's scikit-learn library to implement a Random Forest classifier that categorises thrust reverser deployments as normal, delayed, or asymmetric [4]. It was chosen over alternatives like neural networks because it handles tabular sensor data effectively, provides feature importance scores for engineering interpretation, and meets the &lt;500ms detection latency target without GPU hardware.</p>
+<p>This project uses Python's scikit-learn library to implement a Random Forest classifier that categorises thrust reverser deployments as normal, delayed or asymmetric [4]. It was chosen over alternatives like neural networks because it handles tabular sensor data effectively, provides feature importance scores for engineering interpretation and meets the &lt;500ms detection latency target without GPU hardware.</p>
 
 <h3>References</h3>
 
@@ -188,7 +188,7 @@ This section presents the research findings and academic sources relevant to the
 
 <p>In both the Lauda Air and TAM Airlines accidents, the thrust reverser control logic failed to prevent dangerous deployment states. The systems that govern thrust reverser operation, when to deploy, when to lock out, when to alert, are managed by Programmable Logic Controllers executing safety-critical logic in real-time millisecond cycles.</p>
 
-<p><strong>PLCSIM Advanced (Siemens):</strong> Testing PLC control logic traditionally requires physical hardware, making it expensive and impractical to simulate dangerous failure scenarios. Siemens' PLCSIM Advanced solves this by virtually simulating S7-1500 series controllers, allowing programs to be downloaded, tested, and debugged entirely in software [1].</p>
+<p><strong>PLCSIM Advanced (Siemens):</strong> Testing PLC control logic traditionally requires physical hardware, making it expensive and impractical to simulate dangerous failure scenarios. Siemens' PLCSIM Advanced solves this by virtually simulating S7-1500 series controllers, allowing programs to be downloaded, tested and debugged entirely in software [1].</p>
 
 <p><strong>OPC UA (IEC 62541):</strong> For a monitoring system to detect faults, the PLC controlling the thrust reverser must be able to share its sensor data with external software in real time. OPC UA is a platform-independent, open communication standard developed by the OPC Foundation that enables secure data exchange between industrial systems regardless of manufacturer or operating system [2]. Siemens integrates OPC UA directly into its automation products, enabling PLCs to communicate with higher-level applications like monitoring dashboards and analytics tools [3].</p>
 
@@ -216,7 +216,29 @@ This section presents the research findings and academic sources relevant to the
 </summary>
 <div class="content">
 
-<p>Content coming soon.</p>
+<h3>Why Does This Matter?</h3>
+
+<p>Each technology in this project has been researched individually, but not combined in the way this project proposes.</p>
+
+<p><strong>NASA Asymmetric Thrust Detection (Chicatelli et al., 2015):</strong> NASA tested three methods for detecting unequal thrust output between engines during flight, including Kalman filters and engine pressure ratio comparison. All three detected thrust imbalances successfully in pilot-in-the-loop simulation [1]. However, asymmetric thrust during flight is a different problem to thrust reverser deployment during landing. The two involve different flight phases, different mechanical systems and different sensor data.</p>
+
+<p><strong>Digital Twin for Engine Fault Diagnosis (Huang et al., 2023):</strong> A digital twin combined with deep learning was used for aero-engine component-level fault diagnosis, fusing physics-based models with sensor data [2]. The focus was on general engine health parameters (exhaust gas temperature, shaft speeds, pressure ratios), not thrust reverser deployment behaviour.</p>
+
+<p><strong>Digital Twin for ECAM Monitoring (Kilic et al., 2023):</strong> A digital twin was designed for Electronic Centralised Aircraft Monitoring, using four machine learning models (including decision trees and neural networks) to estimate primary engine parameters from real flight data recorded on a wide-body commercial aircraft. The system estimated Engine Pressure Ratio, Exhaust Gas Temperature, Fuel Flow and Shaft Speeds across all flight phases [3]. While this demonstrates ML-based engine monitoring in a real aviation context, the focus remains on overall engine performance parameters, not on the mechanical deployment states of thrust reversers.</p>
+
+<p><strong>The Gap:</strong> No published research combines a digital twin, machine learning classification, PLC control logic, and OPC UA communication into a single system targeting thrust reverser deployment monitoring. Existing aerospace ML research monitors engine health parameters. The specific problem of classifying reverser deployment states (position, velocity, timing) has not been addressed with these methods.</p>
+
+<h3>Relevance to This Project</h3>
+
+<p>This project fills that gap by integrating Siemens NX, TIA Portal, OPC UA and a Python Random Forest classifier into one pipeline that classifies deployment states (normal, delayed, asymmetric) directly from reverser sensor data.</p>
+
+<h3>References</h3>
+
+<p>[1] A. Chicatelli, A. W. Rinehart, T. S. Sowers, and D. L. Simon, "Investigation of Asymmetric Thrust Detection with Demonstration in a Real-Time Simulation Testbed," in <em>Proc. AIAA Propulsion and Energy Forum</em>, Orlando, FL, Jul. 2015. [Online]. Available: <a href="https://ntrs.nasa.gov/citations/20150021854">https://ntrs.nasa.gov/citations/20150021854</a></p>
+
+<p>[2] Y. Huang, J. Tao, G. Sun, T. Wu, L. Yu, and X. Zhao, "A novel digital twin approach based on deep multimodal information fusion for aero-engine fault diagnosis," <em>Energy</em>, vol. 270, Art. no. 126894, 2023. [Online]. Available: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0360544223002888">https://www.sciencedirect.com/science/article/abs/pii/S0360544223002888</a></p>
+
+<p>[3] U. Kilic, G. Yalin, and O. Cam, "Digital twin for Electronic Centralized Aircraft Monitoring by machine learning algorithms," <em>Energy</em>, vol. 283, Art. no. 129120, 2023. [Online]. Available: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0360544223025124">https://www.sciencedirect.com/science/article/abs/pii/S0360544223025124</a></p>
 
 </div>
 </details>
