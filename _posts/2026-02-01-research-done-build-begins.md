@@ -11,7 +11,7 @@ image:
 
 ## Literature Review: Done
 
-The literature review is now complete and published on the [Literature Review](/literature-review/) tab. It took a fair amount of time to get right, not just finding sources but making sure every claim was backed by credible, verifiable references. The review covers five sections, and each one was chosen because it directly supports a technical decision in this project.
+The literature review is now complete and published on the [Literature Review](/Aerospace_Digital_Twin/literature-review/) tab. It took a fair amount of time to get right, not just finding sources but making sure every claim was backed by credible, verifiable references. The review covers five sections, and each one was chosen because it directly supports a technical decision in this project.
 
 Here is a summary of what was covered and why.
 
