@@ -26,10 +26,10 @@ Current monitoring systems focus on individual actuator positions. What's missin
 
 This project develops an AI-enhanced monitoring system that combines:
 
-- **Digital Twin Technology** — A physics-based simulation of dual pneumatic actuators in Siemens NX, generating realistic deployment data at 100Hz
-- **Industrial Control Systems** — Real-time PLC logic with safety interlocks, programmed in SCL using TIA Portal V19 and S7-PLCSIM Advanced 6.0
-- **Machine Learning** — A Random Forest classifier trained to detect asymmetric deployment, timing mismatches, incomplete deployment and actuator degradation
-- **Real-time Monitoring** — An HMI dashboard displaying live synchronisation status with traffic-light health indicators
+- **Digital Twin Technology** - A physics-based simulation of dual pneumatic actuators in Siemens NX, generating realistic deployment data at 100Hz
+- **Industrial Control Systems** - Real-time PLC logic with safety interlocks, programmed in SCL using TIA Portal V19 and S7-PLCSIM Advanced 6.0
+- **Machine Learning** - A Random Forest classifier trained to detect asymmetric deployment, timing mismatches, incomplete deployment and actuator degradation
+- **Real-time Monitoring** - An HMI dashboard displaying live synchronisation status with traffic-light health indicators
 
 ### System Architecture
 
