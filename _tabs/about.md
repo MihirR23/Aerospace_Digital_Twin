@@ -5,7 +5,7 @@ icon: fas fa-user
 order: 2
 ---
 
-## About This Project Monkey
+## About This Project
 
 On 26th May 1991, Lauda Air Flight 004 disintegrated mid-air over Thailand after a thrust reverser deployed unexpectedly during cruise flight. All 223 people on board perished. Sixteen years later, TAM Airlines Flight 3054 overran the runway in São Paulo when asymmetric thrust reverser deployment caused the aircraft to veer uncontrollably which resulted in the lost of 199 lives.
 
