@@ -6,7 +6,7 @@ categories: [Development]
 tags: [siemens-nx, digital-twin, simulation, physics]
 pin: true
 image:
-  path: assets/img/Engine with Physics.png
+  path: assets/img/Engines with Physics.png
   alt: Trent 900 digital twin physics in Siemens NX
 ---
 
