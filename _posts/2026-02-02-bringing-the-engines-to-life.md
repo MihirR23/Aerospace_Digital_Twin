@@ -5,6 +5,9 @@ date: 2026-02-02
 categories: [Development]
 tags: [siemens-nx, digital-twin, simulation, physics]
 pin: true
+image:
+  path: assets/img/Engine with Physics.png
+  alt: Trent 900 digital twin physics in Siemens NX
 ---
 
 ## The STEP Files Made All the Difference
