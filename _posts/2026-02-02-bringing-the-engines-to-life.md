@@ -4,6 +4,7 @@ description: "Both Trent 900 engines are now fully configured in Siemens NX with
 date: 2026-02-02
 categories: [Development]
 tags: [siemens-nx, digital-twin, simulation, physics]
+pin: true
 ---
 
 ## The STEP Files Made All the Difference
@@ -41,7 +42,7 @@ This is important because the whole point of the project is to detect asymmetric
 A simulation was run with both engines operating simultaneously. Smooth operation confirmed across all joints and controls.
 
 <video width="100%" controls>
-  <source src="/Aerospace_Digital_Twin/assets/video/Thrust Reverser Test.mp4" type="video/mp4">
+  <source src="/Aerospace_Digital_Twin/assets/video/Thrust Reverser Test .mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 *Test run showing both engines deploying thrust reversers simultaneously.*
