@@ -4,7 +4,7 @@ description: "Five research areas explored, every technical decision justified a
 date: 2026-02-01
 categories: [Research]
 tags: [literature-review, digital-twin, cad-model, progress]
-pin: true
+pin: false
 image:
   path: assets/img/TN1-001 NACELLE MAIN ASSY V2 (sht 2).jpg
   alt: Trent 900 nacelle main assembly STEP file
