@@ -64,4 +64,54 @@ A record of key engineering decisions made throughout this project, including th
 
 **Status:** Awaiting response from RTWILEYRC.
 
+**Update:** Acquired files from RTWILEYRC.
+
+---
+## TD-003: Mechatronics Concept Designer Over Motion Simulation
+
+**Date:** 3 February 2026
+
+**Decision:** Use the Mechatronics Concept Designer (MCD) environment exclusively and delete the previously created Simcenter 3D Motion simulation.
+
+**Context:** The digital twin had physics defined using MCD (rigid bodies, joints, position controls, sensors). A separate Motion simulation had also been created earlier in the project.
+
+**Problem:**
+- Simcenter 3D Motion simulation cannot access MCD physics definitions
+- The two environments were conflicting, preventing the Runtime Inspector from functioning correctly
+- Running both created ambiguity about which solver was controlling the simulation
+
+**Options Considered:**
+1. Rebuild all physics in Motion simulation (time-intensive, loses MCD Runtime Inspector)
+2. Delete Motion simulation and work exclusively in MCD (preserves all existing work)
+3. Maintain both environments for different purposes (conflicts and confusion)
+
+**Decision Rationale:** Option 2 was selected. All physics definitions, sensors and controls had already been built in MCD. The Runtime Inspector and Bullet solver within MCD provide everything needed for data monitoring. Deleting the Motion simulation eliminated conflicts immediately.
+
+**Outcome:** Runtime Inspector functioned correctly with the MCD Bullet solver. All 8 sensors captured live data during simulation.
+
+---
+
+## TD-004: OPC UA Data Pipeline Over Direct NX Export
+
+**Date:** 3 February 2026
+
+**Decision:** Use the Signal Adapter and OPC UA via PLCSIM Advanced for data export, rather than attempting to export CSV data directly from the NX Runtime Inspector.
+
+**Context:** After a successful simulation run, an attempt was made to export sensor data from the MCD Runtime Inspector as CSV files for the Python machine learning pipeline.
+
+**Problem:**
+- The MCD Runtime Inspector has no built-in CSV export capability
+- Right-clicking graphs only offered zoom options
+- The Export checkbox relates to external connections, not file output
+- The Simulation Record captured a session but provided no way to save data
+- No files were generated in the project directory or temp folder
+
+**Options Considered:**
+1. Find a workaround to extract data directly from NX (no viable method found)
+2. Use the Signal Adapter to expose sensor data as shared tags, then route data through PLCSIM Advanced and OPC UA to Python
+
+**Decision Rationale:** Option 2 was selected. The Signal Adapter is the designed bridge between NX and external control systems. A 16-parameter configuration was created (8 boolean write parameters for position control activation, 8 double read parameters for sensor feedback). This routes data through TIA Portal and OPC UA to Python, which also demonstrates the full PLC integration that is a core requirement of the project.
+
+**Outcome:** Signal Adapter configured and ready for signal mapping. The data pipeline will flow: NX sensors → Signal Adapter → PLCSIM Advanced → TIA Portal → OPC UA → Python.
+
 ---
