@@ -4,7 +4,7 @@ description: "Both Trent 900 engines are now fully configured in Siemens NX with
 date: 2026-02-02
 categories: [Development]
 tags: [siemens-nx, digital-twin, simulation, physics]
-pin: true
+pin: false
 image:
   path: assets/img/Engines with Physics.png
   alt: Trent 900 digital twin physics in Siemens NX
