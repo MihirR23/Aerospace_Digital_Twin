@@ -4,7 +4,7 @@ description: "The MCD solver is calibrated to 100Hz, all 8 sensors are live in t
 date: 2026-02-03
 categories: [Development]
 tags: [siemens-nx, digital-twin, simulation, sensors, signal-adapter]
-pin: true
+pin: false
 image:
   path: assets/img/Dual Engine with Updated Physics.png
   alt: Dual Trent 900 engines with updated physics configuration in Siemens NX
