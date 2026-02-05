@@ -115,3 +115,35 @@ A record of key engineering decisions made throughout this project, including th
 **Outcome:** Signal Adapter configured and ready for signal mapping. The data pipeline will flow: NX sensors → Signal Adapter → PLCSIM Advanced → TIA Portal → OPC UA → Python.
 
 ---
+## TD-005: Analog-Only Control Architecture
+
+**Date:** 5 February 2026
+
+**Decision:** Transition from boolean + analog control to analog-only control for all Position Controls in the digital twin.
+
+**Context:** The original control architecture used boolean signals (`Deploy_Engine_One_Transcowls`, `Retract_Engine_One_Transcowls`) to activate Position Control objects, with separate analog signals providing position and speed parameters.
+
+**Problem:**
+- Testing revealed that the NX MCD Position Control `active` parameter does not respond to external signal writes
+- Despite correct formula linkages between boolean input signals and Position Control active parameters, the Runtime Inspector consistently displayed `active = true` regardless of the boolean state sent from TIA Portal
+- This behaviour persisted across simulation restarts and signal remapping attempts
+- With both deploy and retract controls activating simultaneously, they conflicted, causing transcowl bounce during retraction
+
+**Root Cause:** The `active` parameter appears to be exposed for monitoring only, not for external control. This is a limitation in how Siemens NX MCD exposes certain physics object properties.
+
+**Options Considered:**
+1. Continue debugging boolean control (time-consuming, unlikely to succeed given the apparent NX limitation)
+2. Transition to analog-only control where position and speed values command movement directly
+
+**Decision Rationale:** Option 2 was selected. A single Position Control per transcowl now handles both directions by changing the target position (52mm for deploy, 0mm for retract). Boolean signals, formulas, and TIA Portal tags were removed entirely.
+
+**Established Normal Operating Parameters:**
+
+| Parameter | Deploy | Retract |
+|-----------|--------|---------|
+| Position | 52.0 mm | 0.0 mm |
+| Speed | 20.8 mm/s | 20.8 mm/s |
+
+**Outcome:** Deployment and retraction both work correctly without bounce. The architecture is cleaner and provides full fault scenario capability by allowing the PLC to vary position and speed values directly.
+
+---
