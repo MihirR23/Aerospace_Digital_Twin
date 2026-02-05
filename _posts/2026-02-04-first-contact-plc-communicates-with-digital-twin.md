@@ -4,7 +4,7 @@ description: "TIA Portal V19 is now connected to the Siemens NX digital twin via
 date: 2026-02-04
 categories: [Development]
 tags: [tia-portal, plcsim-advanced, scl, digital-twin, integration]
-pin: true
+pin: false
 image:
   path: assets/img/Dual Engine Test Run.png
   alt: Dual Trent 900 engines test run in Siemens NX with TIA Portal integration 
