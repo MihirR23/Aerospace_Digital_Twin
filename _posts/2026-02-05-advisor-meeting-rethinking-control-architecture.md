@@ -4,7 +4,7 @@ description: "A meeting with submission advisor Mehnaz Hamilton revealed a funda
 date: 2026-02-05
 categories: [Project]
 tags: [meeting, control-systems, architecture, fault-injection]
-pin: true
+pin: false
 image:
   path: assets/img/Meeting Notes - 1.jpg
   alt: Meeting notes from submission advisor meeting with Mehnaz Hamilton
