@@ -4,7 +4,7 @@ description: "Boolean signals were being ignored by NX. The fix required a compl
 date: 2026-02-05
 categories: [Development]
 tags: [tia-portal, siemens-nx, signal-adapter, control-systems, troubleshooting]
-pin: true
+pin: false
 image:
   path: assets/img/Signal Adapter Newly Updated.png
   alt: Updated Signal Adapter configuration with analog-only control
