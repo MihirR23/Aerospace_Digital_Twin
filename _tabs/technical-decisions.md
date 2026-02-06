@@ -135,7 +135,7 @@ A record of key engineering decisions made throughout this project, including th
 1. Continue debugging boolean control (time-consuming, unlikely to succeed given the apparent NX limitation)
 2. Transition to analog-only control where position and speed values command movement directly
 
-**Decision Rationale:** Option 2 was selected. A single Position Control per transcowl now handles both directions by changing the target position (52mm for deploy, 0mm for retract). Boolean signals, formulas, and TIA Portal tags were removed entirely.
+**Decision Rationale:** Option 2 was selected. A single Position Control per transcowl now handles both directions by changing the target position (52mm for deploy, 0mm for retract). Boolean signals, formulas and TIA Portal tags were removed entirely.
 
 **Established Normal Operating Parameters:**
 
