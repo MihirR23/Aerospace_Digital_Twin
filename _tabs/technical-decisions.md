@@ -67,6 +67,7 @@ A record of key engineering decisions made throughout this project, including th
 **Update:** Acquired files from RTWILEYRC.
 
 ---
+
 ## TD-003: Mechatronics Concept Designer Over Motion Simulation
 
 **Date:** 3 February 2026
@@ -115,6 +116,7 @@ A record of key engineering decisions made throughout this project, including th
 **Outcome:** Signal Adapter configured and ready for signal mapping. The data pipeline will flow: NX sensors → Signal Adapter → PLCSIM Advanced → TIA Portal → OPC UA → Python.
 
 ---
+
 ## TD-005: Analog-Only Control Architecture
 
 **Date:** 5 February 2026
@@ -145,5 +147,37 @@ A record of key engineering decisions made throughout this project, including th
 | Speed | 20.8 mm/s | 20.8 mm/s |
 
 **Outcome:** Deployment and retraction both work correctly without bounce. The architecture is cleaner and provides full fault scenario capability by allowing the PLC to vary position and speed values directly.
+
+---
+
+## TD-006: Python Snap7 for Data Logging
+
+**Date:** 9 February 2026
+
+**Decision:** Use Python Snap7 library for automated data logging instead of TIA Portal Trace or OPC UA.
+
+**Context:** The project requires 250+ labelled deployment scenarios for Random Forest classifier training. An efficient, automated data logging solution was needed to capture sensor data during normal and fault conditions.
+
+**Methods Evaluated:**
+
+| Method | Outcome |
+|--------|---------|
+| TIA Portal Trace | Partial success: manual triggering works but automatic trigger unreliable |
+| OPC UA | Blocked: requires paid Siemens license not available |
+| Python Snap7 | Selected: free, direct S7 protocol access to PLCSIM Advanced |
+
+**TIA Portal Trace:** Initial testing confirmed Trace can record all 10 sensor signals and export to CSV. However, the "Trigger on tag" feature did not reliably activate recording when transcowl position exceeded the threshold. Manual activation and deactivation is inefficient for 250+ recordings.
+
+**OPC UA:** Configured OPC UA server in TIA Portal with security settings (no security policy enabled, user authentication with credentials). Compilation revealed licensing error: "The selected OPC UA license is not sufficient. To use OPC UA, please purchase the correct license and select it." This blocked OPC UA as a viable option.
+
+**Decision Rationale:** Python Snap7 was selected as the data logging solution. Snap7 is an open-source library that communicates directly with Siemens PLCs (and PLCSIM Advanced) via the S7 protocol. Benefits include:
+
+- No licensing requirements
+- Direct memory access to PLC data blocks
+- Full programmatic control over sampling rate and recording triggers
+- Native Python integration for seamless ML pipeline connection
+- Automatic file naming and batch recording capability
+
+**Outcome:** Snap7 implementation to be completed in the next session. This approach provides the automation and efficiency required for generating the 250+ scenario dataset but is yet to be proven in practice.
 
 ---
