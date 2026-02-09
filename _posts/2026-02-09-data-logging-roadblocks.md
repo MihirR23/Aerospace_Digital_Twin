@@ -5,6 +5,9 @@ date: 2026-02-09
 categories: [Development]
 tags: [data-logging, opc-ua, snap7, python, tia-portal]
 pin: true
+image:
+  path: assets/img/Normal Deployment CSV Data.png
+  alt: CSV export showing normal deployment sensor data with timestamps and 10 sensor channels from TIA Portal Trace
 ---
 
 ## The Data Logging Challenge
