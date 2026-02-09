@@ -4,7 +4,7 @@ description: "Thirteen risks identified across five categories, each with mitiga
 date: 2026-02-06
 categories: [Project]
 tags: [risk-assessment, planning, project-management]
-pin: true
+pin: false
 image:
   path: assets/img/Risk Assessment.jpg
   alt: Risk assessment matrix for the thrust reverser monitoring project
