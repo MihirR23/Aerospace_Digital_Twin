@@ -181,3 +181,58 @@ A record of key engineering decisions made throughout this project, including th
 **Outcome:** Snap7 implementation to be completed in the next session. This approach provides the automation and efficiency required for generating the 250+ scenario dataset but is yet to be proven in practice.
 
 ---
+
+## TD-007: PLCSim Advanced .NET API Over Snap7
+
+**Date:** 10 February 2026
+
+**Decision:** Use PLCSim Advanced native .NET API via pythonnet instead of Snap7 for automated data logging.
+
+**Context:** TD-006 selected Python Snap7 as the data logging solution. During implementation, Snap7 failed to connect to PLCSim Advanced due to network accessibility issues.
+
+**Problem:**
+- Snap7 connection attempts failed with "TCP: Unreachable peer" errors
+- PLCSim Advanced in PLCSIM (softbus) mode assigns the virtual PLC an internal address of 192.168.0.1
+- This address exists on an internal virtual network not accessible via standard TCP/IP from the host PC
+- The Siemens PLCSIM Virtual Ethernet Adapter required to bridge the networks was not present
+- OPC UA had the same network accessibility issue
+
+**Solution:** PLCSim Advanced exposes a native .NET API that allows direct interaction with simulation instances without requiring network connectivity. Python accesses this via the pythonnet package.
+
+**Advantages over Snap7:**
+- Direct tag access by name (no memory addresses required)
+- No network configuration required
+- Works in PLCSIM (softbus) mode without additional adapters
+- 100Hz sampling rate achieved
+
+**Decision Rationale:** The native API bypasses all network complexity. Unlike Snap7 which requires TCP/IP connectivity to the virtual PLC, the .NET API communicates directly through the simulation runtime. This eliminated the network configuration issues that blocked Snap7.
+
+**Outcome:** Five fault scenarios successfully recorded and validated. Data pipeline ready for batch recording of remaining scenarios.
+
+---
+
+## TD-008: PLC State Machine Timeout for Fault Scenarios
+
+**Date:** 10 February 2026
+
+**Decision:** Add 5-second timeout to deployment completion check (state 40).
+
+**Context:** Incomplete deployment fault scenarios cause the PLC to wait indefinitely at state 40 for all transcowls to reach 50mm or more. When Engine Two is set to deploy to 35mm, the condition never satisfies, and the state machine hangs.
+
+**Problem:**
+- State 40 waits for all transcowl positions to reach 50mm
+- Incomplete deployment faults intentionally command lower positions
+- The state machine would never advance, preventing data capture
+
+**Solution:** Added Timer_2 to state 40. The state now advances either when all positions reach 50mm or when a 5-second timeout expires.
+
+**New tags required:**
+- Timer_2_Start (Bool, %M1.0)
+- Timer_2_Finished (Bool, %M1.1)
+- IEC_Timer_0_DB_2 (Timer DB)
+
+**Decision Rationale:** The timeout ensures the state machine always completes the full cycle, allowing data capture for fault scenarios where deployment targets are not reached. The 5-second timeout provides sufficient time for normal deployment while preventing indefinite hangs.
+
+**Outcome:** Incomplete deployment scenarios now complete successfully. Data logger captures full cycle data for all fault types.
+
+---
