@@ -4,7 +4,7 @@ description: "TIA Portal Trace works but does not scale. OPC UA requires a paid 
 date: 2026-02-09
 categories: [Development]
 tags: [data-logging, opc-ua, snap7, python, tia-portal]
-pin: false
+pin: true
 image:
   path: assets/img/Normal Deployment CSV Data.png
   alt: CSV export showing normal deployment sensor data with timestamps and 10 sensor channels from TIA Portal Trace
@@ -20,7 +20,7 @@ The Random Forest classifier needs 250 labelled deployment scenarios for trainin
 
 TIA Portal Trace was the first approach tested. The good news: it works. A normal deployment cycle was successfully recorded and exported to CSV (`Normal_Deployment_Cycle_001.csv`). The file contains timestamps and all 10 sensor values, confirming the data structure is correct.
 
-The problem is efficiency. The "Trigger on tag" feature, which should automatically start recording when a condition is met (such as transcowl position exceeding a threshold), did not reliably activate. Manual triggering works, but clicking start and stop 250 times is not a viable workflow.
+The problem is efficiency. The "Trigger on tag" feature, which should automatically start recording when a condition is met (such as transcowl position exceeding a threshold), did not reliably activate. Manual triggering works but clicking start and stop 250 times is not a viable workflow.
 
 ---
 
@@ -36,7 +36,7 @@ OPC UA requires a paid Siemens license that is not available in the current setu
 
 ## Python Snap7: The Solution
 
-With TIA Portal Trace being inefficient and OPC UA being unavailable, the solution is Python Snap7. Snap7 is an open-source library that communicates directly with Siemens PLCs (and PLCSIM Advanced) via the S7 protocol.
+With TIA Portal Trace being inefficient and OPC UA being unavailable, Oluwatunmise Shuaibu recommended Python Snap7 as an alternative. Snap7 is an open-source library that communicates directly with Siemens PLCs (and PLCSIM Advanced) via the S7 protocol.
 
 Benefits:
 - No licensing requirements
