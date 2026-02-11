@@ -154,7 +154,7 @@ A record of key engineering decisions made throughout this project, including th
 
 **Date:** 9 February 2026
 
-**Decision:** Use Python Snap7 library for automated data logging instead of TIA Portal Trace or OPC UA.
+**Decision:** Use Python Snap7 library for automated data logging instead of TIA Portal Trace or OPC UA, following a recommendation from Oluwatunmise Shuaibu.
 
 **Context:** The project requires 250+ labelled deployment scenarios for Random Forest classifier training. An efficient, automated data logging solution was needed to capture sensor data during normal and fault conditions.
 
@@ -180,15 +180,13 @@ A record of key engineering decisions made throughout this project, including th
 
 **Outcome:** Snap7 implementation to be completed in the next session. This approach provides the automation and efficiency required for generating the 250+ scenario dataset but is yet to be proven in practice.
 
----
-
 ## TD-007: PLCSim Advanced .NET API Over Snap7
 
 **Date:** 10 February 2026
 
 **Decision:** Use PLCSim Advanced native .NET API via pythonnet instead of Snap7 for automated data logging.
 
-**Context:** TD-006 selected Python Snap7 as the data logging solution. During implementation, Snap7 failed to connect to PLCSim Advanced due to network accessibility issues.
+**Context:** TD-006 selected Python Snap7 (recommended by Oluwatunmise Shuaibu) as the data logging solution. During implementation, Snap7 failed to connect to PLCSim Advanced due to network accessibility issues.
 
 **Problem:**
 - Snap7 connection attempts failed with "TCP: Unreachable peer" errors
