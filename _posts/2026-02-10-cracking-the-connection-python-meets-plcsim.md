@@ -4,7 +4,7 @@ description: "OPC UA failed. Snap7 failed. The solution was hiding in plain sigh
 date: 2026-02-10
 categories: [Development]
 tags: [python, plcsim-advanced, data-logging, automation, machine-learning]
-pin: true
+pin: false
 image:
   path: assets/img/Data Logging Scenarios.png
   alt: Five recorded deployment scenarios showing normal and fault conditions
