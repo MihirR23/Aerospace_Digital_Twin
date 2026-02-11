@@ -26,7 +26,7 @@ However, connection attempts from Python failed with timeout errors. The root ca
 
 ## Snap7: Same Problem
 
-Snap7 was investigated as an alternative using the native S7 communication protocol rather than OPC UA. The python-snap7 package was installed and connection parameters were configured for the PLCSim Advanced instance.
+Following Oluwatunmise Shuaibu's recommendation, Snap7 was investigated as an alternative using the native S7 communication protocol rather than OPC UA. The python-snap7 package was installed and connection parameters were configured for the PLCSim Advanced instance.
 
 Connection attempts failed with "TCP: Unreachable peer" errors due to the same underlying network issue. The system lacked the Siemens PLCSIM Virtual Ethernet Adapter, which is required to bridge the virtual PLC network to the host system. The adapter was not present in the Windows network adapter list.
 
