@@ -4,7 +4,7 @@ description: "The full training dataset is ready. 250 fault scenarios recorded a
 date: 2026-02-11
 categories: [Development]
 tags: [python, automation, data-collection, machine-learning, plc]
-pin: true
+pin: false
 image:
   path: assets/img/validation_samples.png
   alt: Validation plots showing sample recordings across all five fault categories
