@@ -12,7 +12,7 @@ image:
 
 ## Overview
 
-Following feedback on the university's risk assessment requirements, I have revised the risk assessment originally documented on [5th February]({{ '/posts/planning-for-failure-a-comprehensive-risk-assessment/' | relative_url }}) to align with the official PDE3823 template format.
+Following feedback on the university's risk assessment requirements, I have revised the risk assessment originally documented on [5th February]({{ '/posts/planning-for-failure-risk-assessment/' | relative_url }}) to align with the official PDE3823 template format.
 
 The complete risk assessment is available for download: [PDE3823_Risk_Assessment_Mihir_M00955111.xlsx]({{ '/assets/files/PDE3823_Risk_Assessment_Mihir_M00955111.xlsx' | relative_url }})
 
