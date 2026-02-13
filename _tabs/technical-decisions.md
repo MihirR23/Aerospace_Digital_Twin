@@ -234,3 +234,68 @@ A record of key engineering decisions made throughout this project, including th
 **Outcome:** Incomplete deployment scenarios now complete successfully. Data logger captures full cycle data for all fault types.
 
 ---
+
+## TD-009: Random Forest as Primary Classifier
+
+**Date:** 12 February 2026
+
+**Decision:** Select Random Forest over Multi-Layer Perceptron Neural Network as the primary fault detection classifier.
+
+**Context:** Following successful batch recording of 250 fault scenarios, two machine learning classifiers were developed and evaluated using identical input of 45 engineered features. The project targets specify greater than 90% accuracy, greater than 85% recall, and detection latency under 500 milliseconds.
+
+**Problem:**
+- A single classifier needed to be selected for integration with the HMI system
+- Single-run evaluations can produce misleading results due to random train/test splits
+- Both classifiers showed weakness distinguishing Asymmetric_Speed from Delayed_Deployment
+
+**Evaluation:** Both classifiers were tested across 10 independent runs with different random seeds to establish true performance variance:
+
+| Metric | Random Forest | Neural Network | Target |
+|--------|---------------|----------------|--------|
+| Accuracy | 91.8% ± 2.3% | 88.8% ± 3.9% | >90% |
+| Recall | 91.8% ± 2.3% | 88.8% ± 3.9% | >85% |
+| Latency | 2.31ms | 4.36ms | <500ms |
+
+| Fault Type | Random Forest | Neural Network |
+|------------|---------------|----------------|
+| Normal | 100% | 100% |
+| Incomplete_Deployment | 100% | 100% |
+| Combined_Fault | 98% ± 4% | 92% ± 8.7% |
+| Asymmetric_Speed | 82% ± 7.5% | 81% ± 14.5% |
+| Delayed_Deployment | 79% ± 10.4% | 71% ± 7% |
+
+**Decision Rationale:** Random Forest met all three project targets. The Neural Network failed the accuracy target on conservative estimates (mean minus one standard deviation gave 84.9%). Random Forest also offered lower variance, faster inference (2x speed advantage) and interpretable feature importance analysis for technical reporting.
+
+**Known Limitation:** Asymmetric_Speed and Delayed_Deployment exhibit overlapping feature patterns because both involve reduced velocities. This is documented as a genuine engineering challenge rather than artificially widened. Future improvement path: time-series analysis (1D CNN or LSTM on raw sensor data) to capture temporal deployment patterns.
+
+**Outcome:** Random Forest selected as primary classifier. Neural Network retained as comparison model to demonstrate evaluation rigour. Files created: `train_classifier_rf_v2.py`, `train_classifier_nn.py`, `model_robustness_evaluation.py`.
+
+---
+
+## TD-010: 1000-Scenario Dataset Expansion
+
+**Date:** 12 February 2026
+
+**Decision:** Expand the dataset from 250 to 1000 scenarios with unique randomised parameters.
+
+**Context:** The 250-scenario dataset met project targets but had statistical limitations. With an 80/20 train/test split, the test set contained only 50 samples (10 per class), meaning a single misclassification changed accuracy by 2%.
+
+**Problem:**
+- Test set too small for statistically reliable evaluation
+- Neural Network comparison was unfair due to insufficient training data
+- Only 10 test samples per weak class made it unclear whether low scores reflected data limitation or genuine feature overlap
+- Limited parameter coverage across the fault space
+
+**Solution:** Generate 1000 scenarios (200 per fault type) with three design principles: unique values using 0.01mm/s increments to prevent duplicates, strict E1/E2 alternation for balanced engine representation and a fixed Normal baseline of 52mm at 20.8mm/s.
+
+| Fault Type | Position Range | Speed Range |
+|------------|----------------|-------------|
+| Normal | 52.0mm (fixed) | 20.8mm/s (fixed) |
+| Asymmetric_Speed | 52.0mm (fixed) | 5.0-16.0mm/s (one engine) |
+| Incomplete_Deployment | 20.0-45.0mm | 20.8mm/s (fixed) |
+| Delayed_Deployment | 52.0mm (fixed) | 3.0-10.0mm/s |
+| Combined_Fault | 25.0-50.0mm | 8.0-25.0mm/s |
+
+**Decision Rationale:** With 1000 scenarios, the test set grows to 200 samples where a single error impacts accuracy by only 0.5%. This provides statistically reliable evaluation, a fairer Neural Network comparison with 800 training samples and comprehensive fault parameter coverage. The 250-scenario model already meets targets so the expansion is an enhancement with no downside risk.
+
+**Outcome:** 661 of 1000 scenarios recorded before session pause (Normal, Asymmetric_Speed, and Incomplete_Deployment complete; Delayed_Deployment at 61/200; Combined_Fault pending). File created: `batch_recorder_1000_final.py` with pause/resume capability.
