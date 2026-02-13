@@ -299,3 +299,82 @@ A record of key engineering decisions made throughout this project, including th
 **Decision Rationale:** With 1000 scenarios, the test set grows to 200 samples where a single error impacts accuracy by only 0.5%. This provides statistically reliable evaluation, a fairer Neural Network comparison with 800 training samples and comprehensive fault parameter coverage. The 250-scenario model already meets targets so the expansion is an enhancement with no downside risk.
 
 **Outcome:** 661 of 1000 scenarios recorded before session pause (Normal, Asymmetric_Speed, and Incomplete_Deployment complete; Delayed_Deployment at 61/200; Combined_Fault pending). File created: `batch_recorder_1000_final.py` with pause/resume capability.
+
+---
+
+## TD-011: 1000-Scenario Random Forest as Final Classifier
+
+**Date:** 13 February 2026
+
+**Decision:** Select the 1000-scenario Random Forest model as the final deployed classifier despite identical mean accuracy to the 250-scenario version.
+
+**Context:** The 250-scenario Random Forest achieved 91.8% ± 2.3% accuracy. A 1000-scenario dataset was generated to improve statistical reliability and address weak-class performance on Asymmetric_Speed (82%) and Delayed_Deployment (79%).
+
+**Problem:**
+- Test set of 50 samples (10 per class) made evaluation sensitive to random sampling effects
+- Unclear whether weak-class performance reflected data limitation or genuine feature overlap
+- Single misclassification shifted accuracy by 2%, undermining confidence in reported metrics
+
+**Results (1000-scenario, 10 independent runs):**
+
+| Metric | Random Forest | Neural Network |
+|--------|---------------|----------------|
+| Accuracy | 91.8% ± 2.1% | 89.7% ± 1.9% |
+| Recall | 91.8% ± 2.1% | 89.7% ± 1.9% |
+| Latency | 35.98ms | 1.87ms |
+
+**Per-class shifts (250 to 1000 Random Forest):**
+
+| Fault Type | 250 Scenarios | 1000 Scenarios | Change |
+|------------|---------------|----------------|--------|
+| Normal | 100% | 100% | 0% |
+| Incomplete_Deployment | 100% | 99.8% ± 0.8% | ~0% |
+| Combined_Fault | 98% ± 4% | 100% ± 0% | +2% |
+| Asymmetric_Speed | 82% ± 7.5% | 72% ± 8.8% | -10% |
+| Delayed_Deployment | 79% ± 10.4% | 87% ± 5.1% | +8% |
+
+**Known Trade-off:** Asymmetric_Speed per-class accuracy dropped from 82% to 72%. This is attributed to the 40 "both engines slow" Delayed_Deployment scenarios which create feature overlap with Asymmetric_Speed. The confusion matrix confirms bidirectional misclassification between these two classes exclusively.
+
+**Decision Rationale:** The 1000-scenario model provides more trustworthy metrics for academic reporting. The test set contains 40 samples per class versus 10, meaning each misclassification shifts accuracy by 0.5% instead of 2%. Overall variance reduced from ±2.3% to ±2.1%, Delayed_Deployment improved by 8 percentage points with halved variance and Combined_Fault reached perfect classification. The system still meets the greater than 90% mean accuracy target.
+
+**Outcome:** Model saved as `fault_classifier_rf_1000.pkl` and deployed in the real-time classification GUI.
+
+---
+
+## TD-012: Python GUI as Primary Interface (Virtual Environment)
+
+**Date:** 13 February 2026
+
+**Decision:** Use a Python tkinter GUI as the primary operator and monitoring interface instead of developing a WinCC HMI in TIA Portal.
+
+**Context:** The project requires a Human-Machine Interface for operator control and AI fault status display. The original plan included WinCC HMI development in TIA Portal. However, the system operates entirely in a virtual environment using PLCSim Advanced rather than physical hardware.
+
+**Problem:**
+- WinCC HMI cannot natively integrate machine learning inference or advanced monitoring features
+- In a virtual environment, both WinCC and Python communicate with the PLC via the same mechanism (tag read/write)
+- Developing both interfaces would duplicate effort without adding technical value
+
+**Options Evaluated:**
+
+| Option | Pros | Cons |
+|--------|------|------|
+| WinCC HMI in TIA Portal | Standard industrial approach, familiar to examiners | Redundant for virtual PLC, limited AI integration, separate application from classifier |
+| Python GUI (tkinter) | Direct PLCSim Advanced API access, integrates AI and operator controls in one application | Non-standard industrial approach |
+| Both (WinCC + Python) | Covers all bases | Duplicated effort, two interfaces showing same data |
+
+**Decision Rationale:** The Python GUI communicates with the PLC via the identical mechanism a physical HMI would use: reading and writing PLC tags through the PLCSim Advanced API. It is more capable because it integrates AI classification, trend detection, feature anomaly flagging, session statistics and operator controls in a single unified interface. A WinCC HMI would be introduced when transitioning the system to physical hardware.
+
+**GUI Features Developed:**
+- Live sensor display with animated position bars for both engines
+- Colour-coded severity indicator (green/amber/red) with fault descriptions
+- Class probability visualisation for all five fault types
+- Fault trend detection with automatic severity escalation
+- Feature anomaly flagging against training data distribution
+- Session statistics tracking (average latency, confidence, fault rate)
+- CSV audit logging of every classification
+- Audio alerts on warning and critical faults
+- Start/Stop monitoring controls
+
+**Outcome:** GUI application operational and connected to PLCSim Advanced. Six new AI PLC tags added to TIA Portal (AI_Fault_Class, AI_Confidence, AI_System_Active, AI_Detection_Latency, AI_Fault_Detected, AI_Severity). Next step is adding operator control tabs for fault injection during live demonstration.
+
+---
