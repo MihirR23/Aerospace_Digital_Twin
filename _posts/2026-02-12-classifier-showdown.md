@@ -4,7 +4,7 @@ description: "Two machine learning classifiers compete for the role of primary f
 date: 2026-02-12
 categories: [Development]
 tags: [random-forest, neural-network, machine-learning, fault-detection, data-collection]
-pin: true
+pin: false
 image:
   path: assets/img/model_evaluation_v2.png
   alt: Random Forest V2 evaluation showing confusion matrix and feature importance analysis
