@@ -378,3 +378,62 @@ A record of key engineering decisions made throughout this project, including th
 **Outcome:** GUI application operational and connected to PLCSim Advanced. Six new AI PLC tags added to TIA Portal (AI_Fault_Class, AI_Confidence, AI_System_Active, AI_Detection_Latency, AI_Fault_Detected, AI_Severity). Next step is adding operator control tabs for fault injection during live demonstration.
 
 ---
+
+## TD-013: 7-Class XGBoost Model with Expanded Fault Types
+
+**Date:** 16 February 2026
+
+**Decision:** Replace the 5-class Random Forest classifier with a 7-class XGBoost model trained on 1,400 scenarios, adding Oscillating_Deployment and Stall_Deployment as new fault types.
+
+**Context:** The 5-class Random Forest achieved 91.8% ± 2.3% accuracy across 1,000 scenarios but suffered persistent confusion between Asymmetric_Speed and Delayed_Deployment. Feature engineering improvements (V2 discriminative features, rule-based overrides) failed to resolve this overlap. Additionally, two physically important fault modes were missing from the system: oscillating actuator behaviour and mid-deployment stall conditions.
+
+**Problem:**
+- Random Forest could not reliably separate Asymmetric_Speed from Delayed_Deployment despite multiple feature engineering attempts
+- The system only covered 5 fault types, missing oscillating and stall failure modes that occur in real thrust reverser systems
+- Feature extraction contained a per-engine velocity masking bug that applied Engine 1's motion mask to Engine 2's data
+
+**Solution:** Three changes were made simultaneously:
+
+1. **Algorithm switch to XGBoost.** Gradient boosting builds trees sequentially, focusing on previously misclassified samples. On the existing 1,000-scenario dataset, XGBoost achieved 94.2% ± 0.8% accuracy compared to Random Forest's 91.8% ± 2.1%, resolving the Asymmetric/Delayed confusion more effectively.
+
+2. **Two new fault types added (5 to 7 classes).** 400 additional scenarios were recorded (200 per new type) using dynamic mid-cycle PLC parameter manipulation via the State 40 continuous copy mechanism:
+
+| Fault Type | Mechanism | Sensor Signature |
+|------------|-----------|------------------|
+| Oscillating_Deployment | Speed Parameter alternates between base speed and 0 during deployment | High velocity variance, multiple velocity sign changes, stop-start motion |
+| Stall_Deployment | Speed Parameter set to 0 when position sensor reaches a randomised threshold (10-45mm) | Position freezes mid-travel, velocity drops to zero, low deployment ratio |
+
+3. **Feature extraction corrected and expanded.** Per-engine velocity masks fixed to use each engine's own motion data. Five oscillation features (velocity variance, sign changes) and five stall features (stall ratio, max stall duration) added, bringing the total from 46 to 64 features.
+
+**Originally Planned Fault Type Replaced:** Partial_Retraction was originally planned as the second new fault type. Testing revealed that retraction actuators in the NX MCD model cannot stop at specific mid-points and always return to the home position, making partial retraction physically impossible to simulate. Stall_Deployment was substituted as it produces a similarly distinctive sensor signature (incomplete deployment) through a different physical mechanism.
+
+**PLC Modifications Required:**
+- State 40 SCL updated to continuously copy Parameter tags to Control tags on every scan cycle (previously single-copy)
+- Timer_2 extended from 5 seconds to 15 seconds to accommodate oscillating deployment cycles
+- These changes enable Python to manipulate deployment behaviour mid-cycle by writing to Parameter tags
+
+**Results (1,400 scenarios, 7 classes, 10-run robustness evaluation):**
+
+| Metric | Result | Target |
+|--------|--------|--------|
+| Accuracy | 97.0% ± 0.7% | >90% |
+| Recall | 97.0% ± 0.7% | >85% |
+| Latency | <50ms | <500ms |
+
+**Per-Class Accuracy:**
+
+| Fault Type | Accuracy |
+|------------|----------|
+| Normal | 100% |
+| Combined_Fault | 100% |
+| Incomplete_Deployment | 100% |
+| Stall_Deployment | 99.5% |
+| Oscillating_Deployment | 98.8% |
+| Delayed_Deployment | 94.0% |
+| Asymmetric_Speed | 87.0% |
+
+**Decision Rationale:** The combined changes produced a 5.2 percentage point accuracy improvement (91.8% to 97.0%) with substantially reduced variance (2.3% to 0.7%). Both new fault types achieved near-perfect classification immediately, confirming their sensor signatures are physically distinct from existing classes. The XGBoost algorithm handles the remaining Asymmetric/Delayed overlap more effectively than Random Forest, raising Asymmetric_Speed from the confusion levels seen in earlier testing to 87.0%.
+
+**Outcome:** Model saved as `xgboost_7class_model_v3.pkl` and deployed in the real-time classification GUI (V9). The GUI was updated to display all 7 fault classes with corresponding severity levels, probability bars and plain-English fault descriptions.
+
+---
