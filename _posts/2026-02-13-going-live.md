@@ -4,7 +4,7 @@ description: "The 1000-scenario dataset completes classifier training, a four-wa
 date: 2026-02-13
 categories: [Development]
 tags: [random-forest, neural-network, machine-learning, fault-detection, gui, real-time, plcsim-advanced]
-pin: true
+pin: false
 image:
   path: assets/img/AI Monitoring GUI.png
   alt: Real-time AI fault detection GUI monitoring thrust reverser deployment
