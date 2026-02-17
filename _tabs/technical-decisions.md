@@ -434,6 +434,6 @@ A record of key engineering decisions made throughout this project, including th
 
 **Decision Rationale:** The combined changes produced a 5.2 percentage point accuracy improvement (91.8% to 97.0%) with substantially reduced variance (2.3% to 0.7%). Both new fault types achieved near-perfect classification immediately, confirming their sensor signatures are physically distinct from existing classes. The XGBoost algorithm handles the remaining Asymmetric/Delayed overlap more effectively than Random Forest, raising Asymmetric_Speed from the confusion levels seen in earlier testing to 87.0%.
 
-**Outcome:** Model saved as `xgboost_7class_model_v3.pkl` and deployed in the real-time classification GUI (V9). The GUI was updated to display all 7 fault classes with corresponding severity levels, probability bars and plain-English fault descriptions.
+**Outcome:** Model saved as `fault_classifier_best.pkl` and deployed in the real-time classification GUI (V9). The GUI was updated to display all 7 fault classes with corresponding severity levels, probability bars and fault descriptions.
 
 ---
