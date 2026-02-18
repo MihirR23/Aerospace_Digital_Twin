@@ -4,7 +4,7 @@ description: "After feature engineering fails to fix classification confusion, a
 date: 2026-02-16
 categories: [Development]
 tags: [xgboost, machine-learning, fault-detection, gui, plc, feature-engineering, troubleshooting]
-pin: true
+pin: false
 image:
   path: assets/img/Deployment Monitoring.png
   alt: Real-time AI fault detection GUI showing EICAS display with live fault classification
