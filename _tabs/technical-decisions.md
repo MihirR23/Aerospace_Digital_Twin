@@ -437,3 +437,49 @@ A record of key engineering decisions made throughout this project, including th
 **Outcome:** Model saved as `fault_classifier_best.pkl` and deployed in the real-time classification GUI (V9). The GUI was updated to display all 7 fault classes with corresponding severity levels, probability bars and fault descriptions.
 
 ---
+
+## TD-014: PyQt5 GUI Framework Selection
+
+**Date:** 19 February 2026
+
+**Decision:** Rebuild the operator interface using PyQt5 instead of CustomTkinter to gain native high-DPI scaling and cross-display compatibility.
+
+**Context:** The existing GUI (V15, built with CustomTkinter) performs well on the development laptop (1080p) but renders with unreadably small text on large displays such as televisions and 4K monitors. An attempt to add display-adaptive scaling within CustomTkinter (V16) failed across six different approaches, including automatic DPI detection, user-selectable display profiles, selective scrolling, forced maximisation and rebuild-from-scratch with font scaling only. The root cause is that CustomTkinter lacks built-in high-DPI awareness: all widget sizes, font sizes and window geometry must be manually calculated per display type, creating cascading layout breakages.
+
+**Problem:**
+- CustomTkinter V15 renders unreadably small on large displays and televisions
+- Six V16 iterations failed to solve display scaling within CustomTkinter
+- CustomTkinter has no mechanism to scale widget internals (padding, borders, internal text layout) proportionally with display size
+- Font scaling alone is insufficient because widget containers remain fixed-size
+
+**V16 Failure Analysis:**
+
+1. Automatic DPI detection with selective scrolling: double-scaling bug on matplotlib, inconsistent scrollbar behaviour across tabs
+2. Display profile selector with universal scrolling: canvas wrapper broke tab layout geometry, content still overflowed
+3. Graph scaling fix with right column width scaling: graph squashed on 32-inch monitors, huge blank gaps between controls
+4. Forced maximisation without scrolling: broke laptop and standard monitor workflows
+5. System Overview scrolling only: content still clipped on television displays
+6. Clean rebuild from V15 with font scaling only: 1200x920 window remained tiny on television even when maximised
+
+**Frameworks Evaluated:**
+
+| Framework | DPI Scaling | Styling | Thread Safety | Learning Curve |
+|-----------|-------------|---------|---------------|----------------|
+| CustomTkinter (V15) | Manual only: requires per-display calculations | Widget-by-widget configuration | Requires root.after() workaround | Already mastered after 15 iterations |
+| PyQt5 | Native Qt high-DPI support: automatic scaling | Global QSS stylesheets | Signal/slot architecture with QueuedConnection | New framework requiring full UI rewrite |
+
+**Decision Rationale:** PyQt5 was selected because Qt's high-DPI framework handles scaling at the platform level. Qt automatically detects display DPI and scales all widgets, fonts, and layouts proportionally without application-level code. This solves the exact problem that six V16 iterations could not resolve. The PyQt5 rebuild maintains identical backend logic: same XGBoost classifier, same PLCSim Advanced API communication, same feature extraction pipeline, same sound system, same deployment and fault injection methods. Only the GUI layer was rewritten.
+
+**Trade-offs Accepted:**
+- CustomTkinter's segmented tab bar and rounded button aesthetics are more cockpit-like; PyQt5 uses flat underline tabs and standard rectangular buttons
+- PyQt5 introduces a new dependency (PyQt5 package) that CustomTkinter did not require beyond the standard library
+- The CustomTkinter V15 codebase represents 15 iterations of tested, stable UI logic that had to be carefully replicated
+
+**Outcome:** PyQt5 V3 successfully replicates all V15 functionality across three tabs (EICAS Display, System Overview, Fault Injection) with identical PLC communication, fault injection, classification, sound alerts, and session statistics. The interface renders correctly on laptop, desktop monitor and television displays without requiring display-type selection or manual scaling adjustments. CustomTkinter V15 is retained as the reference implementation.
+
+**References:**
+- `realtime_classifier_gui_v15.py`: CustomTkinter reference implementation
+- `realtime_classifier_gui_v16.py`: Failed display scaling attempts (archived, not for production)
+- `realtime_classifier_gui_pyqt5_v3.py`: PyQt5 rebuild
+
+---
