@@ -4,7 +4,7 @@ description: "A demonstration of the AI fault detection system to submission adv
 date: 2026-02-19
 categories: [Project]
 tags: [meeting, advisor, project-management, physical-implementation]
-pin: true
+pin: false
 image:
   path: assets/img/Electric Turbofan.jpg
   alt: 3D-printable electric turbofan model with functional reverse thrusting
