@@ -4,7 +4,7 @@ description: "CustomTkinter hit a wall with DPI scaling across multiple displays
 date: 2026-02-19
 categories: [Development]
 tags: [pyqt5, gui-development, digital-twin, fault-detection, 2d-animation, dpi-scaling, customtkinter]
-pin: true
+pin: false
 image:
   path: assets/img/Engine Schematic.png
   alt: PyQt5 Engine Schematic tab showing real-time 2D thrust reverser cross-section with deployment status panel
