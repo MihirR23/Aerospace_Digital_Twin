@@ -483,3 +483,38 @@ A record of key engineering decisions made throughout this project, including th
 - `realtime_classifier_gui_pyqt5_v3.py`: PyQt5 rebuild
 
 ---
+
+## TD-015: 3D Three.js Engine Visualisation (Experimental V8)
+
+**Date:** 23 February 2026
+
+**Decision:** Develop V8 experimental build with 3D Three.js engine visualisation embedded in PyQt5 via QWebEngineView, retaining V7 with 2D QPainter schematic as the stable fallback.
+
+**Context:** The V7 GUI includes a 2D Engine Schematic tab using QPainter that draws a simplified engine cross-section with animated transcowl deployment. While functional, it does not leverage the actual Trent 900 CAD geometry available from the Siemens NX digital twin. A 3D visualisation would better demonstrate the digital twin concept and provide a more compelling presentation.
+
+**Problem:**
+- The 2D schematic presents a simplified representation that does not reflect the complexity of the actual engine assembly
+- For the final presentation and technical report, a 3D visualisation using the real CAD model would significantly strengthen the demonstration of the digital twin integration
+
+**Solution:** Built a Three.js-based 3D engine viewer (HTML/JavaScript) that loads the Trent 900 GLB file with per-engine cowl auto-detection from NX assembly node names, fan-based direction detection for correct particle flow orientation, five particle types (intake, bypass, exhaust, redirect, heat) per engine and a JavaScript API (`window.setLiveSensorData`) for PyQt5 bridge.
+
+Integrated into a V8 PyQt5 script that replaces the Engine Schematic tab's QPainter widget with QWebEngineView, while keeping all other tabs identical to V7.
+
+**Decision Rationale:**
+- V8 as experimental: developing alongside V7, not replacing it, eliminates risk. If 3D does not work reliably, V7 is the submission version
+- Same backend: V8 shares 100% of the classifier, PLC communication, fault injection and EICAS display code with V7. Only the Engine Schematic tab differs
+- GLB-only: simplified from multi-format (STL/STEP/GLB) to GLB-only, removing approximately 350 lines of unused code and reducing complexity
+- PLC-driven: removed standalone deployment controls from the 3D viewer. All deployment is driven through the PyQt5 Fault Injection tab via PLCSim Advanced, ensuring the 3D animation reflects actual digital twin state
+
+**Outcome:** V8 loads and displays the 3D model with particle systems. Direction detection and end-to-end PLC synchronisation require further validation. Decision on final submission version (V7 2D vs V8 3D) to be made after testing.
+
+**Risk:**
+- If 3D direction/particle issues cannot be resolved: revert to V7 (zero impact, V7 untouched)
+- If QWebEngineView performance is poor: revert to V7 or explore standalone JavaScript demo
+- Timeline: final decision needed by Week 11 to allow time for report screenshots and presentation preparation
+
+**References:**
+- `realtime_classifier_gui_pyqt5_v8.py`: Experimental 3D build
+- `realtime_classifier_gui_pyqt5_v7.py`: Stable 2D fallback
+
+---
