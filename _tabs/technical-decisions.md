@@ -518,3 +518,57 @@ Integrated into a V8 PyQt5 script that replaces the Engine Schematic tab's QPain
 - `realtime_classifier_gui_pyqt5_v7.py`: Stable 2D fallback
 
 ---
+
+## TD-016: 3D Engine Schematic with Three.js and QWebEngineView
+
+**Date:** 24 February 2026
+
+**Decision:** Replace the V7 2D QPainter engine schematic with an interactive 3D WebGL viewer using Three.js, rendered inside PyQt5 via QWebEngineView and driven by live PLC sensor data.
+
+**Context:** The PyQt5 V7 GUI included a 2D Engine Schematic tab using QPainter to render cross-sectional views of both engines. While functional, the 2D representation was limited in its ability to convey the physical reality of thrust reverser deployment. The transcowl translation, cascade vane exposure and airflow redirection are inherently three-dimensional phenomena that a flat cross-section cannot fully communicate. The actual Trent 900 CAD model (exported as GLB from Siemens NX) was already available from the digital twin development, making a 3D approach feasible without additional modelling effort.
+
+**Problem:**
+- The 2D QPainter schematic rendered simplified cross-sections that did not visually communicate deployment mechanics to a non-specialist audience
+- No representation of cascade vane geometry, fan blade rotation or airflow physics was possible in 2D
+- The cross-sectional view could not show the relationship between transcowl position, cascade vane exposure and redirected thrust
+- For academic demonstration purposes, a realistic 3D visualisation would significantly strengthen the presentation and technical report
+- The existing GLB model from Siemens NX was not being utilised in the operator interface
+
+**Approaches Evaluated:**
+
+| Approach | Realism | Integration | Complexity |
+|----------|---------|-------------|------------|
+| QPainter 2D cross-section (V7) | Low: flat schematic only | Native PyQt5 | Low: approximately 200 lines |
+| VTK 3D renderer in PyQt5 | High: native 3D | Complex C++ bindings | High: heavy dependency |
+| Three.js in QWebEngineView | High: WebGL with particle physics | HTML/JS via local HTTP server | Medium: separate HTML file |
+| Unity/Unreal embedded viewer | Very High: game engine quality | External process, IPC required | Very High: separate application |
+
+**Decision Rationale:** Three.js rendered inside QWebEngineView was selected because it provides high-fidelity 3D visualisation with physics-based particle systems while maintaining tight integration with the existing PyQt5 application. The approach uses a single self-contained HTML file (approximately 1,500 lines) loaded via a local HTTP server on port 18900, communicating with PyQt5 through JavaScript bridge calls. This avoids heavy native dependencies (VTK requires C++ compilation, Unity requires a separate application) while delivering WebGL-accelerated rendering with real-time particle physics for five distinct airflow types.
+
+The 3D viewer loads the same Trent 900 GLB model exported from Siemens NX, preserving the exact geometry used in the digital twin simulation. Auto-detection of named parts (cowl nodes TN1-164/165, fan nodes TN1-713/826/825/827/737, cascade vanes TN1-159) enables automatic role assignment without manual configuration. The viewer computes engine bounding boxes, determines front/back orientation from fan centroid positions, locates cascade vane axial positions from bounding box centres, and builds per-engine particle systems with correct physics.
+
+**Key Technical Capabilities Over 2D:**
+- Real transcowl translation along the computed deployment axis with per-engine independent control
+- Fan blade rotation around engine centreline using pivot groups
+- Five particle flow types (intake, bypass, exhaust, redirected thrust, heat shimmer) with physics-based behaviour
+- Deployment-responsive particle density: bypass particles reduce by 95% at full deployment as air redirects through cascade vanes
+- Per-engine particle scaling enables visual differentiation between fault scenarios
+- Cascade vane glow effect and animated cone flow indicators during deployment
+- Interactive orbit camera, wireframe toggle and zoom controls
+
+**Trade-offs Accepted:**
+- The HTML file is a separate asset that must be co-located with the Python script, unlike the self-contained QPainter code
+- A local HTTP server is required to serve the HTML and GLB files, adding a background thread
+- QWebEngineView introduces a Chromium dependency (approximately 100MB) via the PyQtWebEngine package
+- Initial page load shows a brief dark screen before the 3D scene renders (mitigated by matching CSS and QWebEngineView background colours to the scene colour #060608)
+- WebGL performance depends on the client GPU, whereas QPainter is CPU-rendered and universally consistent
+
+**Outcome:** The V8 3D engine schematic successfully renders the dual Trent 900 assembly with 2,044 parts and 5,574,166 triangles at interactive frame rates. Live PLC sensor data drives per-engine transcowl deployment through the JavaScript bridge (`window.setLiveSensorData`), with particle physics responding proportionally to each engine's deployment fraction. The visual difference between fault scenarios (Normal, Incomplete, Stall, Asymmetric) is immediately apparent through particle density and distribution changes, providing an intuitive operator display that communicates system state far more effectively than the 2D alternative.
+
+**References:**
+- `trent900_thrust_reverser_3d_v8.html`: Three.js 3D viewer (approximately 1,500 lines)
+- `pyqt5_realtime_classifier_gui_v8.py`: PyQt5 GUI with QWebEngineView integration
+- `Dual Engine Thrust Reverser.glb`: Trent 900 CAD model exported from Siemens NX
+- `pyqt5_realtime_classifier_gui_v7.py`: Previous version with QPainter 2D schematic (retained as reference)
+
+---
