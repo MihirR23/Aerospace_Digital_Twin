@@ -4,7 +4,7 @@ description: "Building a Three.js 3D engine viewer with particle physics, embedd
 date: 2026-02-23
 categories: [Development]
 tags: [3d-visualisation, three-js, pyqt5, digital-twin, glb, engine-schematic, particles]
-pin: true
+pin: false
 image:
   path: assets/img/Experimenting with 3D Animation.png
   alt: 3D Trent 900 engine viewer with particle systems showing thrust reverser deployment
