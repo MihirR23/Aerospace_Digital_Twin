@@ -3,7 +3,7 @@ title: "From GLB to GUI: Rendering the Trent 900 in Real Time"
 date: 2026-02-24
 categories: [Development]
 tags: [3d-viewer, three-js, webgl, particles, digital-twin, pyqt5, thrust-reverser]
-pin: true
+pin: false
 image:
   path: assets/img/Thrust Redirection Debugging.png
   alt: Debug wireframe rings visible at cascade vane positions on the 3D thrust reverser model during particle system development
