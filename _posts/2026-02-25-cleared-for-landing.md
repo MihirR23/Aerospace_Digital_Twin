@@ -4,7 +4,7 @@ description: "A new Landing Simulation tab brings fault consequences to life, sh
 date: 2026-02-25
 categories: [Development]
 tags: [gui, 3d-visualisation, three-js, landing-simulation, pyqt5]
-pin: true
+pin: false
 image:
   path: assets/img/Landing Simulation Tab.png
   alt: Landing simulation showing A380 aircraft on runway with HUD panels displaying flight data and scenario controls
