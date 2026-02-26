@@ -35,6 +35,6 @@ In preparation, I have purchased a 3D-printable electric turbofan model with fun
 ![Electric Turbofan](/assets/img/Electric Turbofan.jpg)
 _3D-printable electric turbofan model purchased from Cadly for potential physical implementation._
 
-The key questions to address with Puja are whether the university can support 3D printing the model, what additional hardware is needed, and what constitutes a meaningful physical demonstration within the remaining timeline.
+The key questions to address with Puja Varsani are whether the university can support 3D printing the model, what additional hardware is needed and what constitutes a meaningful physical demonstration within the remaining timeline.
 
 In the meantime, development continues on the software side with the PyQt5 GUI rebuild, additional documentation and continued refinement of the virtual system.
