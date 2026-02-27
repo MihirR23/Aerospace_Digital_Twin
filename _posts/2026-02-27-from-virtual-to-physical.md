@@ -6,7 +6,7 @@ categories: [Development]
 tags: [3d-printing, physical-prototype, arduino, validation]
 pin: true
 image:
-  path: assets/img/Cadly Turbofan.jpeg
+  path: assets/img/Cadly Turbofan.png
   alt: Cadly Electric TurboFan model with functional reverse thrusting
 ---
 
