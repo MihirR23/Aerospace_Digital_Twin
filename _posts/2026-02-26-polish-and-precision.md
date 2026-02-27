@@ -4,7 +4,7 @@ description: "A short session of interface refinements, separating System Overvi
 date: 2026-02-26
 categories: [Development]
 tags: [gui, pyqt5, bug-fix, xgboost]
-pin: true
+pin: false
 image:
   path: assets/img/Fault Status Tweak.png
   alt: EICAS display showing clean fault classification with corrected multi-fault threshold
