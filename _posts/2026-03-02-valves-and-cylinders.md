@@ -1,7 +1,7 @@
 ---
 title: "Valves and Cylinders: Taking Fault Detection Physical"
 description: "While awaiting approval for the 3D printed engine prototype, the project expands into pneumatic circuit design using FluidSim and the physical TIA Portal PLC station to demonstrate thrust reverser actuation."
-date: 2026-02-26
+date: 2026-03-02
 categories: [Development]
 tags: [fluidsim, tia-portal, pneumatics, plc, physical-prototype]
 pin: true
