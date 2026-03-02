@@ -4,7 +4,7 @@ description: "Why the project needs a physical engine model, how the Cadly Turbo
 date: 2026-02-27
 categories: [Development]
 tags: [3d-printing, physical-prototype, arduino, validation]
-pin: true
+pin: false
 image:
   path: assets/img/Cadly Turbofan.png
   alt: Cadly Electric TurboFan model with functional reverse thrusting
