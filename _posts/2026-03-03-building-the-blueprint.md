@@ -14,9 +14,6 @@ image:
 
 The pneumatic circuit represents a dual-engine thrust reverser deployment system. Two double-acting cylinders represent Engine 1 and Engine 2's translating cowl doors. Each cylinder is independently controlled by a 5/2-way single solenoid, spring return valve. When the solenoid is energised, the cylinder extends (deploys). When de-energised, the spring return retracts the cylinder. A shared compressed air supply at 0.6 MPa (6 bar) feeds both valves via a T-junction.
 
-![Transcowls Schematics on Fluidsim](/assets/img/Transcowls Schematics on Fluidsim.png)
-_The complete FluidSim pneumatic circuit with two engines, speed regulation, proximity sensors and pressure switches._
-
 ## Speed Regulation
 
 Four throttle check valves provide independent speed control for each cylinder's extend and retract movements. Each engine has a dedicated extend speed valve and retract speed valve. These are critical for recreating fault scenarios: restricting flow on one engine while the other runs freely demonstrates Asymmetric Speed and partially restricting both produces Delayed Deployment. The one-way design allows free flow in one direction while throttling the other, giving precise control over deployment and retraction speeds independently.
