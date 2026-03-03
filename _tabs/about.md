@@ -32,7 +32,7 @@ This project develops an AI-enhanced monitoring system that combines:
 
 ### System Architecture
 
-![System Architecture](/assets/img/System%20Architecture.png){: .shadow style="max-width: 100%" }
+![System Architecture](/assets/img/Updated%20System%20Architecture.png){: .shadow style="max-width: 100%" }
 
 ### Performance
 
