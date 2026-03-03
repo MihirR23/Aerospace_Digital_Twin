@@ -4,7 +4,7 @@ description: "While awaiting approval for the 3D printed engine prototype, the p
 date: 2026-03-02
 categories: [Development]
 tags: [fluidsim, tia-portal, pneumatics, plc, physical-prototype]
-pin: true
+pin: false
 image:
   path: assets/img/Festo Pneumatic Lab.jpg
   alt: Festo pneumatic station in the mechatronics lab for physical thrust reverser actuation
