@@ -4,7 +4,6 @@ title: About
 icon: fas fa-user
 order: 2
 ---
-
 ## About This Project
 
 On 26th May 1991, Lauda Air Flight 004 disintegrated mid-air over Thailand after a thrust reverser deployed unexpectedly during cruise flight. All 223 people on board perished. Sixteen years later, TAM Airlines Flight 3054 overran the runway in São Paulo when asymmetric thrust reverser deployment caused the aircraft to veer uncontrollably which resulted in the lost of 199 lives.
@@ -20,28 +19,35 @@ This project aims to address that gap.
 
 Thrust reversers redirect engine exhaust forward during landing, reducing stopping distance by 30-40%. When both engines deploy symmetrically, the system works as designed. But when one deploys and the other doesn't or when deployment timing differs by mere milliseconds, the resulting asymmetric forces can be catastrophic.
 
-Current monitoring systems focus on individual actuator positions. What's missing is sophisticated synchronisation analysis between engines, the critical measurement that could prevent asymmetric deployment disasters.
+Current monitoring systems focus on individual actuator positions. What is missing is sophisticated synchronisation analysis between engines, the critical measurement that could prevent asymmetric deployment disasters.
 
 ### The Solution
 
 This project develops an AI-enhanced monitoring system that combines:
 
-- **Digital Twin Technology** - A physics-based simulation of dual pneumatic actuators in Siemens NX, generating realistic deployment data at 100Hz
-- **Industrial Control Systems** - Real-time PLC logic with safety interlocks, programmed in SCL using TIA Portal V19 and S7-PLCSIM Advanced 6.0
-- **Machine Learning** - A Random Forest classifier trained to detect asymmetric deployment, timing mismatches, incomplete deployment and actuator degradation
-- **Real-time Monitoring** - An HMI dashboard displaying live synchronisation status with traffic-light health indicators
+- **Digital Twin Technology** - A physics-based simulation of dual pneumatic actuators in Siemens NX MCD, generating realistic deployment data across 8 sensor channels at 100Hz
+- **Industrial Control Systems** - Real-time PLC logic with safety interlocks, programmed in SCL using TIA Portal V19 and S7-PLCSIM Advanced 6.0, communicating via the .NET API through pythonnet
+- **Machine Learning** - An XGBoost classifier trained on 1,400 deployment scenarios across 7 fault classes, achieving 99% accuracy with 24.7ms latency using 64 engineered features and per-engine velocity masking
+- **Operator Interface** - A PyQt5 GUI with five tabs including EICAS display with live gauges, system overview, fault injection controls, an interactive 3D engine schematic powered by Three.js, and a landing simulation demonstrating real-world consequences of deployment faults
 
 ### System Architecture
 
 ![System Architecture](/assets/img/System%20Architecture.png){: .shadow style="max-width: 100%" }
 
-### Performance Targets
+### Performance
 
-| Metric | Target |
-|--------|--------|
-| Classification Accuracy | >90% |
-| Fault Recall | >85% |
-| Detection Latency | <500ms |
+| Metric | Target | Achieved |
+|--------|--------|----------|
+| Classification Accuracy | >90% | 99% |
+| Detection Latency | <500ms | 24.7ms |
+| Fault Classes | 5 | 7 |
+| Training Scenarios | 200 | 1,400 |
+| Engineered Features | - | 64 |
+| Classification Confidence | - | 99% |
+
+### Detectable Fault Types
+
+The system identifies seven distinct deployment conditions: Normal, Asymmetric Speed, Delayed Deployment, Incomplete Deployment, Oscillating Deployment, Stall Deployment and Combined Fault. Each fault produces a unique signature across position and velocity sensor channels that the classifier distinguishes in real-time.
 
 ---
 
@@ -57,6 +63,6 @@ That fascination never faded. It evolved into a dream of becoming an aerospace e
 
 My ambition is to work at the forefront of aerospace engineering with industry leaders like Boeing, GE Aerospace, Rolls Royce or British Airways. But one company stands out above the rest: **Airbus**.
 
-Their ZEROe programme is to develop the world's first hydrogen-powered commercial aircraft represents exactly the kind of bold, sustainable innovation I want to be part of. Aviation accounts for 2-3% of global CO₂ emissions and Airbus is engineering the solution. That's the future I want to help build.
+Their ZEROe programme is to develop the world's first hydrogen-powered commercial aircraft represents exactly the kind of bold, sustainable innovation I want to be part of. Aviation accounts for 2-3% of global CO₂ emissions and Airbus is engineering the solution. That is the future I want to help build.
 
 One day, I hope to contribute to the future of sustainable aviation and perhaps even realise my dream of starting my own airline.
