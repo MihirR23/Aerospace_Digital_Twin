@@ -41,7 +41,7 @@ This project develops an AI-enhanced monitoring system that combines:
 | Classification Accuracy | >90% | 99% |
 | Detection Latency | <500ms | 24.7ms |
 | Fault Classes | 5 | 7 |
-| Training Scenarios | 200 | 1,400 |
+| Training Scenarios | 250 | 1,400 |
 | Engineered Features | - | 64 |
 | Classification Confidence | - | 99% |
 
