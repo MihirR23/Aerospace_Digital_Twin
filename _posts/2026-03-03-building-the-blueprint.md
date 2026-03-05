@@ -4,7 +4,7 @@ description: "Designing and simulating a pneumatic thrust reverser deployment ci
 date: 2026-03-03
 categories: [Development]
 tags: [fluidsim, pneumatics, plc, sensors, physical-prototype]
-pin: true
+pin: false
 image:
   path: assets/img/Transcowls Schematics on Fluidsim.png
   alt: FluidSim pneumatic circuit for dual-engine thrust reverser deployment
