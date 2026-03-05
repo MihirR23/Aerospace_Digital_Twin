@@ -3,6 +3,10 @@ title: "Physical PLC Integration: Station Setup and Pneumatic Plumbing Plan"
 date: 2026-03-05
 categories: [Development, Project]
 tags: [plc, fluidsim, pneumatics, tia-portal, festo, s7-1200]
+pin: true
+image:
+  path: assets/img/Setting Up Pneumatic Station.jpeg
+  alt: FluidSim pneumatic circuit for dual-engine thrust reverser deployment
 ---
 
 With the FluidSim circuit verified in simulation last week, this session marked the transition from virtual to physical — setting up the Festo EduTrainer station, completing the PLC tag table in TIA Portal and laying out the full pneumatic plumbing plan ready for connection next week.
