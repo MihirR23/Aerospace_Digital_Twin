@@ -12,8 +12,8 @@ These tragedies share a common thread: the failure to detect and respond to thru
 
 This project aims to address that gap.
 
-![Boeing 787 with thrust reversers deployed](/assets/img/Boeing%20787%20Thrust%20Reverser.jpg){: .shadow style="max-width: 100%" }
-*Boeing 787 with thrust reversers deployed during landing. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Boeing_787_landing_with_thrust_reversers_activated_crop.jpg)*
+![Airbus A321 with thrust reversers deployed](/assets/img/Airbus%20A321-253%20Reverse%20Thrust.jpg){: .shadow style="max-width: 100%" }
+*Airbus A321-253 with thrust reversers deployed during landing.*
 
 ### The Challenge
 
@@ -28,7 +28,7 @@ This project develops an AI-enhanced monitoring system that combines:
 - **Digital Twin Technology** - A physics-based simulation of dual pneumatic actuators in Siemens NX MCD, generating realistic deployment data across 8 sensor channels at 100Hz
 - **Industrial Control Systems** - Real-time PLC logic with safety interlocks, programmed in SCL using TIA Portal V19 and S7-PLCSIM Advanced 6.0, communicating via the .NET API through pythonnet
 - **Machine Learning** - An XGBoost classifier trained on 1,400 deployment scenarios across 7 fault classes, achieving 99% accuracy with 24.7ms latency using 64 engineered features and per-engine velocity masking
-- **Operator Interface** - A PyQt5 GUI with five tabs including EICAS display with live gauges, system overview, fault injection controls, an interactive 3D engine schematic powered by Three.js, and a landing simulation demonstrating real-world consequences of deployment faults
+- **Operator Interface** - A PyQt5 GUI with five tabs including EICAS display with live gauges, system overview, fault injection controls, an interactive 3D engine schematic powered by Three.js and a landing simulation demonstrating real-world consequences of deployment faults
 
 ### System Architecture
 
