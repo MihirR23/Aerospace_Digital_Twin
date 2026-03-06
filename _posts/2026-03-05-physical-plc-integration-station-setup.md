@@ -11,8 +11,6 @@ image:
 
 With the FluidSim circuit verified in simulation last week, this session marked the transition from virtual to physical — setting up the Festo EduTrainer station, completing the PLC tag table in TIA Portal and laying out the full pneumatic plumbing plan ready for connection next week.
 
-![Setting Up Pneumatic Station](/assets/img/Setting Up Pneumatic Station.jpeg)
-
 ## PLC Tag Table — Complete
 
 The first task was entering the full tag table into the TIA Portal project `Thrust_Reverser_Pneumatic_Control`. All 12 tags are now defined in the default tag table:
