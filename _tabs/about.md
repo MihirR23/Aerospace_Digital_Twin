@@ -42,7 +42,7 @@ This project develops an AI-enhanced monitoring system that combines:
 | Detection Latency | <500ms | 24.7ms |
 | Fault Classes | 5 | 7 |
 | Training Scenarios | 250 | 1,400 |
-| Engineered Features | - | 64 |
+| Engineered Features | - | 65 |
 | Classification Confidence | - | 99% |
 
 ### Detectable Fault Types
