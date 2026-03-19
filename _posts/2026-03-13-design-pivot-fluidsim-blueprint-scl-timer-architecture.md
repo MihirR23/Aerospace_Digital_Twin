@@ -3,6 +3,7 @@ title: "Design Pivot: FluidSim as Blueprint and the SCL Timer Architecture"
 date: 2026-03-13
 categories: [Development]
 tags: [fluidsim, scl, tia-portal, technical-decision, plc, iec-timer]
+pin: false
 image:
   path: /assets/img/Updated FluidSim Schematic.png
   alt: FluidSim pneumatic circuit diagram for the dual-engine thrust reverser deployment system
