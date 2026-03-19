@@ -10,7 +10,7 @@ image:
   alt: Operational Festo EduTrainer pneumatic station with KTP700 HMI running fault scenario demonstration
 ---
 
-This session completed the core physical demonstration, implementing four fault scenario function blocks in SCL and testing each one on the Festo EduTrainer station. All four scenarios are working and produce distinct, measurable fault behaviours on the physical hardware.
+This session completed the core physical demonstration — implementing four fault scenario function blocks in SCL and testing each one on the Festo EduTrainer station. All four scenarios are working and produce distinct, measurable fault behaviours on the physical hardware.
 
 ## SCL Function Block Architecture
 
@@ -34,13 +34,13 @@ Both engines deployed and retracted cleanly with similar deployment times, confi
 
 Engine 1 deploys immediately on trigger. Engine 2 is held back for 5 seconds before its deploy output fires. The master timer runs from trigger throughout, so Engine 2's recorded deployment time includes the full delay period.
 
-Engine 2's fault indicator activates during the delay state, flagging the hold as a fault condition. On the physical station, Engine 1 consistently showed deployment times around 209ms while Engine 2 showed times exceeding 10,000ms — a clear and unambiguous demonstration of the delayed deployment fault.
+Engine 2's fault indicator activates during the delay state, flagging the hold as a fault condition. On the physical station, Engine 1 consistently showed deployment times around 209ms while Engine 2 showed times exceeding 10,000ms, a clear and unambiguous demonstration of the delayed deployment fault.
 
 ## Scenario 3 — Incomplete Deployment
 
 Flow restrictors were fitted to both cylinders to slow the stroke rate sufficiently for the 2-second deploy cutoff to catch both cylinders mid-stroke before they reach full extension. The double solenoid valves hold the cylinders in their last position when both solenoid outputs are de-energised, simulating transcowls that have partially deployed and stalled.
 
-Neither deployed sensor triggers. Both engines are flagged as faulty. After a dwell period the system actively retracts both cylinders. This scenario requires the flow restrictors — without them the cylinders extend too quickly for the timer-based cutoff to intercept the stroke.
+Neither deployed sensor triggers. Both engines are flagged as faulty. After a dwell period the system actively retracts both cylinders. This scenario requires the flow restrictors, without them the cylinders extend too quickly for the timer-based cutoff to intercept the stroke.
 
 ## Scenario 4 — Asymmetric Speed
 
@@ -61,9 +61,7 @@ The fault detection logic compares the two frozen deployment times and sets the 
 
 The following video shows all four scenarios running on the physical station with the KTP700 HMI:
 
-<video width="100%" controls>
-  <source src="/assets/video/Brief%20Pneumatic%20Demonstration%20(Compressed).mp4" type="video/mp4">
-</video>
+{% include embed/video.html src='assets/video/Brief Pneumatic Demonstration (Compressed).mp4' title='Physical Station Fault Scenario Demonstration' %}
 
 ## Scenario Switching
 
