@@ -15,7 +15,7 @@ Two decisions made this week shaped the remainder of the physical station workst
 
 The original plan specified a live connection between the FluidSim simulation and the physical S7-1200 via EzOPC and the EasyPort module on the Festo EduTrainer station. This would have allowed FluidSim to run in parallel with the physical hardware, with PLC outputs driving both the virtual and physical components simultaneously.
 
-Following the physical station assessment, this plan was abandoned. The manifold on the station uses double solenoid valves, whereas the FluidSim circuit was designed around single solenoid spring return valves. The two architectures are fundamentally different — the FluidSim circuit does not accurately reflect the physical hardware and would require a complete redesign to do so.
+Following the physical station assessment, this plan was abandoned. The manifold on the station uses double solenoid valves, whereas the FluidSim circuit was designed around single solenoid spring return valves. The two architectures are fundamentally different, the FluidSim circuit does not accurately reflect the physical hardware and would require a complete redesign to do so.
 
 More importantly, the physical PLC connected directly to TIA Portal via PROFINET without requiring FluidSim as an intermediary. The SCL state machine FBs control the physical solenoids directly and receive sensor feedback from the physical proximity sensors, achieving the intended result without the added complexity of the EzOPC bridge.
 
@@ -23,7 +23,7 @@ The FluidSim circuit is retained in the project documentation as a pneumatic des
 
 ## Establishing the SCL Timer Architecture
 
-Before writing any fault scenario function blocks, a consistent SCL coding pattern was agreed to ensure all blocks follow the same structure. This was necessary because an earlier approach — declaring timers as static variables inside the FB interface, caused issues where timer state was difficult to monitor and reset cleanly between scenarios.
+Before writing any fault scenario function blocks, a consistent SCL coding pattern was agreed to ensure all blocks follow the same structure. This was necessary because an earlier approach, declaring timers as static variables inside the FB interface, caused issues where timer state was difficult to monitor and reset cleanly between scenarios.
 
 The agreed pattern uses global IEC timer instance DBs, created as data blocks of type IEC_TIMER in the project. These are called unconditionally outside the CASE structure on every scan cycle:
 
