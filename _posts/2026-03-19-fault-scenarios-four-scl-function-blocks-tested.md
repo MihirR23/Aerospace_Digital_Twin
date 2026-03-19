@@ -10,7 +10,7 @@ image:
   alt: Operational Festo EduTrainer pneumatic station with KTP700 HMI running fault scenario demonstration
 ---
 
-This session completed the core physical demonstration — implementing four fault scenario function blocks in SCL and testing each one on the Festo EduTrainer station. All four scenarios are working and produce distinct, measurable fault behaviours on the physical hardware.
+This session completed the core physical demonstration, implementing four fault scenario function blocks in SCL and testing each one on the Festo EduTrainer station. All four scenarios are working and produce distinct, measurable fault behaviours on the physical hardware.
 
 ## SCL Function Block Architecture
 
