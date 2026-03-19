@@ -572,3 +572,43 @@ The 3D viewer loads the same Trent 900 GLB model exported from Siemens NX, prese
 - `pyqt5_realtime_classifier_gui_v7.py`: Previous version with QPainter 2D schematic (retained as reference)
 
 ---
+
+## TD-017: FluidSim Circuit Retained as Design Blueprint
+ 
+**Date:** 10 March 2026
+ 
+**Decision:** Abandon the live FluidSim-to-TIA Portal connection via EzOPC and EasyPort, and retain the FluidSim pneumatic circuit as a design blueprint only, with the physical S7-1200 controlled exclusively via TIA Portal SCL over PROFINET.
+ 
+**Context:** The original physical station integration plan, documented in the session handover of 03 March 2026, specified a four-stage connection architecture: FluidSim pneumatic circuit → EzOPC → EasyPort → Physical S7-1200 PLC. This approach would have allowed the FluidSim simulation to run in parallel with the physical station, with PLC outputs driving both the virtual FluidSim components and the physical solenoid valves simultaneously. The FluidSim circuit was designed and verified in simulation, comprising a dual-engine deployment system with a 4-slice solenoid valve manifold, two double-acting cylinders, six proximity sensors and four pressure switches.
+ 
+**Problem:**
+- The physical station hardware assessment confirmed the manifold uses double solenoid valves rather than the single solenoid spring return valves assumed in the FluidSim design, meaning the FluidSim circuit does not accurately reflect the physical pneumatic architecture
+- The EzOPC and EasyPort configuration requires mapping FluidSim component ports to PLC I/O addresses via OPC tags, and the substantial tag table revision following the double solenoid discovery would require significant rework of both the FluidSim circuit and the EzOPC configuration
+- The physical S7-1200 connected directly to TIA Portal via PROFINET without requiring FluidSim as an intermediary, with SCL state machine FBs controlling the physical solenoids directly
+- Time invested in establishing the FluidSim-EzOPC bridge would reduce time available for higher-priority integration tasks including the fault scenario FBs, WinCC HMI development and physical station demonstration
+ 
+**Approaches Evaluated:**
+ 
+| Approach | Accuracy | Integration Complexity | Assessment Value |
+|----------|----------|----------------------|-----------------|
+| Full FluidSim-EzOPC-EasyPort bridge | Low: valve mismatch means FluidSim does not match physical hardware | High: requires FluidSim circuit redesign, EzOPC tag mapping, EasyPort configuration | Medium: demonstrates simulation-to-hardware bridge |
+| Redesign FluidSim for double solenoid valves then bridge | High: accurate circuit | Very High: full circuit redesign plus EzOPC configuration | Medium: same bridge demonstration with more effort |
+| Retain FluidSim as blueprint, control PLC directly via PROFINET | N/A: no live connection | Low: already working | High: time redirected to fault scenarios and HMI |
+| Abandon FluidSim entirely | N/A | None | Low: loses evidence of systematic pneumatic design |
+ 
+**Decision Rationale:** Retaining FluidSim as a design blueprint was selected because the physical PLC connection via PROFINET was already operational, making the FluidSim bridge redundant for control purposes. The valve architecture mismatch between the FluidSim circuit (single solenoid spring return) and the physical station (double solenoid) meant the live bridge would have required a complete FluidSim circuit redesign before it could function correctly. This redesign effort would have provided limited additional assessment value compared to the working direct PROFINET connection.
+ 
+The blueprint approach preserves the design evidence without the integration overhead. The FluidSim circuit demonstrates understanding of ISO 5599 port conventions, pneumatic circuit design methodology, and the systematic approach to planning physical tubing connections. These contributions to the technical report and blog are retained without the time cost of making the live bridge functional.
+ 
+**Trade-offs Accepted:**
+- No live FluidSim-to-PLC demonstration is available, which would have shown real-time simulation-hardware co-execution
+- The FluidSim circuit as documented uses single solenoid valves and does not match the final physical station configuration
+- The EzOPC and EasyPort capabilities of the Festo EduTrainer station are not utilised in the project
+ 
+**Outcome:** The removal of the FluidSim bridge eliminates a technically complex integration layer that would have added limited assessment value given the valve architecture mismatch. The time recovered was redirected to four fault scenario SCL function blocks, WinCC HMI development on the KTP700, and the physical station demonstration — all of which are more directly relevant to the project aims and assessment criteria. The FluidSim circuit is included in the technical report as evidence of systematic pneumatic design methodology.
+ 
+**References:**
+- FluidSim pneumatic circuit schematic (retained as design blueprint)
+- `Thrust_Reverser_Pneumatic_Control`: TIA Portal V19 project with direct PROFINET connection
+
+---
