@@ -609,6 +609,44 @@ The blueprint approach preserves the design evidence without the integration ove
  
 **References:**
 - FluidSim pneumatic circuit schematic (retained as design blueprint)
-- `Thrust_Reverser_Pneumatic_Control`: TIA Portal V19 project with direct PROFINET connection
+- `Thrust Reverser Pneumatic Control`: TIA Portal V19 project with direct PROFINET connection
 
 ---
+
+## TD-018: Operator Interface Version Selection and Physical Station Architecture
+
+**Date:** 24 March 2026
+
+**Decision:** Retain V9 as the final operator interface. The physical station operates as a standalone unit independent of the ML pipeline.
+
+**Context:** Version 10 of the operator interface introduced a Physical Station tab designed to connect directly to the S7-1200 at 192.168.2.17 via snap7, read live deployment data and pass it through the XGBoost classification pipeline. Development revealed two blocking technical constraints that prevented this architecture from functioning within the available project timeline.
+
+**Problem:**
+- snap7 v2.x API incompatibility: the `read_area()` method requires `Areas` enum objects in v2.0.2, however the `snap7.types` module containing those enums does not exist in this version. The dedicated area methods `eb_read()` and `mb_read()` provide the correct alternative, but this required iterative identification and patching across multiple sessions
+- The S7-1200 communication stack does not permit direct external access to I-area or M-area memory via the S7 protocol that snap7 uses. PUT/GET access is architecturally restricted to Data Blocks only. Every read attempt, including `db_read()` against existing DBs, returned `CLI: function refused by CPU` regardless of protection level or PUT/GET settings in TIA Portal
+- Resolving the hardware constraint would require implementing a dedicated mirroring Data Block in the PLC program, with all required tags copied into it on every scan cycle, adding scope that exceeded the time available before submission
+
+**Approaches Evaluated:**
+
+| Approach | Feasibility | Timeline Impact | Assessment Value |
+|----------|------------|----------------|-----------------|
+| Implement mirroring DB in TIA Portal, patch snap7 reads to use `db_read()` only | High: architecturally correct solution for S7-1200 | High: requires PLC program changes, re-testing, and V10 GUI integration | Medium: demonstrates physical-to-ML bridge |
+| Use OPC UA instead of snap7 for physical PLC communication | Low: OPC UA on S7-1200 requires paid licence not available | N/A | N/A |
+| Retain V9 with PLCSim Advanced, operate physical station as standalone demonstration | Already working | None: no additional development required | High: virtual pipeline fully validated, physical station demonstrates PLC control independently |
+| Abandon physical station entirely | N/A | Saves time | Low: loses physical hardware demonstration |
+
+**Decision Rationale:** V9 was retained because the virtual pipeline via PLCSim Advanced and the .NET API already provides a complete, validated, end-to-end demonstration of the AI classification system. The .NET API communicates directly through the simulation runtime with full tag access and no hardware-level restrictions, meeting all project objectives without the S7 protocol constraints that affect the physical S7-1200.
+
+The physical Festo EduTrainer station operates as a standalone unit. The four fault scenario function blocks run independently on the physical hardware and are demonstrated separately, with results captured on video for submission. This separation is consistent with the project scope and does not affect the AI fault detection objectives, which are fully met by the virtual pipeline.
+
+**Trade-offs Accepted:**
+- No live physical PLC to ML pipeline demonstration is available in the final system
+- The physical station results are presented via video and deployment time measurements rather than real-time AI classification
+- The mirroring DB architecture identified during debugging remains documented as the correct approach for any future S7-1200 integration
+
+**Outcome:** The final submitted system comprises V9 of the operator interface connected to PLCSim Advanced, and the physical Festo EduTrainer station operating as an independent demonstration of the PLC control architecture. This separation does not affect the AI fault detection objectives, which are fully met by the virtual pipeline. The S7-1200 communication constraints and the required mirroring DB architecture are documented in the technical report as future work.
+
+**References:**
+- `pyqt5_realtime_classifier_gui_v9.py`: Final operator interface (PLCSim Advanced)
+- `pyqt5_realtime_classifier_gui_v10.py`: Physical Station tab attempt (archived)
+- `Thrust Reverser Pneumatic Control`: TIA Portal V19 project for physical station
