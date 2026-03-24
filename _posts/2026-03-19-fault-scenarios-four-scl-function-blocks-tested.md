@@ -1,6 +1,5 @@
 ---
 title: "Fault Scenarios: Four SCL Function Blocks Tested on the Physical Station"
-pin: true
 date: 2026-03-19
 categories: [Development]
 tags: [scl, plc, tia-portal, festo, pneumatics, fault-detection, hmi, wincc]
@@ -19,7 +18,7 @@ Each scenario is a separate Function Block with a CASE-based state machine. All 
 - IEC timer DBs are called unconditionally outside the CASE structure on every scan, with global Bool tags driving the IN input and capturing the Q output
 - A master timer (`IEC_Timer_0_DB_3`) starts at the first deploy step and runs continuously without resetting, capturing total deployment time from trigger for both engines
 - `Cycle_Complete` is set TRUE at the penultimate step and held for 3 seconds before the final reset step, allowing the HMI to display the green completion indicator clearly
-- Step 0 resets all outputs, fault flags, timer tags and deployment times before the next cycle begins
+- Step 0 resets all outputs, fault flags, timer tags, and deployment times before the next cycle begins
 - Steps increment in multiples of 10
 
 Deployment time is captured using `TIME_TO_DINT` on the master timer's `ET` output, written to `Engine_One_Deployment_Time` and `Engine_Two_Deployment_Time` as DInt values in milliseconds.
@@ -34,13 +33,13 @@ Both engines deployed and retracted cleanly with similar deployment times, confi
 
 Engine 1 deploys immediately on trigger. Engine 2 is held back for 5 seconds before its deploy output fires. The master timer runs from trigger throughout, so Engine 2's recorded deployment time includes the full delay period.
 
-Engine 2's fault indicator activates during the delay state, flagging the hold as a fault condition. On the physical station, Engine 1 consistently showed deployment times around 209ms while Engine 2 showed times exceeding 10,000ms, a clear and unambiguous demonstration of the delayed deployment fault.
+Engine 2's fault indicator activates during the delay state, flagging the hold as a fault condition. On the physical station, Engine 1 consistently showed deployment times around 209ms while Engine 2 showed times exceeding 10,000ms — a clear and unambiguous demonstration of the delayed deployment fault.
 
 ## Scenario 3 — Incomplete Deployment
 
 Flow restrictors were fitted to both cylinders to slow the stroke rate sufficiently for the 2-second deploy cutoff to catch both cylinders mid-stroke before they reach full extension. The double solenoid valves hold the cylinders in their last position when both solenoid outputs are de-energised, simulating transcowls that have partially deployed and stalled.
 
-Neither deployed sensor triggers. Both engines are flagged as faulty. After a dwell period the system actively retracts both cylinders. This scenario requires the flow restrictors, without them the cylinders extend too quickly for the timer-based cutoff to intercept the stroke.
+Neither deployed sensor triggers. Both engines are flagged as faulty. After a dwell period the system actively retracts both cylinders. This scenario requires the flow restrictors — without them the cylinders extend too quickly for the timer-based cutoff to intercept the stroke.
 
 ## Scenario 4 — Asymmetric Speed
 
@@ -61,7 +60,7 @@ The fault detection logic compares the two frozen deployment times and sets the 
 
 The following video shows all four scenarios running on the physical station with the KTP700 HMI:
 
-{% include embed/video.html src='assets/video/Brief Pneumatic Demonstration (Compressed).mp4' title='Physical Station Fault Scenario Demonstration' %}
+{% include embed/youtube.html id='zlrRmaXll74' title='Physical Station Fault Scenario Demonstration' %}
 
 ## Scenario Switching
 
