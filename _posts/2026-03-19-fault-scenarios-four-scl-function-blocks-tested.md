@@ -3,7 +3,7 @@ title: "Fault Scenarios: Four SCL Function Blocks Tested on the Physical Station
 date: 2026-03-19
 categories: [Development]
 tags: [scl, plc, tia-portal, festo, pneumatics, fault-detection, hmi, wincc]
-pin: true
+pin: false
 image:
   path: /assets/img/Operational Pneumatic Station and HMI.jpeg
   alt: Operational Festo EduTrainer pneumatic station with KTP700 HMI running fault scenario demonstration
