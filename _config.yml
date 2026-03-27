@@ -42,7 +42,7 @@ social:
     - https://github.com/MihirR23 # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/mihir-ragoonauth/
 
 # Site Verification Settings
 webmaster_verifications:
@@ -75,7 +75,9 @@ analytics:
 
 # Page views settings
 pageviews:
-  provider: # now only supports 'goatcounter'
+  provider: goatcounter
+  goatcounter:
+    id: aerospace-digital-twin
 
 # Prefer color scheme setting.
 #
