@@ -1,0 +1,11 @@
+---
+---
+
+@import 'main';
+
+.sidebar {
+  .nav-wrapper {
+    overflow-y: auto;
+    flex: 1;
+  }
+}
