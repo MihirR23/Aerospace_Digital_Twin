@@ -12,7 +12,7 @@ image:
 
 The original [risk assessment]({{ '/posts/by-the-book-official-risk-assessment/' | relative_url }}) covered simulation and software risks only. With the Festo EduTrainer pneumatic station now part of the project, the assessment needed updating to reflect genuine physical hazards.
 
-The updated risk assessment is available for download: [Mihir's Updated Risk Assessment.xlsx]({{ '/assets/files/Mihirs Updated Risk Assessment.xlsx' | relative_url }})
+The updated risk assessment is available for download: [Mihir's Updated Risk Assessment.xlsx]({{ '/assets/files/Mihir's Updated Risk Assessment.xlsx' | relative_url }})
 
 ## Updated Severity Scale
 
