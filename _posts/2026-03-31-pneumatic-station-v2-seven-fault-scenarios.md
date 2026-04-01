@@ -4,7 +4,7 @@ description: "A complete rebuild of the pneumatic station with rotary actuators,
 date: 2026-03-31
 categories: [Development]
 tags: [festo, pneumatics, plc, scl, tia-portal, s7-1200, hmi, rotary-actuator, fault-detection]
-pin: true
+pin: false
 image:
   path: /assets/img/Modifying The Pneumatic Station.jpg
   alt: Festo EduTrainer pneumatic station with rotary actuators during modification
