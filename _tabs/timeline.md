@@ -13,6 +13,10 @@ This Gantt chart outlines the 12-week project timeline from Week 13 (19th Januar
 
 *Click the image to view full size.*
 
+[Download as PDF](/assets/files/Updated%20Project%20Gantt%20Chart.pdf)
+
+*Click the pdf to download Gantt Chart.*
+
 ### Key Milestones
 
 | Week | Date | Milestone |
