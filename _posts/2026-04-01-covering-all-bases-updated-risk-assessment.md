@@ -12,7 +12,7 @@ image:
 
 The original [risk assessment]({{ '/posts/by-the-book-official-risk-assessment/' | relative_url }}) covered simulation and software risks only. With the Festo EduTrainer pneumatic station now part of the project, the assessment needed updating to reflect genuine physical hazards.
 
-The updated risk assessment is available for download: [Mihir's Updated Risk Assessment.xlsx]({{ '/assets/files/Mihir's Updated Risk Assessment.xlsx' | relative_url }})
+The updated risk assessment is available for download: [Mihir's Updated Risk Assessment.xlsx]({{ "/assets/files/Mihir's Updated Risk Assessment.xlsx" | relative_url }})
 
 ## Updated Severity Scale
 
@@ -21,14 +21,14 @@ The original scale used project-impact labels which made sense for a simulation 
 | Rating | Label | Meaning |
 |--------|-------|---------|
 | 1 | Near Miss | Issue identified but no impact |
-| 2 | First Aid / Minor Setback | Minor treatment needed, or small delay less than 1 week |
+| 2 | First Aid / Minor Setback | Minor treatment needed or small delay less than 1 week |
 | 3 | Minor Injury / Moderate Delay | Medical attention required or 1-2 week delay |
-| 4 | Major Injury / Major Setback | Serious harm, or significant rework and 2+ week delay |
-| 5 | Fatality / Project Failure | Loss of life, or unable to complete project |
+| 4 | Major Injury / Major Setback | Serious harm or significant rework and 2+ week delay |
+| 5 | Fatality / Project Failure | Loss of life or unable to complete project |
 
 ## Five New Physical Station Risks
 
-**Wiring and Commissioning** (Initial: 9, Controlled: 4) covers incorrect wiring causing solenoid valve damage or PLC output module failure. Each actuator was tested individually with simple deploy/retract code before running the full state machine, and all wiring was checked against the handover document.
+**Wiring and Commissioning** (Initial: 9, Controlled: 4) covers incorrect wiring causing solenoid valve damage or PLC output module failure. Each actuator was tested individually with simple deploy/retract code before running the full state machine and all wiring was checked against the handover document.
 
 **Operating Rotary Actuators** (Initial: 12, Controlled: 4) is the highest-rated risk on the entire assessment. Rotary actuators under compressed air can cause pinch or crush injuries. Hands are kept clear during operation, air is isolated before any mechanical adjustments and flow restrictors reduce stroke speed.
 
@@ -40,7 +40,7 @@ The original scale used project-impact labels which made sense for a simulation 
 
 ## Classifier Update
 
-The classifier training rows have also been updated. The task names retain Random Forest as originally planned, but the control measures now reflect the pivot to XGBoost after evaluating multiple algorithms, the dataset expansion from 250 to 1,400 scenarios across 7 fault classes and the 99.8% accuracy confirmed through 10-run robustness testing.
+The classifier training rows have also been updated. The task names retain Random Forest as originally planned, but the control measures now reflect the pivot to XGBoost after evaluating multiple algorithms, the dataset expansion from 250 to 1,400 scenarios across 7 fault classes, and the 99.8% accuracy confirmed through 10-run robustness testing.
 
 ## Summary
 
