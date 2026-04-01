@@ -3,7 +3,7 @@ title: "Physical Station Integration: Why the S7-1200 Rejected Everything We Thr
 date: 2026-03-24
 categories: [Development]
 tags: [snap7, plc, s7-1200, python, physical-station, debugging, tia-portal]
-pin: true
+pin: false
 image:
   path: /assets/img/Linking Physical Station to ML Pipeline.png
   alt: Physical Station tab connected to the S7-1200 with the ML classification pipeline ready
