@@ -650,3 +650,34 @@ The physical Festo EduTrainer station operates as a standalone unit. The four fa
 - `pyqt5_realtime_classifier_gui_v9.py`: Final operator interface (PLCSim Advanced)
 - `pyqt5_realtime_classifier_gui_v10.py`: Physical Station tab attempt (archived)
 - `Thrust Reverser Pneumatic Control`: TIA Portal V19 project for physical station
+
+---
+
+## TD-019: Pneumatic Station V2 with Rotary Actuators and Three-Position Sensing
+
+**Date:** 31 March 2026
+
+**Decision:** Rebuild the pneumatic station using rotary actuators with three-position sensing and piloted check valves, replacing the V1 double-acting cylinder architecture.
+
+**Context:** The V1 pneumatic station used two double-acting cylinders controlled by a 4-slice solenoid valve manifold. Each cylinder had two positions: fully retracted and fully extended. Proximity sensors detected these endpoints. Four fault scenarios were implemented: Normal Deployment, Delayed Deployment, Incomplete Deployment and Asymmetric Speed. Incomplete Deployment relied on a timed cut-off of the deploy output after 2 seconds, with no physical feedback confirming the cylinder had actually stopped at a mid-stroke position. The cylinder would coast to an indeterminate position based on air pressure decay.
+
+**Problem:**
+- Incomplete Deployment was not deterministic. The 2-second timer approach meant the cylinder stopped at whatever position it had reached when the output was cut, which varied with supply pressure, load and valve response time. There was no sensor confirmation that the cylinder was at a repeatable mid-stroke position
+- Only two discrete positions per actuator (retracted and extended) limited the fault scenarios that could be physically demonstrated. Stall Deployment and Oscillating Deployment were difficult to distinguish from one another without intermediate position feedback
+- Without a mechanism to lock the actuator in position when air was removed, the cylinders could drift under gravity or residual pressure, making the stopped position unreliable for repeated testing
+
+**Approaches Evaluated:**
+
+| Approach | Pros | Cons |
+|---|---|---|
+| Retain V1, add mid-stroke sensors to cylinders | Minimal hardware change | No position locking, cylinder still drifts after air cut |
+| Retain V1, add mechanical stops | Repeatable mid-position | Fixed stop position, cannot demonstrate variable fault depths |
+| Rebuild with rotary actuators and piloted check valves | Three deterministic positions, position locking, repeatable | Requires full rewiring and new SCL code |
+
+**Decision Rationale:** The rotary actuator approach was selected because it solves all three V1 limitations simultaneously. Each rotary actuator has three magnetic sensors (retracted, mid-stroke, extended) giving deterministic position feedback at three discrete points. The Festo HGL piloted check valves lock the actuator in position when air is removed by blocking exhaust flow from the actuator back through the circuit. This means the actuator holds its position reliably without drift, regardless of how long it remains stationary.
+
+The 3/2 way valve arrangement (normally closed, energise to open) provides independent air supply control per actuator. Combined with the 5/2 way valve for direction control, each engine has six controllable states: deploy with air, retract with air, hold at retracted, hold at mid-stroke, hold at extended and coast (air on, no direction command).
+
+The WorldSkills equipment was available on loan from Mehmet Karamanoglu, making the hardware cost zero. The rewiring and new SCL code were completed in a single lab session.
+
+**Outcome:** The V2 station now runs seven fault scenarios compared to V1's four. The three new scenarios (Stall Deployment, Oscillating Deployment, Combined Fault) are only possible because of the mid-stroke sensor and position locking capability. Incomplete Deployment is now deterministic, stopping precisely at the Halted sensor rather than relying on a timer. All scenarios loop automatically with HMI control and independent deployment time capture per engine.
