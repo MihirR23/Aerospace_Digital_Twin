@@ -36,7 +36,7 @@ A collection of resources used throughout this project.
 | S7-PLCSIM Advanced 6.0 | Virtual PLC with .NET API for Python communication |
 | SolidWorks | STL to STEP file conversion |
 | Python (XGBoost) | 7-class fault classification (99.8% accuracy, 24.7ms latency) |
-| Python (PyQt5) | Operator interface with EICAS display, fault injection, and 3D viewer |
+| Python (PyQt5) | Operator interface with EICAS display, fault injection and 3D viewer |
 | Three.js (r128) | 3D engine schematic and landing simulation via WebGL |
 | FluidSim | Pneumatic circuit design and simulation (retained as design blueprint) |
 | WinCC (KTP700) | HMI operator interface for physical station scenario control |
