@@ -4,7 +4,7 @@ description: "The project risk assessment has been updated with five new physica
 date: 2026-04-01
 categories: [Project]
 tags: [risk-assessment, pneumatics, festo, safety, physical-prototype]
-pin: true
+pin: false
 image:
   path: /assets/img/Risk Assessment Steps.png
   alt: Risk assessment process showing hazard identification and control measures
