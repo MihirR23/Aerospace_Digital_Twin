@@ -577,7 +577,7 @@ The 3D viewer loads the same Trent 900 GLB model exported from Siemens NX, prese
  
 **Date:** 10 March 2026
  
-**Decision:** Abandon the live FluidSim-to-TIA Portal connection via EzOPC and EasyPort, and retain the FluidSim pneumatic circuit as a design blueprint only, with the physical S7-1200 controlled exclusively via TIA Portal SCL over PROFINET.
+**Decision:** Abandon the live FluidSim-to-TIA Portal connection via EzOPC and EasyPort and retain the FluidSim pneumatic circuit as a design blueprint only, with the physical S7-1200 controlled exclusively via TIA Portal SCL over PROFINET.
  
 **Context:** The original physical station integration plan, documented in the session handover of 03 March 2026, specified a four-stage connection architecture: FluidSim pneumatic circuit → EzOPC → EasyPort → Physical S7-1200 PLC. This approach would have allowed the FluidSim simulation to run in parallel with the physical station, with PLC outputs driving both the virtual FluidSim components and the physical solenoid valves simultaneously. The FluidSim circuit was designed and verified in simulation, comprising a dual-engine deployment system with a 4-slice solenoid valve manifold, two double-acting cylinders, six proximity sensors and four pressure switches.
  
