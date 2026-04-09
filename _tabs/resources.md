@@ -1,7 +1,7 @@
 ---
 title: Resources
 icon: fas fa-folder-open
-order: 7
+order: 8
 ---
 
 A collection of resources used throughout this project.
