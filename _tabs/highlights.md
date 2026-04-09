@@ -108,7 +108,7 @@ Behind every chart, every line of SCL, and every fault scenario on this blog, th
 <div class="hl-grid">
 
 <div class="hl-card">
-<p>Engineering projects get remembered for the final numbers, but the moments that actually carried me through were the ones nobody grades. A lot of people played a part in shaping this year, from lecturers and technicians to friends on my course who shared a lab with me. But Mehnaz, Raphael and Myu were the ones who were there through all of it, consistently, from the earliest weeks to the final day. Without any one of them, the whole thing would have looked completely different.</p>
+<p>Engineering projects get remembered for the final numbers but the moments that actually carried me through were the ones nobody grades. A lot of people played a part in shaping this year, from lecturers and technicians to friends on my course who shared a lab with me. But Mehnaz, Raphael and Myu were the ones who were there through all of it, consistently, from the earliest weeks to the final day. Without any one of them, the whole thing would have looked completely different.</p>
 
 <p>It was not about what they did or did not do. It was the fact that they were there, consistently, through every version of this project and every version of me working on it. The good weeks and the hard ones. The breakthroughs and the dead ends. They were the constant in all of it.</p>
 
@@ -136,88 +136,4 @@ Behind every chart, every line of SCL, and every fault scenario on this blog, th
 Keep going. There is a light at the end of the tunnel and it is brighter than you think.
 </div>
 
-<script>
-(function() {
-  var heart = confetti.shapeFromPath({
-    path: 'M167 72c19,-38 37,-56 75,-56 42,0 76,33 76,75 0,76 -76,151 -151,227 -76,-76 -151,-151 -151,-227 0,-42 33,-75 75,-75 38,0 57,18 76,56z',
-    matrix: [0.03, 0, 0, 0.03, -5, -5]
-  });
-
-  var star = confetti.shapeFromText({ text: '⭐', scalar: 4 });
-
-  var heartColors = ['#e63946', '#d00000', '#9d0208', '#dc2f02', '#e85d75'];
-  var confettiColors = ['#2a9d8f', '#264653', '#4361ee', '#7209b7', '#06ffa5', '#f72585'];
-
-  function fireBurst() {
-    var duration = 4000;
-    var animationEnd = Date.now() + duration;
-    var defaults = { startVelocity: 40, spread: 360, ticks: 100, zIndex: 9999 };
-
-    function randomInRange(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
-    var interval = setInterval(function() {
-      var timeLeft = animationEnd - Date.now();
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
-      }
-      var particleCount = 40 * (timeLeft / duration);
-
-      // Regular confetti
-      confetti(Object.assign({}, defaults, {
-        particleCount: particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        colors: confettiColors,
-        scalar: 1.8
-      }));
-      confetti(Object.assign({}, defaults, {
-        particleCount: particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        colors: confettiColors,
-        scalar: 1.8
-      }));
-
-      // Hearts
-      confetti(Object.assign({}, defaults, {
-        particleCount: Math.floor(particleCount / 2),
-        origin: { x: randomInRange(0.2, 0.4), y: Math.random() - 0.1 },
-        shapes: [heart],
-        colors: heartColors,
-        scalar: 3.5,
-        gravity: 0.6
-      }));
-      confetti(Object.assign({}, defaults, {
-        particleCount: Math.floor(particleCount / 2),
-        origin: { x: randomInRange(0.6, 0.8), y: Math.random() - 0.1 },
-        shapes: [heart],
-        colors: heartColors,
-        scalar: 3.5,
-        gravity: 0.6
-      }));
-
-      // Stars
-      confetti(Object.assign({}, defaults, {
-        particleCount: Math.floor(particleCount / 2),
-        origin: { x: randomInRange(0.3, 0.5), y: Math.random() - 0.15 },
-        shapes: [star],
-        scalar: 4,
-        gravity: 0.6
-      }));
-      confetti(Object.assign({}, defaults, {
-        particleCount: Math.floor(particleCount / 2),
-        origin: { x: randomInRange(0.5, 0.7), y: Math.random() - 0.15 },
-        shapes: [star],
-        scalar: 4,
-        gravity: 0.6
-      }));
-    }, 250);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fireBurst);
-  } else {
-    fireBurst();
-  }
-})();
-</script>
+<script src="{{ '/assets/js/highlights.js' | relative_url }}"></script>
