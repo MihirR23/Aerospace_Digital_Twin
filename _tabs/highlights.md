@@ -102,13 +102,13 @@ order: 7
 </div>
 
 <div class="hl-intro">
-Behind every chart, every line of SCL, and every fault scenario on this blog, there are people. People who made the long days feel shorter, the broken builds feel smaller, and the finish line feel closer. This page is for the moments that never made it into a technical post but carried the project just as much as the code did.
+Behind every chart, every line of SCL, and every fault scenario on this blog, there are people. People who made the long days feel shorter, the broken builds feel smaller and the finish line feel closer. This page is for the moments that never made it into a technical post but carried the project just as much as the code did.
 </div>
 
 <div class="hl-grid">
 
 <div class="hl-card">
-<p>Engineering projects get remembered for the final numbers, but the moments that actually carried me through were the ones nobody grades. A lot of people played a part in shaping this year, from lecturers and technicians to friends on my course who shared a lab with me. But Mehnaz, Raphael and Myu were the ones who were there through all of it, consistently, from the earliest weeks to the final day. Without any one of them, the whole thing would have looked completely different.</p>
+<p>Engineering projects get remembered for the final numbers but the moments that actually carried me through were the ones nobody grades. A lot of people played a part in shaping this year, from lecturers and technicians to friends on my course who shared a lab with me. But Mehnaz, Raphael, and Myu were the ones who were there through all of it, consistently, from the earliest weeks to the final day. Without any one of them, the whole thing would have looked completely different.</p>
 
 <p>It was not about what they did or did not do. It was the fact that they were there, consistently, through every version of this project and every version of me working on it. The good weeks and the hard ones. The breakthroughs and the dead ends. They were the constant in all of it.</p>
 
@@ -144,8 +144,8 @@ Keep going. There is a light at the end of the tunnel and it is brighter than yo
   });
 
   var star = confetti.shapeFromPath({
-    path: 'M256 0l70 180 190 10-150 120 55 190-165-105-165 105 55-190-150-120 190-10z',
-    matrix: [0.04, 0, 0, 0.04, -10, -10]
+    path: 'M50 0 L61 38 L98 38 L68 60 L79 98 L50 76 L21 98 L32 60 L2 38 L39 38 Z',
+    matrix: [0.15, 0, 0, 0.15, -7.5, -7.5]
   });
 
   var heartColors = ['#e63946', '#d00000', '#9d0208', '#dc2f02', '#e85d75'];
@@ -168,19 +168,19 @@ Keep going. There is a light at the end of the tunnel and it is brighter than yo
       }
       var particleCount = 35 * (timeLeft / duration);
 
-      // Regular confetti (circles/squares) - cool colours to contrast with hearts and stars
+      // Regular confetti (circles/squares) - cool colours
       confetti(Object.assign({}, defaults, {
         particleCount: particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
         colors: confettiColors,
-        scalar: 1.4,
+        scalar: 1.6,
         gravity: 0.8
       }));
       confetti(Object.assign({}, defaults, {
         particleCount: particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
         colors: confettiColors,
-        scalar: 1.4,
+        scalar: 1.6,
         gravity: 0.8
       }));
 
@@ -204,7 +204,7 @@ Keep going. There is a light at the end of the tunnel and it is brighter than yo
         drift: -0.5
       }));
 
-      // Stars - gold/yellow family, large
+      // Stars - gold family, large
       confetti(Object.assign({}, defaults, {
         particleCount: Math.floor(particleCount / 2),
         origin: { x: randomInRange(0.3, 0.5), y: Math.random() - 0.15 },
