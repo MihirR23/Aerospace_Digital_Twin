@@ -102,7 +102,7 @@ order: 7
 </div>
 
 <div class="hl-intro">
-Behind every chart, every line of SCL, and every fault scenario on this blog, there are people. People who made the long days feel shorter, the broken builds feel smaller and the finish line feel closer. This page is for the moments that never made it into a technical post but carried the project just as much as the code did.
+Behind every chart, every line of SCL, and every fault scenario on this blog, there are people. People who made the long days feel shorter, the broken builds feel smaller, and the finish line feel closer. This page is for the moments that never made it into a technical post but carried the project just as much as the code did.
 </div>
 
 <div class="hl-grid">
@@ -133,23 +133,29 @@ Behind every chart, every line of SCL, and every fault scenario on this blog, th
 </div>
 
 <div class="hl-closing-line">
-Keep going. There is a light at the end of the tunnel, and it is brighter than you think.
+Keep going. There is a light at the end of the tunnel and it is brighter than you think.
 </div>
 
 <script>
 (function() {
   var heart = confetti.shapeFromPath({
     path: 'M167 72c19,-38 37,-56 75,-56 42,0 76,33 76,75 0,76 -76,151 -151,227 -76,-76 -151,-151 -151,-227 0,-42 33,-75 75,-75 38,0 57,18 76,56z',
-    matrix: [0.03, 0, 0, 0.03, -5, -5]
+    matrix: [0.04, 0, 0, 0.04, -7, -7]
+  });
+
+  var star = confetti.shapeFromPath({
+    path: 'M256 0l70 180 190 10-150 120 55 190-165-105-165 105 55-190-150-120 190-10z',
+    matrix: [0.04, 0, 0, 0.04, -10, -10]
   });
 
   var heartColors = ['#e63946', '#d00000', '#9d0208', '#dc2f02', '#e85d75'];
-  var confettiColors = ['#e63946', '#f77f00', '#fcbf49', '#2a9d8f', '#e9c46a', '#264653'];
+  var starColors = ['#ffd60a', '#ffc300', '#ffb700', '#fca311', '#f77f00'];
+  var confettiColors = ['#2a9d8f', '#264653', '#4361ee', '#7209b7', '#06ffa5'];
 
   function fireBurst() {
-    var duration = 3500;
+    var duration = 4000;
     var animationEnd = Date.now() + duration;
-    var defaults = { startVelocity: 35, spread: 360, ticks: 80, zIndex: 9999 };
+    var defaults = { startVelocity: 45, spread: 360, ticks: 120, zIndex: 9999 };
 
     function randomInRange(min, max) {
       return Math.random() * (max - min) + min;
@@ -160,34 +166,62 @@ Keep going. There is a light at the end of the tunnel, and it is brighter than y
       if (timeLeft <= 0) {
         return clearInterval(interval);
       }
-      var particleCount = 40 * (timeLeft / duration);
+      var particleCount = 35 * (timeLeft / duration);
 
+      // Regular confetti (circles/squares) - cool colours to contrast with hearts and stars
       confetti(Object.assign({}, defaults, {
         particleCount: particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        colors: confettiColors
+        colors: confettiColors,
+        scalar: 1.4,
+        gravity: 0.8
       }));
       confetti(Object.assign({}, defaults, {
         particleCount: particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        colors: confettiColors
+        colors: confettiColors,
+        scalar: 1.4,
+        gravity: 0.8
       }));
 
+      // Hearts - red family, large
       confetti(Object.assign({}, defaults, {
         particleCount: Math.floor(particleCount / 2),
         origin: { x: randomInRange(0.2, 0.4), y: Math.random() - 0.1 },
         shapes: [heart],
         colors: heartColors,
-        scalar: 2,
-        gravity: 0.6
+        scalar: 3.5,
+        gravity: 0.5,
+        drift: 0.5
       }));
       confetti(Object.assign({}, defaults, {
         particleCount: Math.floor(particleCount / 2),
         origin: { x: randomInRange(0.6, 0.8), y: Math.random() - 0.1 },
         shapes: [heart],
         colors: heartColors,
-        scalar: 2,
-        gravity: 0.6
+        scalar: 3.5,
+        gravity: 0.5,
+        drift: -0.5
+      }));
+
+      // Stars - gold/yellow family, large
+      confetti(Object.assign({}, defaults, {
+        particleCount: Math.floor(particleCount / 2),
+        origin: { x: randomInRange(0.3, 0.5), y: Math.random() - 0.15 },
+        shapes: [star],
+        colors: starColors,
+        scalar: 3.5,
+        gravity: 0.5,
+        drift: -0.3
+      }));
+      confetti(Object.assign({}, defaults, {
+        particleCount: Math.floor(particleCount / 2),
+        origin: { x: randomInRange(0.5, 0.7), y: Math.random() - 0.15 },
+        shapes: [star],
+        colors: starColors,
+        scalar: 3.5,
+        gravity: 0.5,
+        drift: 0.3
       }));
     }, 250);
   }
