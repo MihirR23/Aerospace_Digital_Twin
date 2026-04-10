@@ -3,15 +3,18 @@ layout: home
 ---
 
 <style>
-article:has(a[href*="the-final-demonstration"]),
-.card:has(a[href*="the-final-demonstration"]) {
+a.post-preview[href*="the-final-demonstration"] {
   border-radius: 16px !important;
   border: 5px solid transparent !important;
-  background: linear-gradient(#1e1e1e, #1e1e1e) padding-box,
+  background: linear-gradient(var(--card-bg, #1e1e1e), var(--card-bg, #1e1e1e)) padding-box,
               linear-gradient(135deg, #ffd700 0%, #ffb700 25%, #ff8c00 50%, #ffb700 75%, #ffd700 100%) border-box !important;
   box-shadow: 0 0 25px rgba(255, 183, 0, 0.5), 0 0 50px rgba(255, 140, 0, 0.3) !important;
   animation: cardGlow 3s ease-in-out infinite !important;
   overflow: hidden !important;
+}
+
+a.post-preview[href*="the-final-demonstration"] .preview-img img {
+  border-radius: 0 !important;
 }
 
 @keyframes cardGlow {
