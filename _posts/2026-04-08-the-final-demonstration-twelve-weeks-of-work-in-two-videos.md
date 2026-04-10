@@ -205,22 +205,22 @@ The second video is the one I genuinely did not expect to be making back in Janu
 
 {% include embed/youtube.html id='GxhCI4f9m3M' title='Final Demonstration Part Two: Physical Station' %}
 
-The station runs all seven fault scenarios: Normal Deployment, Delayed Deployment, Incomplete Deployment, Asymmetric Speed, Stall Deployment, Oscillating Deployment and Combined Fault. Each one is driven by a dedicated SCL function block on the S7-1200 PLC, selected through the PyQt5 HMI and demonstrated with real actuators moving in real time. Watching the piloted check valves lock the actuators at mid-stroke for Incomplete Deployment or seeing Engine 1 oscillate back and forth while Engine 2 deploys cleanly, turned the abstract fault classes into something tangible. The station rebuild from V1 cylinders to V2 rotary actuators, documented in TD-019, was worth every minute.
+The station runs all seven fault scenarios: Normal Deployment, Delayed Deployment, Incomplete Deployment, Asymmetric Speed, Stall Deployment, Oscillating Deployment and Combined Fault. Each one is driven by a dedicated SCL function block on the S7-1200 PLC, selected through the WinCC HMI on the KTP700 touchscreen and demonstrated with real actuators moving in real time. Watching the piloted check valves lock the actuators at mid-stroke for Incomplete Deployment or seeing Engine 1 oscillate back and forth while Engine 2 deploys cleanly, turned the abstract fault classes into something tangible. The station rebuild from V1 cylinders to V2 rotary actuators, documented in TD-019, was worth every minute.
 
 ## V1 to V2: How the Station Evolved
 
 <div class="before-after">
   <figure>
-    <img src="/assets/img/Iteration 1: Operational Pneumatic Station and HMI.jpeg" alt="V1 station with double-acting cylinders">
+    <img src="/assets/img/Iteration 1 - Operational Pneumatic Station and HMI.jpeg" alt="V1 station with double-acting cylinders">
     <figcaption>Iteration 1: V1 with double-acting cylinders, four fault scenarios</figcaption>
   </figure>
   <figure>
-    <img src="/assets/img/Modifying The Pneumatic Station.jpeg" alt="V2 station with rotary actuators">
+    <img src="/assets/img/Modifying The Pneumatic Station.jpg" alt="V2 station with rotary actuators">
     <figcaption>Iteration 2: V2 with rotary actuators, seven fault scenarios</figcaption>
   </figure>
 </div>
 
-V1 had two double-acting cylinders, two endpoint sensors per actuator and a 4-slice solenoid manifold. It demonstrated four scenarios reliably but could not lock the actuators at mid-stroke. V2 replaced everything with rotary actuators, three magnetic sensors per engine, and Festo HGL piloted check valves. The check valves were the unlock: they hold the actuator wherever it is when air is cut, making Incomplete Deployment, Stall Deployment, and Oscillating Deployment all physically demonstrable for the first time.
+V1 had two double-acting cylinders, two endpoint sensors per actuator, and a 4-slice solenoid manifold. It demonstrated four scenarios reliably (Normal Deployment, Delayed Deployment, Asymmetric Speed and Incomplete Deployment) but could not lock the actuators at mid-stroke. V2 replaced everything with rotary actuators, three magnetic sensors per engine and Festo HGL piloted check valves. The check valves were the unlock: they hold the actuator wherever it is when air is cut, making Stall Deployment, Oscillating Deployment and Combined Fault all physically demonstrable for the first time.
 
 ## The Story in Links
 
@@ -229,8 +229,7 @@ If you want to follow the most interesting threads of this project backwards, th
 <div class="journey-links">
   <h3>Turning Points</h3>
   <ul>
-    <li><a href="{{ '/posts/from-91-to-99-the-xgboost-pivot/' | relative_url }}">From 91% to 99%: The XGBoost Pivot</a></li>
-    <li><a href="{{ '/posts/the-velocity-masking-bug-that-hid-for-weeks/' | relative_url }}">The Velocity Masking Bug That Hid for Weeks</a></li>
+    <li><a href="{{ '/posts/breaking-barriers/' | relative_url }}">Breaking Barriers: The XGBoost Pivot and the Velocity Masking Bug</a></li>
     <li><a href="{{ '/posts/physical-station-integration-s7-1200-rejected/' | relative_url }}">Physical Station Integration: Why the S7-1200 Rejected Everything</a></li>
     <li><a href="{{ '/posts/pneumatic-station-v2-seven-fault-scenarios/' | relative_url }}">Pneumatic Station V2: Seven Fault Scenarios on the Festo EduTrainer</a></li>
     <li><a href="{{ '/posts/covering-all-bases-updated-risk-assessment/' | relative_url }}">Covering All Bases: The Updated Risk Assessment</a></li>
@@ -246,9 +245,9 @@ Twelve weeks of building something this complex teaches you things you cannot le
   <li><strong>The bug you cannot find is always upstream of where you are looking.</strong> The velocity masking bug was not in the classifier. It was not in the feature extraction. It was in a single-character indexing error from the data generation phase. I spent three days debugging the wrong half of the pipeline before realising the inputs themselves were wrong. Always check the data before you blame the model.</li>
   <li><strong>The best fix is sometimes a complete teardown.</strong> The V1 pneumatic station worked. Four fault scenarios ran reliably. I could have stopped there. Tearing it all down to rebuild with rotary actuators and piloted check valves felt reckless at the time. It turned out to be the decision that made the physical demonstration genuinely impressive instead of merely functional.</li>
   <li><strong>Document the decisions, not just the outcomes.</strong> The 19 technical decision documents are not for me. They are for the next person who reads this blog and wonders why I chose XGBoost over a neural network or why the operator interface uses PyQt5 instead of WinCC. Outcomes get remembered. The reasoning behind them gets lost unless you write it down.</li>
-  <li><strong>Hardware will humble your software assumptions.</strong> The S7-1200 PUT/GET protocol restriction did not appear in any documentation I read before attempting integration. The flow restrictors had to be tuned by ear. The magnetic sensors needed millimetre-precise alignment. Every assumption I had about hardware "just working" was wrong, and every one of those wrong assumptions made me a better engineer.</li>
+  <li><strong>Hardware will humble your software assumptions.</strong> The S7-1200 PUT/GET protocol restriction did not appear in any documentation I read before attempting integration. The flow restrictors had to be tuned by ear. The magnetic sensors needed millimetre-precise alignment. Every assumption I had about hardware "just working" was wrong and every one of those wrong assumptions made me a better engineer.</li>
   <li><strong>Ask for help before you are drowning.</strong> The Python conversations with Oluwatunmise, the equipment loan from Mehmet, the steady guidance from Mehnaz. None of those happened because I knew exactly what I needed. They happened because I admitted I did not. The people around you want to help. Let them.</li>
-  <li><strong>The deadline is a feature, not a bug.</strong> A finite timeline forced me to ship a working system instead of endlessly refining one that was already good enough. I will keep this with me forever: done is better than perfect, and shipped is better than both.</li>
+  <li><strong>The deadline is a feature, not a bug.</strong> A finite timeline forced me to ship a working system instead of endlessly refining one that was already good enough. I will keep this with me forever: done is better than perfect and shipped is better than both.</li>
 </ol>
 
 ## Looking Back
@@ -263,11 +262,11 @@ Most of all, I have learned that the hardest parts of a project are where the re
 
 There is no version of this project that exists without the people who stood beside me throughout it. None.
 
-To **Mehnaz Hamilton**, my submission advisor: thank you for believing in this project from the moment it was nothing more than a vague idea and for never letting me settle for the easy version of it. You saw what this could become long before I did, and every meeting we had pushed me further than I thought I could go. Suggesting the physical implementation when I was ready to wind down was the moment this project went from good to something I am genuinely proud of. I cannot thank you enough.
+To **Mehnaz Hamilton**, my submission advisor: thank you for believing in this project from the moment it was nothing more than a vague idea and for never letting me settle for the easy version of it. You saw what this could become long before I did and every meeting we had pushed me further than I thought I could go. Suggesting the physical implementation when I was ready to wind down was the moment this project went from good to something I am genuinely proud of. I cannot thank you enough.
 
 To **Mehmet Karamanoglu**: thank you for trusting me with the WorldSkills equipment and for taking the time to teach me how every piece of it worked. Your generosity and patience turned what would have been a software-only demonstration into a real, working physical system. Watching the rotary actuators move on the bench for the first time would never have happened without you.
 
-To **Oluwatunmise Shuaibu**: thank you for being the friend I could turn to when nothing was working and I did not know what to do next. The Python help saved me hours but the late-night conversations, the encouragement and the reminders that I was capable of finishing this saved me from much worse. You were there in the moments that mattered most, and I will never forget that.
+To **Oluwatunmise Shuaibu**: thank you for being the friend I could turn to when nothing was working and I did not know what to do next. The Python help saved me hours, but the late-night conversations, the encouragement and the reminders that I was capable of finishing this saved me from much worse. You were there in the moments that mattered most and I will never forget that.
 
 And to everyone who followed along through this blog, who left a comment, who asked how it was going, who quietly cheered me on from a distance: thank you. You have no idea how much it meant to know that people were watching this come together.
 
