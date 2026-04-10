@@ -4,7 +4,7 @@ description: "The FluidSim pneumatic schematic has been redrawn to match the phy
 date: 2026-04-05
 categories: [Development]
 tags: [fluidsim, pneumatics, festo, schematic, rotary-actuator, documentation]
-pin: true
+pin: false
 image:
   path: /assets/img/Modified FluidSim Schematic with Rotary Actuators.png
   alt: Updated FluidSim schematic showing V2 pneumatic circuit with semi-rotary actuators and piloted check valves
