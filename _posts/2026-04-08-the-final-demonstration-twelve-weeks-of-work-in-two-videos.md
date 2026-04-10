@@ -96,6 +96,18 @@ image:
   text-align: center;
 }
 
+.iteration-label {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
 .before-after img {
   width: 100%;
   border-radius: 12px;
@@ -201,7 +213,7 @@ What you will not see in the video is the journey it took to get here. The origi
 
 ## Part Two: The Physical Station
 
-The second video is the one I genuinely did not expect to be making back in January. After finishing the AI model ahead of schedule, my submission advisor Mehnaz Hamilton suggested taking the project physical. A few weeks later, thanks to Mehmet Karamanoglu loaning WorldSkills pneumatic equipment, I had two rotary actuators, six magnetic sensors, four piloted check valves and a working Festo EduTrainer station on my bench.
+The second video is the one I genuinely did not expect to be making back in January. After finishing the AI model ahead of schedule, my submission advisor Mehnaz Hamilton suggested taking the project physical. A few weeks later, thanks to Mehmet Karamanoglu loaning WorldSkills pneumatic equipment, I had two rotary actuators, six magnetic sensors, four HGL piloted check valves and a working Festo EduTrainer station on my bench.
 
 {% include embed/youtube.html id='GxhCI4f9m3M' title='Final Demonstration Part Two: Physical Station' %}
 
@@ -211,12 +223,14 @@ The station runs all seven fault scenarios: Normal Deployment, Delayed Deploymen
 
 <div class="before-after">
   <figure>
-    <img src="/assets/img/Iteration 1 - Operational Pneumatic Station and HMI.jpeg" alt="V1 station with double-acting cylinders">
-    <figcaption>Iteration 1: V1 with double-acting cylinders, four fault scenarios</figcaption>
+    <h4 class="iteration-label">Iteration 1</h4>
+    <img src="/assets/img/Operational Pneumatic Station and HMI.jpeg" alt="V1 station with double-acting cylinders">
+    <figcaption>V1 with double-acting cylinders, four fault scenarios</figcaption>
   </figure>
   <figure>
+    <h4 class="iteration-label">Iteration 2</h4>
     <img src="/assets/img/Modifying The Pneumatic Station.jpg" alt="V2 station with rotary actuators">
-    <figcaption>Iteration 2: V2 with rotary actuators, seven fault scenarios</figcaption>
+    <figcaption>V2 with rotary actuators, seven fault scenarios</figcaption>
   </figure>
 </div>
 
@@ -262,15 +276,15 @@ Most of all, I have learned that the hardest parts of a project are where the re
 
 There is no version of this project that exists without the people who stood beside me throughout it. None.
 
-To **Mehnaz Hamilton**, my submission advisor: thank you for believing in this project from the moment it was nothing more than a vague idea and for never letting me settle for the easy version of it. You saw what this could become long before I did and every meeting we had pushed me further than I thought I could go. Suggesting the physical implementation when I was ready to wind down was the moment this project went from good to something I am genuinely proud of. I cannot thank you enough.
+To **Mehnaz Hamilton**, my submission advisor: thank you for believing in this project from the moment it was nothing more than a vague idea, and for never letting me settle for the easy version of it. You saw what this could become long before I did and every meeting we had pushed me further than I thought I could go. Suggesting the physical implementation when I was ready to wind down was the moment this project went from good to something I am genuinely proud of. I cannot thank you enough.
 
 To **Mehmet Karamanoglu**: thank you for trusting me with the WorldSkills equipment and for taking the time to teach me how every piece of it worked. Your generosity and patience turned what would have been a software-only demonstration into a real, working physical system. Watching the rotary actuators move on the bench for the first time would never have happened without you.
 
-To **Oluwatunmise Shuaibu**: thank you for being the friend I could turn to when nothing was working and I did not know what to do next. The Python help saved me hours, but the late-night conversations, the encouragement and the reminders that I was capable of finishing this saved me from much worse. You were there in the moments that mattered most and I will never forget that.
+To **Oluwatunmise Shuaibu**: thank you for being the friend I could turn to when nothing was working and I did not know what to do next. The Python help saved me hours but the late-night conversations, the encouragement and the reminders that I was capable of finishing this saved me from much worse. You were there in the moments that mattered most and I will never forget that.
 
 And to everyone who followed along through this blog, who left a comment, who asked how it was going, who quietly cheered me on from a distance: thank you. You have no idea how much it meant to know that people were watching this come together.
 
-The next milestone is not a deadline. It is walking across that graduation stage in a few months, knowing I gave this everything I had and knowing I did not walk this road alone. Today, I am just letting myself be proud of what we built together. Twelve weeks ago this was an idea on a page. Today it is real and it is mine to be proud of.
+The next milestone is not a deadline. It is walking across that graduation stage in a few months, knowing I gave this everything I had, and knowing I did not walk this road alone. Today, I am just letting myself be proud of what we built together. Twelve weeks ago this was an idea on a page. Today it is real and it is mine to be proud of.
 
 This is what I came to Middlesex to do.
 
