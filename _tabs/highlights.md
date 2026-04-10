@@ -54,8 +54,12 @@ order: 7
 }
 
 .hl-card p {
-  margin: 0;
+  margin: 0 0 1.25rem 0;
   line-height: 1.75;
+}
+
+.hl-card p:last-child {
+  margin-bottom: 0;
 }
 
 .hl-divider {
@@ -102,7 +106,7 @@ order: 7
 </div>
 
 <div class="hl-intro">
-Behind every chart, every line of SCL and every fault scenario on this blog, there are people. People who made the long days feel shorter, the broken builds feel smaller and the finish line feel closer. This page is for the moments that never made it into a technical post but carried the project just as much as the code did.
+Behind every chart, every line of SCL, and every fault scenario on this blog, there are people. People who made the long days feel shorter, the broken builds feel smaller, and the finish line feel closer. This page is for the moments that never made it into a technical post but carried the project just as much as the code did.
 </div>
 
 <div class="hl-grid">
@@ -110,9 +114,7 @@ Behind every chart, every line of SCL and every fault scenario on this blog, the
 <div class="hl-card">
 <p>Engineering projects get remembered for the final numbers but the moments that actually carried me through were the ones nobody grades. A lot of people played a part in shaping this year, from lecturers and technicians to friends on my course who shared a lab with me. But Mehnaz, Raphael and Myu were the ones who were there through all of it, consistently, from the earliest weeks to the final day. Without any one of them, the whole thing would have looked completely different.</p>
 
-
 <p>It was not about what they did or did not do. It was the fact that they were there, consistently, through every version of this project and every version of me working on it. The good weeks and the hard ones. The breakthroughs and the dead ends. They were the constant in all of it.</p>
-
 
 <p>The shared moments, the inside jokes, the laughs that came out of nowhere in the middle of a lab session, the group chats that went off at strange hours for no particular reason. Those are the parts of this year I will actually remember. Long after the technical report is filed away and the final grade is signed off, these are the memories that will stay with me. This project was never just something I did. It was something we all lived through together and I would not trade a single day of it.</p>
 
