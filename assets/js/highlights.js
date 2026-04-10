@@ -15,7 +15,7 @@
   var confettiColors = ['#2a9d8f', '#264653', '#4361ee', '#7209b7', '#06ffa5', '#f72585'];
 
   function fireBurst() {
-    var duration = 4000;
+    var duration = 5000;
     var animationEnd = Date.now() + duration;
     var defaults = { startVelocity: 40, spread: 360, ticks: 100, zIndex: 9999 };
 
