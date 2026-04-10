@@ -57,7 +57,8 @@ image:
   padding: 2rem;
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 140, 0, 0.08));
   border-radius: 16px;
-  border: 2px solid rgba(255, 183, 0, 0.3);
+  border: 3px solid #ffd700;
+  box-shadow: 0 0 20px rgba(255, 183, 0, 0.4);
 }
 
 .stat-card {
@@ -234,7 +235,7 @@ The station runs all seven fault scenarios: Normal Deployment, Delayed Deploymen
   </figure>
 </div>
 
-V1 had two double-acting cylinders, two endpoint sensors per actuator, and a 4-slice solenoid manifold. It demonstrated four scenarios reliably (Normal Deployment, Delayed Deployment, Asymmetric Speed and Incomplete Deployment) but could not lock the actuators at mid-stroke. V2 replaced everything with rotary actuators, three magnetic sensors per engine and Festo HGL piloted check valves. The check valves were the unlock: they hold the actuator wherever it is when air is cut, making Stall Deployment, Oscillating Deployment and Combined Fault all physically demonstrable for the first time.
+V1 had two double-acting cylinders, two endpoint sensors per actuator and a 4-slice solenoid manifold. It demonstrated four scenarios reliably (Normal Deployment, Delayed Deployment, Asymmetric Speed and Incomplete Deployment) but could not lock the actuators at mid-stroke. V2 replaced everything with rotary actuators, three magnetic sensors per engine and Festo HGL piloted check valves. The check valves were the unlock: they hold the actuator wherever it is when air is cut, making Stall Deployment, Oscillating Deployment and Combined Fault all physically demonstrable for the first time.
 
 ## The Story in Links
 
@@ -258,7 +259,7 @@ Twelve weeks of building something this complex teaches you things you cannot le
 <ol class="lessons-list">
   <li><strong>The bug you cannot find is always upstream of where you are looking.</strong> The velocity masking bug was not in the classifier. It was not in the feature extraction. It was in a single-character indexing error from the data generation phase. I spent three days debugging the wrong half of the pipeline before realising the inputs themselves were wrong. Always check the data before you blame the model.</li>
   <li><strong>The best fix is sometimes a complete teardown.</strong> The V1 pneumatic station worked. Four fault scenarios ran reliably. I could have stopped there. Tearing it all down to rebuild with rotary actuators and piloted check valves felt reckless at the time. It turned out to be the decision that made the physical demonstration genuinely impressive instead of merely functional.</li>
-  <li><strong>Document the decisions, not just the outcomes.</strong> The 19 technical decision documents are not for me. They are for the next person who reads this blog and wonders why I chose XGBoost over a neural network or why the operator interface uses PyQt5 instead of WinCC. Outcomes get remembered. The reasoning behind them gets lost unless you write it down.</li>
+  <li><strong>Document the decisions, not just the outcomes.</strong> The 19 technical decision documents are not for me. They are for the next person who reads this blog and wonders why I chose XGBoost over a neural network, or why the operator interface uses PyQt5 instead of WinCC. Outcomes get remembered. The reasoning behind them gets lost unless you write it down.</li>
   <li><strong>Hardware will humble your software assumptions.</strong> The S7-1200 PUT/GET protocol restriction did not appear in any documentation I read before attempting integration. The flow restrictors had to be tuned by ear. The magnetic sensors needed millimetre-precise alignment. Every assumption I had about hardware "just working" was wrong and every one of those wrong assumptions made me a better engineer.</li>
   <li><strong>Ask for help before you are drowning.</strong> The Python conversations with Oluwatunmise, the equipment loan from Mehmet, the steady guidance from Mehnaz. None of those happened because I knew exactly what I needed. They happened because I admitted I did not. The people around you want to help. Let them.</li>
   <li><strong>The deadline is a feature, not a bug.</strong> A finite timeline forced me to ship a working system instead of endlessly refining one that was already good enough. I will keep this with me forever: done is better than perfect and shipped is better than both.</li>
@@ -268,7 +269,7 @@ Twelve weeks of building something this complex teaches you things you cannot le
 
 When I started this project in January, I had a rough idea of a digital twin, an AI classifier and a report. What I ended up with is a complete mechatronics system that spans mechanical CAD, physics simulation, PLC control, machine learning, real-time visualisation and a working physical demonstrator. The four pillars of the project, which I set out in my first blog post, all came together in the end.
 
-I have learned more in the last three months than in any other period of my degree. I have learned how to debug a classifier that insists it is right when it is wrong. I have learned that the S7-1200 communication stack will happily reject your read request for reasons that take days to uncover. I have learned that flow restrictors matter, that piloted check valves are magical and that sometimes the best solution is to tear down the station and rebuild it from scratch.
+I have learned more in the last three months than in any other period of my degree. I have learned how to debug a classifier that insists it is right when it is wrong. I have learned that the S7-1200 communication stack will happily reject your read request for reasons that take days to uncover. I have learned that flow restrictors matter, that piloted check valves are magical, and that sometimes the best solution is to tear down the station and rebuild it from scratch.
 
 Most of all, I have learned that the hardest parts of a project are where the real learning happens. Every failed run, every rejected approach, every "why is this not working" moment pushed the project further than any smooth path would have.
 
@@ -284,7 +285,7 @@ To **Oluwatunmise Shuaibu**: thank you for being the friend I could turn to when
 
 And to everyone who followed along through this blog, who left a comment, who asked how it was going, who quietly cheered me on from a distance: thank you. You have no idea how much it meant to know that people were watching this come together.
 
-The next milestone is not a deadline. It is walking across that graduation stage in a few months, knowing I gave this everything I had, and knowing I did not walk this road alone. Today, I am just letting myself be proud of what we built together. Twelve weeks ago this was an idea on a page. Today it is real and it is mine to be proud of.
+The next milestone is not a deadline. It is walking across that graduation stage in a few months, knowing I gave this everything I had and knowing I did not walk this road alone. Today, I am just letting myself be proud of what we built together. Twelve weeks ago this was an idea on a page. Today it is real and it is mine to be proud of.
 
 This is what I came to Middlesex to do.
 
