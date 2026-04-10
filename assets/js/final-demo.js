@@ -4,72 +4,101 @@
     return;
   }
 
-  var medal = confetti.shapeFromText({ text: '\uD83C\uDFC5', scalar: 4 });
-  var trophy = confetti.shapeFromText({ text: '\uD83C\uDFC6', scalar: 4 });
-  var firework = confetti.shapeFromText({ text: '\uD83C\uDF86', scalar: 4 });
-  var sparkle = confetti.shapeFromText({ text: '\u2728', scalar: 3 });
+  var medal = confetti.shapeFromText({ text: '\uD83C\uDFC5', scalar: 5 });
+  var trophy = confetti.shapeFromText({ text: '\uD83C\uDFC6', scalar: 5 });
 
   var goldColors = ['#ffd700', '#ffb700', '#ff8c00', '#fca311', '#ffc300'];
+  var fireworkColors = ['#ff0844', '#ffd700', '#00d2ff', '#3a47d5', '#ff8c00', '#ffffff'];
 
-  function fireBurst() {
-    var duration = 5000;
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function fireworkBurst(originX, originY) {
+    var defaults = {
+      startVelocity: 30,
+      spread: 360,
+      ticks: 60,
+      zIndex: 9999,
+      shapes: ['circle'],
+      colors: fireworkColors
+    };
+
+    confetti(Object.assign({}, defaults, {
+      particleCount: 80,
+      origin: { x: originX, y: originY },
+      scalar: 1.5
+    }));
+    confetti(Object.assign({}, defaults, {
+      particleCount: 50,
+      origin: { x: originX, y: originY },
+      scalar: 2,
+      gravity: 0.5
+    }));
+  }
+
+  function fireFireworks() {
+    var bursts = [
+      { x: 0.2, y: 0.3, delay: 0 },
+      { x: 0.8, y: 0.3, delay: 300 },
+      { x: 0.5, y: 0.2, delay: 600 },
+      { x: 0.3, y: 0.4, delay: 900 },
+      { x: 0.7, y: 0.4, delay: 1200 },
+      { x: 0.5, y: 0.3, delay: 1500 }
+    ];
+
+    bursts.forEach(function(b) {
+      setTimeout(function() { fireworkBurst(b.x, b.y); }, b.delay);
+    });
+  }
+
+  function fireTrophiesAndMedals() {
+    var duration = 4000;
     var animationEnd = Date.now() + duration;
-    var defaults = { startVelocity: 45, spread: 360, ticks: 120, zIndex: 9999 };
-
-    function randomInRange(min, max) {
-      return Math.random() * (max - min) + min;
-    }
+    var defaults = { startVelocity: 40, spread: 360, ticks: 150, zIndex: 9999 };
 
     var interval = setInterval(function() {
       var timeLeft = animationEnd - Date.now();
       if (timeLeft <= 0) {
         return clearInterval(interval);
       }
-      var particleCount = 35 * (timeLeft / duration);
+      var particleCount = 30 * (timeLeft / duration);
 
       confetti(Object.assign({}, defaults, {
         particleCount: particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
         colors: goldColors,
-        scalar: 2
+        scalar: 2,
+        gravity: 0.7
       }));
       confetti(Object.assign({}, defaults, {
         particleCount: particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
         colors: goldColors,
-        scalar: 2
+        scalar: 2,
+        gravity: 0.7
       }));
 
       confetti(Object.assign({}, defaults, {
-        particleCount: Math.floor(particleCount / 2),
-        origin: { x: randomInRange(0.2, 0.4), y: Math.random() - 0.1 },
-        shapes: [medal],
-        scalar: 4,
-        gravity: 0.6
-      }));
-      confetti(Object.assign({}, defaults, {
-        particleCount: Math.floor(particleCount / 2),
-        origin: { x: randomInRange(0.6, 0.8), y: Math.random() - 0.1 },
+        particleCount: Math.floor(particleCount / 1.5),
+        origin: { x: randomInRange(0.2, 0.5), y: Math.random() - 0.1 },
         shapes: [trophy],
-        scalar: 4,
-        gravity: 0.6
-      }));
-
-      confetti(Object.assign({}, defaults, {
-        particleCount: Math.floor(particleCount / 2),
-        origin: { x: randomInRange(0.3, 0.5), y: Math.random() - 0.15 },
-        shapes: [firework],
-        scalar: 4,
-        gravity: 0.55
+        scalar: 5,
+        gravity: 0.5
       }));
       confetti(Object.assign({}, defaults, {
-        particleCount: Math.floor(particleCount / 2),
-        origin: { x: randomInRange(0.5, 0.7), y: Math.random() - 0.15 },
-        shapes: [sparkle],
-        scalar: 3,
+        particleCount: Math.floor(particleCount / 1.5),
+        origin: { x: randomInRange(0.5, 0.8), y: Math.random() - 0.1 },
+        shapes: [medal],
+        scalar: 5,
         gravity: 0.5
       }));
     }, 250);
+  }
+
+  function startCelebration() {
+    fireFireworks();
+    setTimeout(fireTrophiesAndMedals, 1800);
   }
 
   function animateCounter(el) {
@@ -126,7 +155,7 @@
   }
 
   function init() {
-    fireBurst();
+    startCelebration();
     setupCounters();
     setupReadingProgress();
   }
