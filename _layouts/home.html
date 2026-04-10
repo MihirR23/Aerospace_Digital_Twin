@@ -27,18 +27,31 @@ layout: default
 
 <style>
 a.post-preview[href*="the-final-demonstration"] {
-  border-radius: 16px !important;
-  border: 5px solid transparent !important;
-  background: linear-gradient(var(--card-bg, #1e1e1e), var(--card-bg, #1e1e1e)) padding-box,
-              linear-gradient(135deg, #ffd700 0%, #ffb700 25%, #ff8c00 50%, #ffb700 75%, #ffd700 100%) border-box !important;
-  box-shadow: 0 0 25px rgba(255, 183, 0, 0.5), 0 0 50px rgba(255, 140, 0, 0.3) !important;
-  animation: cardGlow 3s ease-in-out infinite !important;
+  position: relative;
+  border-radius: 14px !important;
   overflow: hidden !important;
+  box-shadow: 0 0 0 3px #ffd700,
+              0 0 20px rgba(255, 183, 0, 0.6),
+              0 0 40px rgba(255, 140, 0, 0.4) !important;
+  animation: cardGlow 4s ease-in-out infinite !important;
+  transition: transform 0.3s ease !important;
+}
+
+a.post-preview[href*="the-final-demonstration"]:hover {
+  transform: translateY(-2px) !important;
 }
 
 @keyframes cardGlow {
-  0%, 100% { box-shadow: 0 0 25px rgba(255, 183, 0, 0.5), 0 0 50px rgba(255, 140, 0, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(255, 183, 0, 0.8), 0 0 80px rgba(255, 140, 0, 0.5); }
+  0%, 100% {
+    box-shadow: 0 0 0 3px #ffd700,
+                0 0 20px rgba(255, 183, 0, 0.6),
+                0 0 40px rgba(255, 140, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 3px #ffb700,
+                0 0 35px rgba(255, 183, 0, 0.9),
+                0 0 70px rgba(255, 140, 0, 0.6);
+  }
 }
 </style>
 
