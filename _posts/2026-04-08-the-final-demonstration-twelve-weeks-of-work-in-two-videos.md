@@ -111,8 +111,8 @@ image:
 .before-after img {
   width: 100%;
   border-radius: 12px;
-  border: 3px solid rgba(255, 183, 0, 0.4);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 4px solid #ffd700;
+  box-shadow: 0 0 20px rgba(255, 183, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .before-after figcaption {
@@ -200,7 +200,7 @@ After twelve weeks of late nights, unexpected pivots and more debugging sessions
   <div class="stat-card"><span class="stat-number" data-target="65" data-suffix="">0</span><div class="stat-label">Features</div></div>
   <div class="stat-card"><span class="stat-number" data-target="19" data-suffix="">0</span><div class="stat-label">Technical Decisions</div></div>
   <div class="stat-card"><span class="stat-number" data-target="12" data-suffix="">0</span><div class="stat-label">Weeks</div></div>
-  <div class="stat-card"><span class="stat-number" data-target="43" data-suffix="">0</span><div class="stat-label">Blog Posts</div></div>
+  <div class="stat-card"><span class="stat-number" data-target="37" data-suffix="">0</span><div class="stat-label">Blog Posts</div></div>
 </div>
 
 ## Part One: The AI Pipeline
@@ -213,7 +213,7 @@ What you will not see in the video is the journey it took to get here. The origi
 
 ## Part Two: The Physical Station
 
-The second video is the one I genuinely did not expect to be making back in January. After finishing the AI model ahead of schedule, my submission advisor Mehnaz Hamilton suggested taking the project physical. A few weeks later, thanks to Mehmet Karamanoglu loaning WorldSkills pneumatic equipment, I had two rotary actuators, six magnetic sensors, four HGL piloted check valves and a working Festo EduTrainer station on my bench.
+The second video is the one I genuinely did not expect to be making back in January. After finishing the AI model ahead of schedule, my submission advisor Mehnaz Hamilton suggested taking the project physical. A few weeks later, thanks to Mehmet Karamanoglu loaning WorldSkills pneumatic equipment, I had two rotary actuators, six magnetic sensors, four piloted check valves and a working Festo EduTrainer station on my bench.
 
 {% include embed/youtube.html id='GxhCI4f9m3M' title='Final Demonstration Part Two: Physical Station' %}
 
@@ -276,11 +276,11 @@ Most of all, I have learned that the hardest parts of a project are where the re
 
 There is no version of this project that exists without the people who stood beside me throughout it. None.
 
-To **Mehnaz Hamilton**, my submission advisor: thank you for believing in this project from the moment it was nothing more than a vague idea, and for never letting me settle for the easy version of it. You saw what this could become long before I did and every meeting we had pushed me further than I thought I could go. Suggesting the physical implementation when I was ready to wind down was the moment this project went from good to something I am genuinely proud of. I cannot thank you enough.
+To **Mehnaz Hamilton**, my submission advisor: thank you for believing in this project from the moment it was nothing more than a vague idea and for never letting me settle for the easy version of it. You saw what this could become long before I did and every meeting we had pushed me further than I thought I could go. Suggesting the physical implementation when I was ready to wind down was the moment this project went from good to something I am genuinely proud of. I cannot thank you enough.
 
 To **Mehmet Karamanoglu**: thank you for trusting me with the WorldSkills equipment and for taking the time to teach me how every piece of it worked. Your generosity and patience turned what would have been a software-only demonstration into a real, working physical system. Watching the rotary actuators move on the bench for the first time would never have happened without you.
 
-To **Oluwatunmise Shuaibu**: thank you for being the friend I could turn to when nothing was working and I did not know what to do next. The Python help saved me hours but the late-night conversations, the encouragement and the reminders that I was capable of finishing this saved me from much worse. You were there in the moments that mattered most and I will never forget that.
+To **Oluwatunmise Shuaibu**: thank you for being the friend I could turn to when nothing was working and I did not know what to do next. The Python help saved me hours, but the late-night conversations, the encouragement and the reminders that I was capable of finishing this saved me from much worse. You were there in the moments that mattered most and I will never forget that.
 
 And to everyone who followed along through this blog, who left a comment, who asked how it was going, who quietly cheered me on from a distance: thank you. You have no idea how much it meant to know that people were watching this come together.
 
