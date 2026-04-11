@@ -62,14 +62,14 @@ After twelve weeks of late nights, unexpected pivots and more debugging sessions
 ## The Project in Numbers
 
 <div class="stats-grid">
-  <div class="stat-card"><span class="stat-number" data-target="99.8" data-suffix="%">0</span><div class="stat-label">Accuracy</div></div>
-  <div class="stat-card"><span class="stat-number" data-target="24.7" data-suffix="ms">0</span><div class="stat-label">Latency</div></div>
-  <div class="stat-card"><span class="stat-number" data-target="1400" data-suffix="">0</span><div class="stat-label">Scenarios</div></div>
-  <div class="stat-card"><span class="stat-number" data-target="7" data-suffix="">0</span><div class="stat-label">Fault Classes</div></div>
-  <div class="stat-card"><span class="stat-number" data-target="65" data-suffix="">0</span><div class="stat-label">Features</div></div>
-  <div class="stat-card"><span class="stat-number" data-target="19" data-suffix="">0</span><div class="stat-label">Technical Decisions</div></div>
-  <div class="stat-card"><span class="stat-number" data-target="12" data-suffix="">0</span><div class="stat-label">Weeks</div></div>
-  <div class="stat-card"><span class="stat-number" data-target="37" data-suffix="">0</span><div class="stat-label">Blog Posts</div></div>
+  <div class="stat-card"><span class="stat-number">99.8%</span><div class="stat-label">Accuracy</div></div>
+  <div class="stat-card"><span class="stat-number">24.7ms</span><div class="stat-label">Latency</div></div>
+  <div class="stat-card"><span class="stat-number">1400</span><div class="stat-label">Scenarios</div></div>
+  <div class="stat-card"><span class="stat-number">7</span><div class="stat-label">Fault Classes</div></div>
+  <div class="stat-card"><span class="stat-number">65</span><div class="stat-label">Features</div></div>
+  <div class="stat-card"><span class="stat-number">19</span><div class="stat-label">Technical Decisions</div></div>
+  <div class="stat-card"><span class="stat-number">12</span><div class="stat-label">Weeks</div></div>
+  <div class="stat-card"><span class="stat-number">37</span><div class="stat-label">Blog Posts</div></div>
 </div>
 
 ## Part One: The AI Pipeline
