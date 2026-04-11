@@ -28,22 +28,6 @@ image:
   50% { box-shadow: 0 0 45px rgba(255, 183, 0, 0.8), 0 0 90px rgba(255, 140, 0, 0.5); }
 }
 
-.project-complete-badge {
-  position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-  z-index: 10;
-  background: linear-gradient(135deg, #ffd700, #ff8c00);
-  color: #1a1a1a;
-  font-weight: 800;
-  font-size: 0.95rem;
-  padding: 0.6rem 1.1rem;
-  border-radius: 999px;
-  box-shadow: 0 4px 16px rgba(255, 140, 0, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.4) inset;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
 .reading-progress-bar { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 9998; pointer-events: none; }
 .reading-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700); box-shadow: 0 0 10px rgba(255, 183, 0, 0.6); transition: width 0.1s ease-out; }
 
@@ -70,11 +54,8 @@ image:
 @media (max-width: 600px) {
   .before-after { grid-template-columns: 1fr; }
   .stat-number { font-size: 2rem; }
-  .project-complete-badge { font-size: 0.8rem; padding: 0.45rem 0.85rem; top: 0.75rem; left: 0.75rem; }
 }
 </style>
-
-<div class="project-complete-badge">🏁 Project Complete</div>
 
 After twelve weeks of late nights, unexpected pivots and more debugging sessions than I can count, the final demonstration videos are complete. The Digital Twin-Enabled AI Fault Detection for Thrust Reversers project is ready to be shown and honestly, I could not be prouder of where it has ended up.
 
