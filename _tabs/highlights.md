@@ -8,36 +8,25 @@ order: 7
 .hl-hero {
   text-align: center;
   margin: 2rem 0 3rem 0;
-  position: relative;
-  isolation: isolate;
-}
-
-.hl-hero::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90%;
-  height: 90%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse at center, rgba(230, 57, 70, 0.45), rgba(230, 57, 70, 0) 65%);
-  filter: blur(50px);
-  z-index: 0;
-  pointer-events: none;
-  animation: heroPulse 4s ease-in-out infinite;
 }
 
 .hl-hero img {
   max-width: 100%;
   border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 1;
+  animation: heroPulse 6s ease-in-out infinite;
 }
 
 @keyframes heroPulse {
-  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.95); }
-  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
+  0%, 100% {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(230, 57, 70, 0.4),
+                0 0 60px rgba(230, 57, 70, 0.2);
+  }
+  50% {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2),
+                0 0 60px rgba(230, 57, 70, 0.9),
+                0 0 120px rgba(230, 57, 70, 0.5);
+  }
 }
 
 .hl-hero .caption {
