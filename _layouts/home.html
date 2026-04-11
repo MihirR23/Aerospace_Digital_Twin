@@ -10,7 +10,7 @@ layout: default
 (function() {
   var hour = new Date().getHours();
   var greeting;
-  
+
   if (hour >= 5 && hour < 12) {
     greeting = "Good Morning";
   } else if (hour >= 12 && hour < 17) {
@@ -20,7 +20,7 @@ layout: default
   } else {
     greeting = "Welcome";
   }
-  
+
   document.getElementById('greeting-message').textContent = greeting + "! Thanks for visiting my project blog!";
 })();
 </script>
@@ -52,6 +52,28 @@ a.post-preview[href*="the-final-demonstration"]:hover {
                 0 0 35px rgba(255, 183, 0, 0.9),
                 0 0 70px rgba(255, 140, 0, 0.6);
   }
+}
+
+.card-image-wrapper {
+  position: relative;
+}
+
+a.post-preview[href*="the-final-demonstration"] .project-complete-badge {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 10;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  color: #1a1a1a;
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.5),
+              0 0 0 2px rgba(255, 255, 255, 0.4) inset;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 </style>
 
@@ -136,8 +158,11 @@ a.post-preview[href*="the-final-demonstration"]:hover {
 
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
 
-          <div class="col-md-5">
+          <div class="col-md-5 card-image-wrapper">
             <img src="{{ src }}" alt="{{ alt }}" {{ lqip_attr }}>
+            {% if post.url contains 'the-final-demonstration' %}
+              <div class="project-complete-badge">🏁 Project Complete</div>
+            {% endif %}
           </div>
 
           {% assign card_body_col = '7' %}
