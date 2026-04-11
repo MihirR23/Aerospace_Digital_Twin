@@ -15,6 +15,11 @@ image:
 
 <div class="reading-progress-bar"><div class="reading-progress-fill"></div></div>
 
+<div class="hero-wrapper">
+  <div class="project-complete-badge">🏁 Project Complete</div>
+  <div class="hero-shimmer"></div>
+</div>
+
 <style>
 .project-complete-badge {
   position: absolute;
