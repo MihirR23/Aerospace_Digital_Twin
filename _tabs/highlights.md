@@ -9,6 +9,7 @@ order: 7
   text-align: center;
   margin: 2rem 0 3rem 0;
   position: relative;
+  isolation: isolate;
 }
 
 .hl-hero::before {
@@ -16,18 +17,14 @@ order: 7
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse at center, rgba(230, 57, 70, 0.18), rgba(230, 57, 70, 0) 60%);
-  filter: blur(40px);
-  z-index: -1;
-  animation: heroPulse 6s ease-in-out infinite;
-}
-
-@keyframes heroPulse {
-  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.05); }
+  background: radial-gradient(ellipse at center, rgba(230, 57, 70, 0.45), rgba(230, 57, 70, 0) 65%);
+  filter: blur(50px);
+  z-index: 0;
+  pointer-events: none;
+  animation: heroPulse 4s ease-in-out infinite;
 }
 
 .hl-hero img {
@@ -35,6 +32,12 @@ order: 7
   border-radius: 12px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   position: relative;
+  z-index: 1;
+}
+
+@keyframes heroPulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.95); }
+  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
 }
 
 .hl-hero .caption {
