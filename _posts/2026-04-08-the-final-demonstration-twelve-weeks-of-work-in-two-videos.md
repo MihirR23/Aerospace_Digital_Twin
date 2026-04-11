@@ -11,53 +11,9 @@ image:
   class: final-hero-image
 ---
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-
 <div class="reading-progress-bar"><div class="reading-progress-fill"></div></div>
 
-<div class="hero-wrapper">
-  <div class="project-complete-badge">🏁 Project Complete</div>
-  <div class="hero-shimmer"></div>
-</div>
-
 <style>
-.project-complete-badge {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  background: linear-gradient(135deg, #ffd700, #ff8c00);
-  color: #1a1a1a;
-  padding: 0.6rem 1.2rem;
-  border-radius: 30px;
-  font-weight: 800;
-  font-size: 0.85rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.5);
-  z-index: 10;
-}
-
-.hero-wrapper {
-  position: relative;
-}
-
-.hero-shimmer {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
-  animation: shimmerSweep 4s ease-in-out 0.5s;
-  pointer-events: none;
-  z-index: 5;
-}
-
-@keyframes shimmerSweep {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
 .final-hero-image,
 .post img:first-of-type {
   border-radius: 20px !important;
@@ -72,164 +28,53 @@ image:
   50% { box-shadow: 0 0 45px rgba(255, 183, 0, 0.8), 0 0 90px rgba(255, 140, 0, 0.5); }
 }
 
-.reading-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: transparent;
-  z-index: 9998;
-  pointer-events: none;
-}
-
-.reading-progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);
-  box-shadow: 0 0 10px rgba(255, 183, 0, 0.6);
-  transition: width 0.1s ease-out;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  margin: 2.5rem 0;
-  padding: 2rem;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 140, 0, 0.08));
-  border-radius: 16px;
-  border: 3px solid #ffd700;
-  box-shadow: 0 0 20px rgba(255, 183, 0, 0.4);
-}
-
-.stat-card {
-  text-align: center;
-  padding: 1rem;
-}
-
-.stat-number {
-  font-size: 2.4rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #ffd700, #ff8c00);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block;
-  line-height: 1.1;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--text-muted-color, #6c757d);
-  margin-top: 0.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.before-after {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin: 2.5rem 0;
-}
-
-.before-after figure {
-  margin: 0;
-  text-align: center;
-}
-
-.iteration-label {
-  margin: 0 0 0.75rem 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ffd700, #ff8c00);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-.before-after img {
-  width: 100%;
-  border-radius: 12px;
-  border: 4px solid #ffd700;
-  box-shadow: 0 0 20px rgba(255, 183, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.before-after figcaption {
-  margin-top: 0.75rem;
-  font-style: italic;
-  color: var(--text-muted-color, #6c757d);
-  font-size: 0.9rem;
-}
-
-.journey-links {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 140, 0, 0.05));
-  padding: 1.5rem 2rem;
-  border-radius: 12px;
-  border-left: 4px solid #ffb700;
-  margin: 2rem 0;
-}
-
-.journey-links h3 {
-  margin-top: 0;
-  color: #ff8c00;
-}
-
-.journey-links ul {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.journey-links li {
-  margin: 0.6rem 0;
-  line-height: 1.6;
-}
-
-.lessons-list {
-  counter-reset: lesson;
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0;
-}
-
-.lessons-list li {
-  counter-increment: lesson;
-  position: relative;
-  padding: 1.25rem 1.5rem 1.25rem 4rem;
-  margin: 1rem 0;
-  background: rgba(255, 183, 0, 0.06);
-  border-radius: 10px;
-  border-left: 4px solid #ffb700;
-  line-height: 1.7;
-}
-
-.lessons-list li::before {
-  content: counter(lesson);
+.project-complete-badge {
   position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 10;
   background: linear-gradient(135deg, #ffd700, #ff8c00);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.1rem;
-  box-shadow: 0 2px 8px rgba(255, 140, 0, 0.4);
+  color: #1a1a1a;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(255, 140, 0, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.4) inset;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
+
+.reading-progress-bar { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 9998; pointer-events: none; }
+.reading-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700); box-shadow: 0 0 10px rgba(255, 183, 0, 0.6); transition: width 0.1s ease-out; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 2.5rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 140, 0, 0.08)); border-radius: 16px; border: 3px solid #ffd700; box-shadow: 0 0 20px rgba(255, 183, 0, 0.4); }
+.stat-card { text-align: center; padding: 1rem; }
+.stat-number { font-size: 2.4rem; font-weight: 800; background: linear-gradient(135deg, #ffd700, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; line-height: 1.1; }
+.stat-label { font-size: 0.85rem; color: var(--text-muted-color, #6c757d); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
+.before-after figure { margin: 0; text-align: center; }
+.iteration-label { margin: 0 0 0.75rem 0; font-size: 1.2rem; font-weight: 700; background: linear-gradient(135deg, #ffd700, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-transform: uppercase; letter-spacing: 1.5px; }
+.before-after img { width: 100%; border-radius: 12px; border: 4px solid #ffd700; box-shadow: 0 0 20px rgba(255, 183, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3); }
+.before-after figcaption { margin-top: 0.75rem; font-style: italic; color: var(--text-muted-color, #6c757d); font-size: 0.9rem; }
+
+.journey-links { background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 140, 0, 0.05)); padding: 1.5rem 2rem; border-radius: 12px; border-left: 4px solid #ffb700; margin: 2rem 0; }
+.journey-links h3 { margin-top: 0; color: #ff8c00; }
+.journey-links ul { margin: 0; padding-left: 1.2rem; }
+.journey-links li { margin: 0.6rem 0; line-height: 1.6; }
+
+.lessons-list { counter-reset: lesson; list-style: none; padding: 0; margin: 2rem 0; }
+.lessons-list li { counter-increment: lesson; position: relative; padding: 1.25rem 1.5rem 1.25rem 4rem; margin: 1rem 0; background: rgba(255, 183, 0, 0.06); border-radius: 10px; border-left: 4px solid #ffb700; line-height: 1.7; }
+.lessons-list li::before { content: counter(lesson); position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 2.2rem; height: 2.2rem; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ff8c00); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; box-shadow: 0 2px 8px rgba(255, 140, 0, 0.4); }
 
 @media (max-width: 600px) {
   .before-after { grid-template-columns: 1fr; }
   .stat-number { font-size: 2rem; }
+  .project-complete-badge { font-size: 0.8rem; padding: 0.45rem 0.85rem; top: 0.75rem; left: 0.75rem; }
 }
 </style>
+
+<div class="project-complete-badge">🏁 Project Complete</div>
 
 After twelve weeks of late nights, unexpected pivots and more debugging sessions than I can count, the final demonstration videos are complete. The Digital Twin-Enabled AI Fault Detection for Thrust Reversers project is ready to be shown and honestly, I could not be prouder of where it has ended up.
 
@@ -319,7 +164,7 @@ Most of all, I have learned that the hardest parts of a project are where the re
 
 There is no version of this project that exists without the people who stood beside me throughout it. None.
 
-To **Mehnaz Hamilton**, my submission advisor: thank you for believing in this project from the moment it was nothing more than a vague idea and for never letting me settle for the easy version of it. You saw what this could become long before I did and every meeting we had pushed me further than I thought I could go. Suggesting the physical implementation when I was ready to wind down was the moment this project went from good to something I am genuinely proud of. I cannot thank you enough.
+To **Mehnaz Hamilton**: thank you for believing in this project from the moment it was nothing more than a vague idea and for never letting me settle for the easy version of it. You saw what this could become long before I did and every meeting we had pushed me further than I thought I could go. Suggesting the physical implementation when I was ready to wind down was the moment this project went from good to something I am genuinely proud of. I cannot thank you enough.
 
 To **Mehmet Karamanoglu**: thank you for trusting me with the WorldSkills equipment and for taking the time to teach me how every piece of it worked. Your generosity and patience turned what would have been a software-only demonstration into a real, working physical system. Watching the rotary actuators move on the bench for the first time would never have happened without you.
 
