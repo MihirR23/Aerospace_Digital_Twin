@@ -155,7 +155,6 @@
   }
 
   function init() {
-    startCelebration();
     setupCounters();
     setupReadingProgress();
   }
