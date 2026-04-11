@@ -2,7 +2,7 @@
 title: "The Final Demonstration: Twelve Weeks of Work in Two Videos"
 description: "The final demonstration videos are here. Part one walks through the complete AI fault detection pipeline, part two brings the physical Festo pneumatic station to life. This is the project I set out to build."
 date: 2026-04-08
-categories: [Project]
+categories: [Final Submission]
 tags: [final-demonstration, demo, milestone, reflection, ai-pipeline, pneumatics]
 pin: true
 image:
@@ -16,6 +16,43 @@ image:
 <div class="reading-progress-bar"><div class="reading-progress-fill"></div></div>
 
 <style>
+.project-complete-badge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  color: #1a1a1a;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.5);
+  z-index: 10;
+}
+
+.hero-wrapper {
+  position: relative;
+}
+
+.hero-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+  animation: shimmerSweep 4s ease-in-out 0.5s;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes shimmerSweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
 .final-hero-image,
 .post img:first-of-type {
   border-radius: 20px !important;
