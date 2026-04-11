@@ -106,7 +106,7 @@ order: 7
 </div>
 
 <div class="hl-intro">
-Behind every chart, every line of SCL, and every fault scenario on this blog, there are people. People who made the long days feel shorter, the broken builds feel smaller, and the finish line feel closer. This page is for the moments that never made it into a technical post but carried the project just as much as the code did.
+Behind every chart, every line of SCL and every fault scenario on this blog, there are people. People who made the long days feel shorter, the broken builds feel smaller and the finish line feel closer. This page is for the moments that never made it into a technical post but carried the project just as much as the code did.
 </div>
 
 <div class="hl-grid">
