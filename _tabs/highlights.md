@@ -4,18 +4,37 @@ icon: fas fa-heart
 order: 7
 ---
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-
 <style>
 .hl-hero {
   text-align: center;
   margin: 2rem 0 3rem 0;
+  position: relative;
+}
+
+.hl-hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(230, 57, 70, 0.18), rgba(230, 57, 70, 0) 60%);
+  filter: blur(40px);
+  z-index: -1;
+  animation: heroPulse 6s ease-in-out infinite;
+}
+
+@keyframes heroPulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.05); }
 }
 
 .hl-hero img {
   max-width: 100%;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .hl-hero .caption {
@@ -44,6 +63,14 @@ order: 7
   border-left: 4px solid #e63946;
   background: rgba(230, 57, 70, 0.05);
   border-radius: 0 8px 8px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.hl-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hl-card h3 {
@@ -75,6 +102,27 @@ order: 7
   font-weight: 600;
   margin: 3rem auto 1.5rem auto;
   color: #e63946;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 0.5rem;
+}
+
+.hl-closing-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e63946, transparent);
+  transform: translateX(-50%);
+  transition: width 1.4s ease-out;
+}
+
+.hl-closing-heading.is-visible::after {
+  width: 100%;
 }
 
 .hl-closing-message {
@@ -112,6 +160,7 @@ Behind every chart, every line of SCL and every fault scenario on this blog, the
 <div class="hl-grid">
 
 <div class="hl-card">
+
 <p>Engineering projects get remembered for the final numbers but the moments that actually carried me through were the ones nobody grades. A lot of people played a part in shaping this year, from lecturers and technicians to friends on my course who shared a lab with me. But Mehnaz, Raphael and Myu were the ones who were there through all of it, consistently, from the earliest weeks to the final day. Without any one of them, the whole thing would have looked completely different.</p>
 
 <p>It was not about what they did or did not do. It was the fact that they were there, consistently, through every version of this project and every version of me working on it. The good weeks and the hard ones. The breakthroughs and the dead ends. They were the constant in all of it.</p>
@@ -124,7 +173,7 @@ Behind every chart, every line of SCL and every fault scenario on this blog, the
 
 <div class="hl-divider"></div>
 
-<div class="hl-closing-heading">A note for whoever needs it</div>
+<h2 class="hl-closing-heading">A note for whoever needs it</h2>
 
 <div class="hl-closing-message">
 
